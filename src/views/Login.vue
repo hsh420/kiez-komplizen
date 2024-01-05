@@ -16,11 +16,21 @@ import { ref } from 'vue'
 import firebase from 'firebase/compat/app'
 import { useRouter } from 'vue-router'
 import { GoogleAuthProvider } from 'firebase/auth'
+import 'firebase/compat/firestore'
 const router = useRouter()
 const email = ref('')
 const password = ref('')
 const auth = firebase.auth()
 const provider = new GoogleAuthProvider()
+const db = firebase.firestore()
+const createUser = (userId, displayName, email) => {
+  db.collection('users')
+    .add({ userId: userId, displayName: displayName, email: email })
+    .catch((error) => {
+      console.log(error)
+      alert(error.message)
+    })
+}
 const login = () => {
   auth
     .signInWithEmailAndPassword(email.value, password.value)
@@ -37,7 +47,7 @@ const loginWithGoogle = () => {
   auth
     .signInWithPopup(provider)
     .then((result) => {
-      console.log(result)
+      createUser(result.user.uid, result.user.displayName, result.user.email)
       router.push('/')
     })
     .catch((error) => {
