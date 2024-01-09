@@ -1,18 +1,21 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useAuthStore } from './stores/auth'
+import { onMounted } from 'vue'
+const store = useAuthStore()
+onMounted(() => {
+  store.init()
+})
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
+    <h1>KIEZ-KOMPLIZEN</h1>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <button v-if="store.$state.isLoggedIn === true" v-on:click="store.logout()">Logout</button>
       </nav>
     </div>
   </header>
@@ -24,6 +27,7 @@ import HelloWorld from './components/HelloWorld.vue'
 header {
   line-height: 1.5;
   max-height: 100vh;
+  text-align: center;
 }
 
 .logo {
