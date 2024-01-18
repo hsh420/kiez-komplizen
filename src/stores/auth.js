@@ -14,7 +14,7 @@ const firebaseConfig = {
   measurementId: 'G-PMSD6VY6M6'
 }
 
-firebase.initializeApp(firebaseConfig)
+export const firebaseApp = firebase.initializeApp(firebaseConfig)
 
 const auth = firebase.auth()
 const provider = new firebase.auth.GoogleAuthProvider()
@@ -71,6 +71,9 @@ export const useAuthStore = defineStore({
       auth
         .signInWithEmailAndPassword(this.email, this.password)
         .then((data) => {
+          this.user = {
+            uid: data.user.uid
+          }
           router.push('/')
         })
         .catch((error) => {
@@ -85,6 +88,9 @@ export const useAuthStore = defineStore({
           if (result.additionalUserInfo.isNewUser === true) {
             createUser(result.user.uid, result.user.displayName, result.user.email)
           }
+          this.user = {
+            uid: result.user.uid
+          }
           router.push('/')
         })
         .catch((error) => {
@@ -94,6 +100,7 @@ export const useAuthStore = defineStore({
     },
     logout() {
       auth.signOut()
+      this.user = {}
       router.replace({ name: 'login' })
     }
   }
