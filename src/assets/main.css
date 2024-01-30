@@ -1,35 +1,43 @@
 @import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+:root {
+  --cc-orange: #f39305;
+  --cc-egg: #fff6e9;
+  --cc-text-lightmode: black;
+  --cc-text-darkmode: white;
+  --cc-secondary-text-lightmode: #1e293b;
+  --cc-textfields: #e2e8f0;
+  --cc-placeholders: #d9d9d9;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+@font-face {
+  font-family: 'Abadi MT Condensed Extra Bold';
+  src: url('@/assets/fonts/Abadi MT Condensed Extra Bold');
+  font-family: 'Abadi MT Condensed Light';
+  src: url('@/assets/fonts/Abadi MT Condensed Light');
+  font-family: 'SourceSansPro-Regular';
+  src: url('@/assets/fonts/SourceSansPro-Regular.otf');
+  font-family: 'SourceSansPro-Bold';
+  src: url('@/assets/fonts/SourceSansPro-Bold.otf');
+  font-family: 'SourceSansPro-Light';
+  src: url('@/assets/fonts/SourceSansPro-Light.otf');
+  font-family: 'SourceSansPro-Semibold';
+  src: url('@/assets/fonts/SourceSansPro-Semibold.otf');
+  font-family: 'SourceSansPro-It';
+  src: url('@/assets/fonts/SourceSansPro-It.otf');
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+button,
+button * {
+  box-sizing: border-box;
+  cursor: pointer;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+a {
+  color: var(--cc-orange);
 }
