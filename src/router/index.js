@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/auth'
+import LandingViewVue from '@/views/LandingView.vue'
 const requireAuth = (to, from, next) => {
   let store = useAuthStore()
   if (!store.$state.isLoggedIn) {
-    next({ name: 'login' })
+    next({ name: 'landing' })
   } else {
     next()
   }
@@ -13,6 +14,11 @@ const requireAuth = (to, from, next) => {
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/landing',
+      name: 'landing',
+      component: LandingViewVue
+    },
     {
       path: '/',
       name: 'home',
