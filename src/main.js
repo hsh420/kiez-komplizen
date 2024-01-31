@@ -1,5 +1,5 @@
 import './assets/main.css'
-
+import '@/components/ButtonGlobal.vue'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 

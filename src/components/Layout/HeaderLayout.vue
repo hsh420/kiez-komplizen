@@ -44,7 +44,7 @@ export default {
   width: 430px;
 }
 .header-container .header-accent-line {
-  background-color: #f39305;
+  background-color: var(--cc-orange);
   height: 3px;
   left: -1px;
   position: absolute;
@@ -62,7 +62,7 @@ export default {
 .header-container .header-logo {
   position: absolute;
   width: 188px;
-  height: 63.77px; /* Korrigiert, entfernen Sie das Komma */
+  height: 63.77px;
   top: 0;
   left: 221px;
   transform: rotate(-4.9deg);
