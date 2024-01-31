@@ -14,6 +14,7 @@ onMounted(() => {
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/offer">Anbieten</RouterLink>
         <button v-if="store.$state.isLoggedIn === true" v-on:click="store.logout()">Logout</button>
       </nav>
     </div>

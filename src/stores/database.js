@@ -9,13 +9,16 @@ export const useDatabaseStore = defineStore({
   id: 'databaseStore',
   state: () => {
     return {
-      title: '',
       createdByUser: auth.user,
       dateCreated: new Date(),
-      imgUrl: '',
+      category: '',
+      picture: '',
+      title: '',
       description: '',
-      topic: '',
-      location: '',
+      deposit: '',
+      zipcode: '',
+      town: '',
+      remote: false,
       dataFromApi: ''
     }
   },
@@ -24,13 +27,16 @@ export const useDatabaseStore = defineStore({
     createOffer() {
       db.collection('offers')
         .add({
-          title: this.title,
           createdByUser: this.createdByUser,
           dateCreated: this.dateCreated,
-          imgUrl: this.imgUrl,
+          category: this.category,
+          picture: this.picture,
+          title: this.title,
           description: this.description,
-          topic: this.topic,
-          location: this.location
+          depoit: this.deposit,
+          zipcode: this.zipcode,
+          town: this.town,
+          remote: this.remote
         })
         .then(() => {
           console.log('Success')
