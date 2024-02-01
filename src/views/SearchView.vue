@@ -1,30 +1,61 @@
 /*disabled authentication of this page for dev purposes in the index.js. Needs turning back on when
 done. Created Backup SearchView file that needs deleten before deploy.*/
-<template v-if="offers">
-  <ul>
-    <li v-for="offer in offers">
-      <div class="card">
-        <img class="card__img" :src="offer.imgUrl" alt="Bild des Artikels" />
-        <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
-        <div class="card__details">
-          <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-          <p class="card__location"><LocationIcon /> {{ offer.location }}</p>
-          <ArrowRightIcon class="card__arrow" />
+
+<template>
+  <header>
+    <h1>Suchen</h1>
+    <h2>Was willst du finden?</h2>
+    <p>
+      <input type="radio" name="item" value="item" />
+      <label for="item"> Gegenstand </label>
+      <input type="radio" name="hobby" value="hobby" />
+      <label for="hobby"> Gemeinsamkeit </label>
+    </p>
+    <br />
+    <form action="/search" method="get">
+      <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+      <button type="submit">Suchen</button>
+    </form>
+  </header>
+
+  <br />
+
+  <main v-if="filteredOffers.length">
+    <ul>
+      <li v-for="offer in filteredOffers" :key="offer.id">
+        <div class="card">
+          <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
+          <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
+          <div class="card__details">
+            <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
+            <p class="card__location"><LocationIcon /> {{ offer.zipcode + '' + offer.town }}</p>
+            <ArrowRightIcon class="card__arrow" />
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </main>
 </template>
 
 <script setup>
-import { useDatabaseStore } from '@/stores/database'
 import { computed, onMounted, ref } from 'vue'
+import { useDatabaseStore } from '@/stores/database'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
 
 const store = useDatabaseStore()
+const searchTerm = ref('') // Reference to store the search term
 const offers = computed(() => store.dataFromApi)
+
+const filteredOffers = computed(() => {
+  if (!searchTerm.value) {
+    return offers.value
+  }
+  return offers.value.filter((offer) =>
+    offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
+  )
+})
 
 onMounted(() => store.getOffers())
 </script>

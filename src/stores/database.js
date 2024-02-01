@@ -33,7 +33,7 @@ export const useDatabaseStore = defineStore({
           picture: this.picture,
           title: this.title,
           description: this.description,
-          depoit: this.deposit,
+          depsoit: this.deposit,
           zipcode: this.zipcode,
           town: this.town,
           remote: this.remote
