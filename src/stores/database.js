@@ -63,7 +63,6 @@ export const useDatabaseStore = defineStore({
               location: doc.data().location
             })
             this.dataFromApi = offerData
-            console.log(offerData, this.dataFromApi)
           })
           return offerData
         })
