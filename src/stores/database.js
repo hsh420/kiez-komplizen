@@ -56,10 +56,15 @@ export const useDatabaseStore = defineStore({
               id: doc.id,
               createdByUser: doc.data().createdByUser,
               dateCreated: doc.data().dateCreated,
-              imgUrl: doc.data().imgUrl,
+              category: doc.data().category,
+              picture: doc.data().picture,
+              title: doc.data().title,
               description: doc.data().description,
+              deposit: doc.data().deposit,
+              zipcode: doc.data().zipcode,
               topic: doc.data().topic,
-              location: doc.data().location
+              town: doc.data().town,
+              remote: doc.data().remote
             })
             this.dataFromApi = offerData
           })
