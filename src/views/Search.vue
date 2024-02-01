@@ -2,11 +2,11 @@
   <ul>
     <li v-for="offer in offers">
       <div class="card">
-        <img class="card__img" :src="offer.imgUrl" alt="Bild des Artikels" />
+        <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
         <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
         <div class="card__details">
           <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-          <p class="card__location"><LocationIcon /> {{ offer.location }}</p>
+          <p class="card__location"><LocationIcon /> {{ offer.town }}</p>
           <ArrowRightIcon class="card__arrow" />
         </div>
       </div>
