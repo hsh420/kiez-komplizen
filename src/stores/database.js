@@ -54,16 +54,12 @@ export const useDatabaseStore = defineStore({
           data.forEach((doc) => {
             offerData.push({
               id: doc.id,
-              title: doc.data().title,
               createdByUser: doc.data().createdByUser,
               dateCreated: doc.data().dateCreated,
-              picture: doc.data().picture,
+              imgUrl: doc.data().imgUrl,
               description: doc.data().description,
               topic: doc.data().topic,
-              town: doc.data().town,
-              zipcode: doc.data().zipcode,
-              remote: doc.data().remote,
-              deposit: doc.data().deposit
+              location: doc.data().location
             })
             this.dataFromApi = offerData
           })
