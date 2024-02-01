@@ -110,6 +110,10 @@ p {
   font-size: 15px;
 }
 
+button:hover {
+  background-color: orange;
+}
+
 .backdrop-shadow,
 .backdrop-shadow * {
   box-sizing: border-box;

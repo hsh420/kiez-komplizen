@@ -33,7 +33,7 @@ export const useDatabaseStore = defineStore({
           picture: this.picture,
           title: this.title,
           description: this.description,
-          depsoit: this.deposit,
+          deposit: this.deposit,
           zipcode: this.zipcode,
           town: this.town,
           remote: this.remote
@@ -56,17 +56,12 @@ export const useDatabaseStore = defineStore({
               id: doc.id,
               createdByUser: doc.data().createdByUser,
               dateCreated: doc.data().dateCreated,
-              category: doc.data().category,
-              picture: doc.data().picture,
-              title: doc.data().title,
+              imgUrl: doc.data().imgUrl,
               description: doc.data().description,
-              deposit: doc.data().deposit,
-              zipcode: doc.data().zipcode,
-              town: doc.data().town,
-              remote: doc.data().remote
+              topic: doc.data().topic,
+              location: doc.data().location
             })
             this.dataFromApi = offerData
-            console.log(offerData, this.dataFromApi)
           })
           return offerData
         })
