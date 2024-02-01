@@ -57,14 +57,14 @@ const router = createRouter({
     {
       path: '/search',
       name: 'search',
-      component: () => import('../views/Search.vue'),
-      beforeEnter: requireAuth
+      component: () => import('../views/SearchView.vue'),
+      //beforeEnter: requireAuth
     },
     {
       path: '/offer',
       name: 'offer',
       component: () => import('../views/OfferView.vue')
-      //beforeEnter: requireAuth
+      beforeEnter: requireAuth
     },
     {
       path: '/messages',
