@@ -1,17 +1,24 @@
 <template>
-<button class="button-global">{{ label }}</button>
+  <button class="button-global">{{ label }}</button>
 </template>
 
 <script>
 export default {
   name: 'ButtonGlobal',
-props: {label: {type:String}}
+  props: { label: { type: String } }
 }
 </script>
 
-<style>
+<style scoped>
 
 .button-global {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+  width: 358px;
+  height: 44px;
+  top: 400px;
+  left: 36px;
   margin: 10px 0 20px 0;
   border: none;
   background: var(--cc-orange);
@@ -20,6 +27,13 @@ props: {label: {type:String}}
   padding: 14px 80px 14px 80px;
   position: relative;
   font-family: 'SourceSansPro-Semibold', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 600;
 }
+
+
+button:hover {
+  background-color: orange;
+}
+
 </style>
