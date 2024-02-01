@@ -1,12 +1,14 @@
 <template>
+   <HeaderLayout />
   <div class="about">
     <h1>This is an about page!</h1>
   </div>
-  <ButtonGlobal :label="'HALLOOOOO'"/>
+   <FooterLayout />
 </template>
 
 <script setup>
-import ButtonGlobal from '@/components/ButtonGlobal.vue';
+import HeaderLayout from '@/components/Layout/HeaderLayout.vue'
+import FooterLayout from '@/components/Layout/FooterLayout.vue'
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HeaderLayout from '@/components/Layout/HeaderLayout.vue'
-import FooterLayout from '@/components/Layout/FooterLayout.vue'
+// import HeaderLayout from '@/components/Layout/HeaderLayout.vue'
+// import FooterLayout from '@/components/Layout/FooterLayout.vue'
 import { useAuthStore } from './stores/auth'
 import { onMounted } from 'vue'
 const store = useAuthStore()
@@ -13,7 +13,7 @@ onMounted(() => {
 <template>
   <header>
     <div class="wrapper">
-      <HeaderLayout />
+      <!-- <HeaderLayout /> -->
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -22,9 +22,11 @@ onMounted(() => {
       </nav>
     </div>
   </header>
-  <FooterLayout />
+  <!-- <FooterLayout /> -->
   <RouterView />
 </template>
+
+
 
 <style scoped>
 header {

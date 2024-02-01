@@ -10,6 +10,7 @@ export default {}
 <style></style>
 
 <template>
+  <HeaderNavigation />
   <main>
     <form action="" @submit.prevent="handleSubmit">
       <h1>Anbieten</h1>
@@ -104,9 +105,12 @@ export default {}
       </section>
     </form>
   </main>
+  <FooterNavigation />
 </template>
 
 <script setup>
+import HeaderNavigation from '@/components/Layout/HeaderNavigation.vue'
+import FooterNavigation from '@/components/Layout/FooterNavigation.vue'
 import { ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
 

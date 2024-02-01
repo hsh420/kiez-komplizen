@@ -1,4 +1,5 @@
 <template v-if="offers">
+  <HeaderNavigation />
   <ul>
     <li v-for="offer in offers">
       <div class="card">
@@ -12,9 +13,12 @@
       </div>
     </li>
   </ul>
+  <FooterNavigation />
 </template>
 
 <script setup>
+import HeaderNavigation from '@/components/Layout/HeaderNavigation.vue'
+import FooterNavigation from '@/components/Layout/FooterNavigation.vue'
 import { useDatabaseStore } from '@/stores/database'
 import { computed, onMounted, ref } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
