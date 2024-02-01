@@ -63,8 +63,8 @@ const router = createRouter({
     {
       path: '/offer',
       name: 'offer',
-      component: () => import('../views/Offer.vue'),
-      beforeEnter: requireAuth
+      component: () => import('../views/OfferView.vue')
+      //beforeEnter: requireAuth
     },
     {
       path: '/messages',
