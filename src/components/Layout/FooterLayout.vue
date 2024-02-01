@@ -1,23 +1,27 @@
 <template>
   <footer class="footer-container">
-      <section class="footer-elements-group">
-        <span class="footer-accent-bar"></span>
-        <div class="footer-accent-bar-secondary"></div>
-        <img class="footer-triangle-image" alt="SchwarzesDreieck" src="@/assets/pictures-layout/bottom_triangle_black.png" />
-      </section>
+    <section class="footer-elements-group">
+      <span class="footer-accent-bar"></span>
+      <div class="footer-accent-bar-secondary"></div>
+      <img
+        class="footer-triangle-image"
+        alt="SchwarzesDreieck"
+        src="@/assets/pictures-layout/bottom_triangle_black.png"
+      />
+    </section>
   </footer>
 </template>
 <script>
-export default { 
-    name: 'FooterLayout' 
-    };
+export default {
+  name: 'FooterLayout'
+}
 </script>
 <style scoped>
 .footer-container {
   height: 52px;
   width: 432px;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer-container .footer-elements-group {

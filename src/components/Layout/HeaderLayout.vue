@@ -4,9 +4,18 @@
       <div class="header-nav-group">
         <div class="header-decor-group">
           <span class="header-accent-line"></span>
-          <img class="header-triangle-decor" alt="SchwarzesDreieck" src="@/assets/pictures-layout/top_triangle_black.png" />
+          <img
+            class="header-triangle-decor"
+            alt="SchwarzesDreieck"
+            src="@/assets/pictures-layout/top_triangle_black.png"
+          />
         </div>
-        <img class="header-logo" alt="LogoKiezKomplizen" src="@/assets/pictures-layout/kiezkomplizen.png" />
+        <RouterLink :to="{ name: 'home' }">
+          <img
+            class="header-logo"
+            alt="LogoKiezKomplizen"
+            src="@/assets/pictures-layout/kiezkomplizen.png"
+        /></RouterLink>
       </div>
     </section>
   </header>
@@ -25,11 +34,6 @@ export default {
 .header-container .header-content {
   background-color: #fff6e9;
   background-size: 100% 100%;
-  height: 135px;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 430px;
 }
 .header-container .header-nav-group {
   height: 112px;

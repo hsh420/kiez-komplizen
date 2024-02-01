@@ -5,22 +5,18 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
   <header>
     <h1>Suchen</h1>
     <h2>Was willst du finden?</h2>
-    <p>
+    <!-- <p>
       <input type="radio" name="item" value="item" />
       <label for="item"> Gegenstand </label>
       <input type="radio" name="hobby" value="hobby" />
       <label for="hobby"> Gemeinsamkeit </label>
-    </p>
-    <br />
-    <form action="/search" method="get">
-      <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
-      <button type="submit">Suchen</button>
-    </form>
+    </p> -->
+    <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
   </header>
 
   <br />
 
-  <main v-if="filteredOffers.length">
+  <main>
     <ul>
       <li v-for="offer in filteredOffers" :key="offer.id">
         <div class="card">
@@ -28,7 +24,7 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
           <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
           <div class="card__details">
             <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-            <p class="card__location"><LocationIcon /> {{ offer.zipcode + '' + offer.town }}</p>
+            <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
             <ArrowRightIcon class="card__arrow" />
           </div>
         </div>
@@ -45,18 +41,16 @@ import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
 
 const store = useDatabaseStore()
-const searchTerm = ref('') // Reference to store the search term
-const offers = computed(() => store.dataFromApi)
+let searchTerm = ref('') // Reference to store the search term
 
 const filteredOffers = computed(() => {
   if (!searchTerm.value) {
-    return offers.value
+    return store.dataFromApi
   }
-  return offers.value.filter((offer) =>
+  return store.dataFromApi.filter((offer) =>
     offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
   )
 })
-
 onMounted(() => store.getOffers())
 </script>
 

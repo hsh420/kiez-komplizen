@@ -15,8 +15,10 @@
         ><br />
         Kostenlos und gleich nebenan.
       </p>
-      <button class="button" type="submit">Login</button>
-      <p class="last-p">Noch nicht dabei? <a class="bold" :href="dynamicUrl">Registrieren.</a></p>
+      <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
+      <p class="last-p">
+        Noch nicht dabei? <RouterLink to="/registration">Registrieren.</RouterLink>
+      </p>
     </section>
     <div class="backdrop-shadow"></div>
     <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax.png" />
@@ -49,11 +51,11 @@ p {
   height: 140px;
   position: relative;
   object-fit: cover;
-  z-index: 3;
+  z-index: 103;
 }
 
 .all-p-and-button-container {
-  z-index: 4;
+  z-index: 104;
   margin-top: 370px;
   position: relative;
   width: 430px;
@@ -128,7 +130,7 @@ button:hover {
   height: 560px;
   bottom: 0;
   position: fixed;
-  z-index: 2;
+  z-index: 102;
 }
 
 .bg-img {
@@ -136,6 +138,6 @@ button:hover {
   top: 0;
   left: 0;
   object-fit: cover;
-  z-index: 1;
+  z-index: 101;
 }
 </style>
