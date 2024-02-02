@@ -1,5 +1,4 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
 import { useAuthStore } from '@/stores/auth'
 const store = useAuthStore()
 </script>
