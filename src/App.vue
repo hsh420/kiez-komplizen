@@ -21,13 +21,16 @@ onMounted(() => {
   position: fixed;
   top: 0;
   z-index: 100;
+  width: 100%;
 }
 .main {
   margin-top: 135px;
-  padding: 0 10px;
+  width: 100%;
 }
 .footer {
   position: fixed;
+  bottom: 0;
   z-index: 100;
+  width: 100%;
 }
 </style>

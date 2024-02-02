@@ -10,15 +10,11 @@ export default {
 </script>
 
 <style scoped>
-
 .button-global {
- display: flex;
- align-items: center;
- justify-content: center;
-  width: 358px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 44px;
-  top: 400px;
-  left: 36px;
   margin: 10px 0 20px 0;
   border: none;
   background: var(--cc-orange);
@@ -31,9 +27,7 @@ export default {
   font-weight: 600;
 }
 
-
 button:hover {
   background-color: orange;
 }
-
 </style>
