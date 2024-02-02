@@ -1,33 +1,56 @@
-<template v-if="offers">
-  <HamburgerNav />
-  <ul>
-    <li v-for="offer in offers">
-      <div class="card">
-        <img class="card__img" :src="offer.imgUrl" alt="Bild des Artikels" />
-        <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
-        <div class="card__details">
-          <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-          <p class="card__location"><LocationIcon /> {{ offer.location }}</p>
-          <ArrowRightIcon class="card__arrow" />
+/*disabled authentication of this page for dev purposes in the index.js. Needs turning back on when
+done. Created Backup SearchView file that needs deleten before deploy.*/
+
+<template>
+  <header>
+    <h1>Suchen</h1>
+    <h2>Was willst du finden?</h2>
+    <!-- <p>
+      <input type="radio" name="item" value="item" />
+      <label for="item"> Gegenstand </label>
+      <input type="radio" name="hobby" value="hobby" />
+      <label for="hobby"> Gemeinsamkeit </label>
+    </p> -->
+    <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+  </header>
+
+  <br />
+
+  <main>
+    <ul>
+      <li v-for="offer in filteredOffers" :key="offer.id">
+        <div class="card">
+          <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
+          <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
+          <div class="card__details">
+            <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
+            <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
+            <ArrowRightIcon class="card__arrow" />
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
-  <FooterNav />
+      </li>
+    </ul>
+  </main>
 </template>
 
 <script setup>
-import { useDatabaseStore } from '@/stores/database'
 import { computed, onMounted, ref } from 'vue'
+import { useDatabaseStore } from '@/stores/database'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
-import FooterNav from '@/components/Layout/FooterNav.vue'
-import HamburgerNav from '@/components/Layout/HamburgerNav.vue'
 
 const store = useDatabaseStore()
-const offers = computed(() => store.dataFromApi)
+let searchTerm = ref('') // Reference to store the search term
 
+const filteredOffers = computed(() => {
+  if (!searchTerm.value) {
+    return store.dataFromApi
+  }
+  return store.dataFromApi.filter((offer) =>
+    offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
+  )
+})
 onMounted(() => store.getOffers())
 </script>
 

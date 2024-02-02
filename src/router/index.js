@@ -22,8 +22,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
-      beforeEnter: requireAuth
+      component: HomeView
+      //beforeEnter: requireAuth
     },
     {
       path: '/about',
@@ -57,8 +57,8 @@ const router = createRouter({
     {
       path: '/search',
       name: 'search',
-      component: () => import('../views/Search.vue'),
-      beforeEnter: requireAuth
+      component: () => import('../views/SearchView.vue')
+      //beforeEnter: requireAuth
     },
     {
       path: '/offer',
