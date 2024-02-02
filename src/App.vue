@@ -16,6 +16,8 @@ onMounted(() => {
   <FooterLayout class="footer" />
 </template>
 
+
+
 <style scoped>
 .header {
   position: fixed;
