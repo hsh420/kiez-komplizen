@@ -50,9 +50,9 @@ export default {
 .header-container .header-accent-line {
   background-color: var(--cc-orange);
   height: 3px;
-  left: -1px;
+  left: 0px;
   position: absolute;
-  top: 17px;
+  top: -5px;
   transform: rotate(-4.6deg);
   width: 431px;
 }
@@ -60,14 +60,14 @@ export default {
   height: 28px;
   left: 0;
   position: absolute;
-  top: 10px;
+  top: -13px;
   width: 430px;
 }
 .header-container .header-logo {
   position: absolute;
   width: 188px;
   height: 63.77px;
-  top: 0;
+  top: -11px;
   left: 221px;
   transform: rotate(-4.9deg);
 }
