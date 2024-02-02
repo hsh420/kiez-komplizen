@@ -1,21 +1,19 @@
 <template>
   <header class="header-container">
-    <section class="header-content">
-      <div class="header-nav-group">
-        <div class="header-decor-group">
-          <span class="header-accent-line"></span>
-          <img
-            class="header-triangle-decor"
-            alt="SchwarzesDreieck"
-            src="@/assets/pictures-layout/top_triangle_black.png"
-          />
-        </div>
-        <RouterLink :to="{ name: 'home' }">
-          <img
-            class="header-logo"
-            alt="LogoKiezKomplizen"
-            src="@/assets/pictures-layout/kiezkomplizen.png"
-        /></RouterLink>
+    <section>
+      <RouterLink :to="{ name: 'home' }">
+        <img
+          class="header-logo"
+          alt="LogoKiezKomplizen"
+          src="@/assets/pictures-layout/kiezkomplizen.png"
+      /></RouterLink>
+      <div class="header-decor-group">
+        <span class="header-accent-line"></span>
+        <img
+          class="header-triangle"
+          alt="SchwarzesDreieck"
+          src="@/assets/pictures-layout/top_triangle_black.png"
+        />
       </div>
     </section>
   </header>
@@ -29,46 +27,36 @@ export default {
 <style scoped>
 .header-container {
   height: 135px;
-  width: 430px;
-}
-.header-container .header-content {
+  width: 100vw;
   background-color: #fff6e9;
-  background-size: 100% 100%;
+  position: fixed;
+  top: 0;
 }
-.header-container .header-nav-group {
-  height: 112px;
-  position: relative;
-  top: 23px;
-}
-.header-container .header-decor-group {
-  height: 38px;
-  left: 0;
-  position: absolute;
-  top: 74px;
-  width: 430px;
-}
-.header-container .header-accent-line {
-  background-color: var(--cc-orange);
-  height: 3px;
-  left: 0px;
-  position: absolute;
-  top: -5px;
-  transform: rotate(-4.6deg);
-  width: 431px;
-}
-.header-container .header-triangle-decor {
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: -13px;
-  width: 430px;
-}
-.header-container .header-logo {
+.header-logo {
   position: absolute;
   width: 188px;
   height: 63.77px;
-  top: -11px;
-  left: 221px;
+  top: 15px;
+  right: 15px;
   transform: rotate(-4.9deg);
+}
+.header-decor-group {
+  left: 0;
+  position: absolute;
+  top: 110px;
+  width: 100vw;
+}
+
+.header-triangle {
+  width: 100%;
+}
+.header-accent-line {
+  background-color: var(--cc-orange);
+  height: 3px;
+  left: -1px;
+  position: absolute;
+  top: 0;
+  transform: rotate(-4.6deg);
+  width: 100%;
 }
 </style>
