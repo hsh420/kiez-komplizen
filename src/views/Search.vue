@@ -1,5 +1,5 @@
 <template v-if="offers">
-  <HeaderNavigation />
+  <HamburgerNav />
   <ul>
     <li v-for="offer in offers">
       <div class="card">
@@ -13,17 +13,17 @@
       </div>
     </li>
   </ul>
-  <FooterNavigation />
+  <FooterNav />
 </template>
 
 <script setup>
-import HeaderNavigation from '@/components/Layout/HeaderNavigation.vue'
-import FooterNavigation from '@/components/Layout/FooterNavigation.vue'
 import { useDatabaseStore } from '@/stores/database'
 import { computed, onMounted, ref } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+import FooterNav from '@/components/Layout/FooterNav.vue'
+import HamburgerNav from '@/components/Layout/HamburgerNav.vue'
 
 const store = useDatabaseStore()
 const offers = computed(() => store.dataFromApi)

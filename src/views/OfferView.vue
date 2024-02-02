@@ -10,7 +10,7 @@ export default {}
 <style></style>
 
 <template>
-  <HeaderNavigation />
+    <HamburgerNav />
   <main>
     <form action="" @submit.prevent="handleSubmit">
       <h1>Anbieten</h1>
@@ -105,14 +105,14 @@ export default {}
       </section>
     </form>
   </main>
-  <FooterNavigation />
+  <FooterNav />
 </template>
 
 <script setup>
-import HeaderNavigation from '@/components/Layout/HeaderNavigation.vue'
-import FooterNavigation from '@/components/Layout/FooterNavigation.vue'
 import { ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
+import FooterNav from '@/components/Layout/FooterNav.vue';
+import HamburgerNav from '@/components/Layout/HamburgerNav.vue';
 
 const store = useDatabaseStore()
 const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit

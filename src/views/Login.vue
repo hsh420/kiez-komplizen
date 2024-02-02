@@ -1,5 +1,4 @@
 <template>
-   <HeaderLayout />
   <h1>Login</h1>
   <form @submit.prevent="handleSubmit">
     <input name="email" type="email" placeholder="E-Mail" v-model="store.email" />
@@ -10,12 +9,9 @@
   </form>
   <p>...oder mit Google anmelden</p>
   <button v-on:click="store.loginWithGoogle">Login with Google</button>
-  <FooterLayout />
 </template>
 
 <script setup>
-import HeaderLayout from '@/components/Layout/HeaderLayout.vue'
-import FooterLayout from '@/components/Layout/FooterLayout.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const store = useAuthStore()

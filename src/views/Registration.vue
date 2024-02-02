@@ -1,5 +1,4 @@
 <template>
-  <HeaderLayout />
   <h1>Account erstellen</h1>
   <form @submit.prevent="handleSubmit">
     <input name="firstname" type="text" placeholder="Vorname" v-model="store.firstname" />
@@ -12,12 +11,10 @@
     <label for="password">Passwort</label>
     <button type="submit">Registrieren</button>
   </form>
-  <FooterLayout />
+
 </template>
 
 <script setup>
-import HeaderLayout from '@/components/Layout/HeaderLayout.vue'
-import FooterLayout from '@/components/Layout/FooterLayout.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const store = useAuthStore()
