@@ -10,7 +10,7 @@ export default {}
 <style></style>
 
 <template>
-    <HamburgerNav />
+  <HamburgerNav />
   <main>
     <form action="" @submit.prevent="handleSubmit">
       <h1>Anbieten</h1>
@@ -111,8 +111,8 @@ export default {}
 <script setup>
 import { ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
-import FooterNav from '@/components/Layout/FooterNav.vue';
-import HamburgerNav from '@/components/Layout/HamburgerNav.vue';
+import FooterNav from '@/components/Layout/FooterNavComponent.vue'
+import HamburgerNav from '@/components/Layout/HamburgerNavComponent.vue'
 
 const store = useDatabaseStore()
 const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit
