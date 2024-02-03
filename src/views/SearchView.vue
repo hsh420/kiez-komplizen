@@ -77,6 +77,7 @@ li {
   width: 385px;
   height: 326px;
   margin: 0 auto;
+  bottom: 6rem;
   background-color: rgba(26, 26, 26, 0.25);
 }
 
