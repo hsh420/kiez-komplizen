@@ -26,7 +26,7 @@
 import HamburgerNavComponent from './HamburgerNavComponent.vue';
 
 export default {
-    name: 'HeaderLayout',
+    name: 'HeaderLayoutComponent',
     components: { HamburgerNavComponent }
 }
 </script>

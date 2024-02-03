@@ -1,8 +1,8 @@
 <script setup>
-import HeaderLayout from '@/components/Layout/HeaderLayoutComponent.vue'
-import FooterLayout from '@/components/Layout/FooterLayoutComponent.vue'
 import { useAuthStore } from './stores/auth'
 import { onMounted } from 'vue'
+import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue'
+import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
 const store = useAuthStore()
 onMounted(() => {
   store.init()
@@ -10,9 +10,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <HeaderLayout class="header" />
+  <HeaderLayoutComponent class="header" />
   <main class="main"><RouterView /></main>
-  <FooterLayout class="footer" />
+  <FooterLayoutComponent class="footer" />
 </template>
 
 <style scoped>

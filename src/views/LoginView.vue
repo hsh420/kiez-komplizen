@@ -16,6 +16,8 @@
             type="text"
             id="inputField2"
             placeholder="Passwort eingeben"
+            minlength="8"
+            maxlength="15"
             v-model="store.password"
         /></label>
       </div>
@@ -43,15 +45,6 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
-html,
-body {
-  box-sizing: border-box;
-  position:fixed;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
 
 p {
   text-align: center;
@@ -67,6 +60,9 @@ h1 {
   margin: 0 auto;
   width: 22rem;
   margin-top: 10px;
+}
+.login-button:hover {
+  background-color: lightgray;
 }
 
 .google-button {

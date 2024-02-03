@@ -1,3 +1,3 @@
 <template>
-    <h1>Hallo</h1>
+    <h1>Here are your Favorites!</h1>
 </template>

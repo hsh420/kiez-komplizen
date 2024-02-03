@@ -1,6 +1,5 @@
 <template>
-
-  <footer class="footer-container">
+  <div class="footer-container">
     <section>
       <span class="footer-accent-bar"></span>
       <div class="footer-accent-bar-secondary"></div>
@@ -10,22 +9,23 @@
         src="@/assets/pictures-layout/bottom_triangle_black.png"
       />
     </section>
-  </footer>
-    <FooterNavComponent/>
+  </div>
+  
+  <FooterNavComponent />
 </template>
 <script>
-import FooterNavComponent from './FooterNavComponent.vue';
+import FooterNavComponent from './FooterNavComponent.vue'
 
 export default {
-    name: 'FooterLayout',
-    components: { FooterNavComponent }
+  name: 'FooterLayout',
+  components: { FooterNavComponent }
 }
 </script>
 <style scoped>
 .footer-container {
   height: 60px;
   width: 100vw;
-  background-color: #fff6e9;;
+  background-color: #fff6e9;
   position: fixed;
   bottom: 0;
 }
@@ -35,7 +35,7 @@ export default {
   left: 0;
   position: fixed;
   transform: rotate(-3.17deg);
-  bottom: 35px;
+  bottom: 40px;
   width: 100%;
 }
 .footer-accent-bar-secondary {
