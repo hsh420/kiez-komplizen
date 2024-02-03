@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/auth'
 import LandingViewVue from '@/views/LandingView.vue'
+
 const requireAuth = (to, from, next) => {
   let store = useAuthStore()
   if (!store.$state.isLoggedIn) {
@@ -71,7 +72,20 @@ const router = createRouter({
       name: 'messages',
       component: () => import('../views/MessagesView.vue'),
       beforeEnter: requireAuth
-    }
+    },
+    {
+      path: '/favorits',
+      name: 'favorits',
+      component: () => import('../views/FavoritView.vue'),
+      beforeEnter: requireAuth
+    },
+
+    {
+      path: '/logout',
+      name: 'logout',
+      component: () => import('../views/LogoutView.vue'),
+      beforeEnter: requireAuth
+    },
   ]
 })
 

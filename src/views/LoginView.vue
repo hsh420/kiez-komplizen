@@ -1,4 +1,5 @@
 <template>
+  <HamburgerNavComponent />
   <h1>Login</h1>
   <form @submit.prevent="handleSubmit">
     <input name="email" type="email" placeholder="E-Mail" v-model="store.email" />
@@ -12,9 +13,12 @@
     <img class="icon-google" alt="Google Logo" src="@/assets/pictures-layout/google_icon.png" />
     &nbsp; Login with Google
   </button>
+  <FooterNavComponent />
 </template>
 
 <script setup>
+import FooterNavComponent from '@/components/Layout/FooterNavComponent.vue'
+import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 import { useAuthStore } from '@/stores/auth'
 

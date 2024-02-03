@@ -2,6 +2,7 @@
 done. Created Backup SearchView file that needs deleten before deploy.*/
 
 <template>
+ 
   <header>
     <h1>Suchen</h1>
     <h2>Was willst du finden?</h2>
@@ -13,9 +14,6 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
     </p> -->
     <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
   </header>
-
-  <br />
-
   <main>
     <ul>
       <li v-for="offer in filteredOffers" :key="offer.id">
@@ -31,6 +29,10 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
       </li>
     </ul>
   </main>
+   <HeaderLayoutComponent/>
+  <footer>
+    <FooterLayoutComponent />
+  </footer>
 </template>
 
 <script setup>
@@ -39,6 +41,8 @@ import { useDatabaseStore } from '@/stores/database'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue'
+import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
 
 const store = useDatabaseStore()
 let searchTerm = ref('') // Reference to store the search term

@@ -1,5 +1,7 @@
 <template>
+  
   <header class="header-container">
+   
     <section>
       <RouterLink :to="{ name: 'home' }">
         <img
@@ -17,10 +19,15 @@
       </div>
     </section>
   </header>
+ <HamburgerNavComponent/>
+
 </template>
 <script>
+import HamburgerNavComponent from './HamburgerNavComponent.vue';
+
 export default {
-  name: 'HeaderLayout'
+    name: 'HeaderLayout',
+    components: { HamburgerNavComponent }
 }
 </script>
 

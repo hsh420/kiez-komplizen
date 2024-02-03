@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .container {
-position: absolute;
+position: fixed;
 top: 25px;
 left: 25px;
 
@@ -41,7 +41,7 @@ position:relative;
 .menu.open {
   display: block;
   background-color: black;
-  width: 100px;
+  width: 100%;
   border-radius: 8px;
 }
 
