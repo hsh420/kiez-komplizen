@@ -13,25 +13,26 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
     </p> -->
     <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
   </header>
-  <main>
-    <ul>
-      <li v-for="offer in filteredOffers" :key="offer.id">
-        <div class="card">
-          <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-          <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
-          <div class="card__details">
-            <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-            <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
-            <ArrowRightIcon class="card__arrow" />
+
+  <div class="content-container">
+    <main>
+      <ul>
+        <li v-for="offer in filteredOffers" :key="offer.id">
+          <div class="card">
+            <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
+            <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
+            <div class="card__details">
+              <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
+              <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
+              <ArrowRightIcon class="card__arrow" />
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </main>
+        </li>
+      </ul>
+    </main>
+  </div>
   <HeaderLayoutComponent />
-  <footer>
-    <FooterLayoutComponent />
-  </footer>
+  <FooterLayoutComponent />
 </template>
 
 <script setup>
@@ -60,6 +61,22 @@ onMounted(() => store.getOffers())
 <style scoped>
 @import url('@/assets/main.css');
 
+h1 {
+  font-size: 20px;
+  text-align: center;
+  /* font-weight: bold; */
+  margin-top: 9rem;
+}
+
+h2,
+h3 {
+  font-size: 14px;
+}
+
+.content-container {
+  margin-top: 8rem;
+  margin-bottom: 1, 5rem;
+}
 
 ul {
   margin: 0;
