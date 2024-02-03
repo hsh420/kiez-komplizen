@@ -2,7 +2,6 @@
 done. Created Backup SearchView file that needs deleten before deploy.*/
 
 <template>
- 
   <header>
     <h1>Suchen</h1>
     <h2>Was willst du finden?</h2>
@@ -29,7 +28,7 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
       </li>
     </ul>
   </main>
-   <HeaderLayoutComponent/>
+  <HeaderLayoutComponent />
   <footer>
     <FooterLayoutComponent />
   </footer>
@@ -60,6 +59,7 @@ onMounted(() => store.getOffers())
 
 <style scoped>
 @import url('@/assets/main.css');
+
 
 ul {
   margin: 0;

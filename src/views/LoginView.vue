@@ -1,6 +1,6 @@
 <template>
-  <HamburgerNavComponent />
-  <main>
+  <section>
+    <HamburgerNavComponent />
     <h1>Login</h1>
     <form @submit.prevent="handleSubmit">
       <div class="input-container">
@@ -26,8 +26,8 @@
       <img class="icon-google" alt="Google Logo" src="@/assets/pictures-layout/google_icon.png" />
       &nbsp; Login with Google
     </button>
-  </main>
-  <FooterNavComponent />
+    <FooterNavComponent />
+  </section>
 </template>
 
 <script setup>
@@ -43,8 +43,14 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
-main {
-  overflow: ;
+html,
+body {
+  box-sizing: border-box;
+  position:fixed;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 p {
@@ -59,7 +65,7 @@ h1 {
 
 .login-button {
   margin: 0 auto;
-  width: 80%;
+  width: 22rem;
   margin-top: 10px;
 }
 
@@ -67,9 +73,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 22rem;
   height: 54px;
-  /* margin: 10px 0 20px 0; */
+  margin: 10px 0 20px 0;
   position: relative;
   border-radius: 50px;
   border: 2px solid;
@@ -89,20 +95,22 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: auto;
+  margin: auto;
 }
 
 .input-container label {
   margin-bottom: 50px;
   display: block;
+  font-size: 16px;
 }
 
 .input-container input[type='text'] {
-  width: 300px;
-  height: 40px;
-  font-size: 16px;
+  width: 22rem;
+  height: 3rem;
+  font-size: 14px;
   padding: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
+  margin-top: 1rem;
 }
 </style>
