@@ -28,16 +28,16 @@
       ><br />
     </div>
     <div class="input-container">
-      <label for="inputField4"
+      <label for="password"
         >Passwort<br />
         <input
           type="password"
-          id="inputField4"
+          id="password"
           placeholder="********"
-          minlength="8"
-          maxlength="15"
-          v-model="store.password" /></label
-      ><br />
+          @input="validatePassword"
+          v-model="store.password" />
+        </label>
+      <p class="password-lenght" v-if="password.length < 8" style="color: grey;">mindestens 8 Zeichen</p>
     </div>
   </form>
   <ButtonGlobal :label="'Registrierung'" type="submit" class="registration-button" />
@@ -50,10 +50,18 @@
 <script setup>
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 import { useAuthStore } from '@/stores/auth'
+import {ref} from 'vue';
 
 const store = useAuthStore()
 const handleSubmit = () => {
   store.register()
+}
+
+const password = ref('');
+const validatePassword = () => {
+  if (password.value.length < 8) {
+    console.log('Das Passwort muss mindestens 8 Zeichen lang sein');
+  }
 }
 </script>
 
@@ -62,7 +70,7 @@ const handleSubmit = () => {
 
 h1 {
   text-align: center;
-  margin-top: 160px;
+  margin-top: 180px;
 }
 p {
   font-size: 14px;
@@ -70,14 +78,23 @@ p {
   margin-top: 30px;
 }
 
+.password-lenght {
+  padding-right: 14rem;
+  margin-top: 1rem;
+}
+
 .registration-button {
   margin: 0 auto;
   width: 22rem;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .registration-button:hover {
   background-color: lightgray;
+}
+
+.password-lenght {
+  text-align: left;
 }
 
 .input-container {
@@ -86,7 +103,7 @@ p {
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .input-container label {

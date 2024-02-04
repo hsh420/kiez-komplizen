@@ -10,11 +10,11 @@
         /></label>
       </div>
       <div class="input-container">
-        <label for="inputField2"
+        <label for="password"
           >Passwort<br />
           <input
-            type="text"
-            id="inputField2"
+            type="password"
+            id="password"
             placeholder="Passwort eingeben"
             minlength="8"
             maxlength="15"
@@ -42,6 +42,8 @@ const store = useAuthStore()
 const handleSubmit = () => {
   store.login()
 }
+
+
 </script>
 
 <style scoped>
@@ -97,7 +99,7 @@ button:hover {
   font-size: 16px;
 }
 
-.input-container input[type='text'] {
+.input-container input[type='text'], .input-container input[type='password'] {
   width: 22rem;
   height: 3rem;
   font-size: 14px;
