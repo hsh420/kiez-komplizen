@@ -88,7 +88,6 @@ p {
 }
 
 .input-container label {
-  /* margin-bottom: 50px; */
   display: block;
   font-size: 16px;
 }
@@ -101,7 +100,6 @@ p {
   padding: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  /* margin-top: 1rem; */
   margin: auto;
 }
 </style>

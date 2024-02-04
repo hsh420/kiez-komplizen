@@ -20,7 +20,10 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
         <li v-for="offer in filteredOffers" :key="offer.id">
           <div class="card">
             <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-            <div class="card__fav"><FavoritesIcon class="card__fav--icon" /></div>
+            <div class="card__fav" @click="toggleFavorite(offer)">
+              <FavoritesIcon class="card__fav--icon" :class="{ 'is-favorite': offer.favorite, 'is-no-favorite' : !offer.favorite }" />
+            </div>
+
             <div class="card__details">
               <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
               <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
@@ -55,6 +58,19 @@ const filteredOffers = computed(() => {
     offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
   )
 })
+
+const toggleFavorite = (offer) => {
+  offer.favorite = !offer.favorite
+  if (offer.favorite) {
+    store.favorites.push(offer)
+  } else {
+    const index = store.favorites.findIndex((fav) => fav.id === offer.id)
+    if (index !== -1) {
+      store.favorites.splice(index, 1)
+    }
+  }
+}
+
 onMounted(() => store.getOffers())
 </script>
 
@@ -116,6 +132,15 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.is-favorite {
+  color: red;
+}
+
+.is-no-favorite {
+  color: white;
 }
 
 .card__fav--icon {

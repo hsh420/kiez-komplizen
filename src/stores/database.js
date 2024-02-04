@@ -19,7 +19,8 @@ export const useDatabaseStore = defineStore({
       zipcode: '',
       town: '',
       remote: false,
-      dataFromApi: ''
+      dataFromApi: '',
+      favorites: []
     }
   },
   getters: {},
@@ -74,6 +75,15 @@ export const useDatabaseStore = defineStore({
           console.log(error)
           alert(error.message)
         })
+    },
+    
+    toggleFavorite(offer) {
+      const index = this.favorites.findIndex((fav) => fav.id === offer.id)
+      if (index === -1) {
+        this.favorites.push(offer)
+      } else {
+        this.favorites.splice(index, 1)
+      }
     }
   }
 })

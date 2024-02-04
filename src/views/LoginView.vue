@@ -10,7 +10,7 @@
         /></label>
       </div>
       <div class="input-container">
-        <label for="password"
+        <label for="inputField2"
           >Passwort<br />
           <input
             type="text"
@@ -71,11 +71,8 @@ h1 {
   justify-content: center;
   width: 22rem;
   height: 54px;
-  margin: 10px 0 20px 0;
-  position: relative;
   border-radius: 50px;
-  border: 2px solid;
-  border-color: var(--color-neutral-n200);
+  border: 2px solid lightgray;
   font-family: 'SourceSansPro-Semibold', sans-serif;
   font-size: 14px;
   font-weight: 500;
