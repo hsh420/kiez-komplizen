@@ -26,6 +26,12 @@ const router = createRouter({
       //beforeEnter: requireAuth
     },
     {
+      path: '/home',
+      name: 'home',
+      component: HomeView
+      //beforeEnter: requireAuth
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -96,7 +102,6 @@ const router = createRouter({
       component: () => import('../views/DatenschutzvereinbarungView.vue'),
       beforeEnter: requireAuth
     }
-
   ]
 })
 
