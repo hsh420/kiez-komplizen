@@ -20,8 +20,11 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
         <li v-for="offer in filteredOffers" :key="offer.id">
           <div class="card">
             <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-            <div class="card__fav" @click="toggleFavorite(offer)">
-              <FavoritesIcon class="card__fav--icon" :class="{ 'is-favorite': offer.favorite, 'is-no-favorite' : !offer.favorite }" />
+            <div class="card__fav" @click="updateFavorite(offer)">
+              <FavoritesIcon
+                class="card__fav--icon"
+                :class="{ 'is-favorite': offer.favorite, 'is-no-favorite': !offer.favorite }"
+              />
             </div>
 
             <div class="card__details">
@@ -59,17 +62,7 @@ const filteredOffers = computed(() => {
   )
 })
 
-const toggleFavorite = (offer) => {
-  offer.favorite = !offer.favorite
-  if (offer.favorite) {
-    store.favorites.push(offer)
-  } else {
-    const index = store.favorites.findIndex((fav) => fav.id === offer.id)
-    if (index !== -1) {
-      store.favorites.splice(index, 1)
-    }
-  }
-}
+const updateFavorite = (offer) => store.updateFavorites(offer.id)
 
 onMounted(() => store.getOffers())
 </script>

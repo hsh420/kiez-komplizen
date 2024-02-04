@@ -45,6 +45,7 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
+@import url('@/assets/main.css');
 
 p {
   text-align: center;
@@ -53,7 +54,7 @@ p {
 
 h1 {
   text-align: center;
-  margin-top: 160px;
+  margin-top: 180px;
 }
 
 .login-button {
@@ -73,7 +74,6 @@ h1 {
   height: 54px;
   border-radius: 50px;
   border: 2px solid lightgray;
-  font-family: 'SourceSansPro-Semibold', sans-serif;
   font-size: 14px;
   font-weight: 500;
   margin: 0 auto;

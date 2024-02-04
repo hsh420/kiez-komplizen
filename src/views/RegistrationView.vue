@@ -58,6 +58,8 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
+@import url('@/assets/main.css');
+
 h1 {
   text-align: center;
   margin-top: 160px;

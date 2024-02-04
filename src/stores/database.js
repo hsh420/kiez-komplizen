@@ -19,8 +19,8 @@ export const useDatabaseStore = defineStore({
       zipcode: '',
       town: '',
       remote: false,
-      dataFromApi: '',
-      favorites: []
+      dataFromApi: [],
+      favorite: false
     }
   },
   getters: {},
@@ -37,7 +37,8 @@ export const useDatabaseStore = defineStore({
           deposit: this.deposit,
           zipcode: this.zipcode,
           town: this.town,
-          remote: this.remote
+          remote: this.remote,
+          favorite: this.favorite
         })
         .then(() => {
           console.log('Success')
@@ -65,7 +66,8 @@ export const useDatabaseStore = defineStore({
               zipcode: doc.data().zipcode,
               topic: doc.data().topic,
               town: doc.data().town,
-              remote: doc.data().remote
+              remote: doc.data().remote,
+              favorite: doc.data().favorite
             })
             this.dataFromApi = offerData
           })
@@ -75,15 +77,60 @@ export const useDatabaseStore = defineStore({
           console.log(error)
           alert(error.message)
         })
+    }, //get single offer for detail view
+    getOffer(id) {
+      return db
+        .collection('offers')
+        .doc(id)
+        .get()
+        .then(() => {
+          console.log('Success')
+        })
+        .catch((error) => {
+          console.log(error)
+          alert(error.message)
+        })
     },
+
+    /* 
     
-    toggleFavorite(offer) {
-      const index = this.favorites.findIndex((fav) => fav.id === offer.id)
-      if (index === -1) {
-        this.favorites.push(offer)
-      } else {
-        this.favorites.splice(index, 1)
-      }
+    Does not work need UPDATE (and DELETE) permisson for Firebase 
+    -> switch two funtions below
+    -> activate onMounted(() => store.getOffers()) in FavoritesView
+    
+    */
+
+    // createFavorites(id) {
+    // db.collection('offers')
+    //   .doc(id)
+    //   .update({
+    //     createdByUser: this.createdByUser,
+    //     dateCreated: this.dateCreated,
+    //     category: this.category,
+    //     picture: this.picture,
+    //     title: this.title,
+    //     description: this.description,
+    //     deposit: this.deposit,
+    //     zipcode: this.zipcode,
+    //     town: this.town,
+    //     remote: this.remote,
+    //     favorite: this.favorite
+    //   })
+    //   .then(() => {
+    //     console.log('Success')
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //     alert(error.message)
+    //   })
+    // },
+    updateFavorites(id) {
+      this.dataFromApi.forEach((offer) => {
+        if (offer.id === id) {
+          offer.favorite = !offer.favorite
+          console.log('favorite: ' + offer.favorite)
+        }
+      })
     }
   }
 })
