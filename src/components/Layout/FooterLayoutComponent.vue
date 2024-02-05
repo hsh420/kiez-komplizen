@@ -10,15 +10,23 @@
       />
     </section>
   </div>
-
-  <FooterNavComponent />
+  <FooterNavComponent v-if="isRightPage" />
 </template>
 <script>
 import FooterNavComponent from './FooterNavComponent.vue'
 
 export default {
   name: 'FooterLayout',
-  components: { FooterNavComponent }
+  components: { FooterNavComponent },
+  computed: {
+    isRightPage() {
+      return (
+        this.$route.name !== 'registration' &&
+        this.$route.name !== 'registration-success' &&
+        this.$route.name !== 'login'
+      )
+    }
+  }
 }
 </script>
 <style scoped>

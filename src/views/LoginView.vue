@@ -1,6 +1,5 @@
 <template>
   <section>
-    <HamburgerNavComponent />
     <h1>Login</h1>
     <form @submit.prevent="handleSubmit">
       <div class="input-container">
@@ -28,12 +27,10 @@
       <img class="icon-google" alt="Google Logo" src="@/assets/pictures-layout/google_icon.png" />
       &nbsp; Login with Google
     </button>
-    <FooterNavComponent />
   </section>
 </template>
 
 <script setup>
-import FooterNavComponent from '@/components/Layout/FooterNavComponent.vue'
 import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 import { useAuthStore } from '@/stores/auth'
@@ -42,8 +39,6 @@ const store = useAuthStore()
 const handleSubmit = () => {
   store.login()
 }
-
-
 </script>
 
 <style scoped>
@@ -99,7 +94,8 @@ button:hover {
   font-size: 16px;
 }
 
-.input-container input[type='text'], .input-container input[type='password'] {
+.input-container input[type='text'],
+.input-container input[type='password'] {
   width: 22rem;
   height: 3rem;
   font-size: 14px;
