@@ -93,14 +93,12 @@ const router = createRouter({
     {
       path: '/nutzerbedingungen',
       name: 'nutzerbedingungen',
-      component: () => import('../views/NutzungsbedingungenView.vue'),
-      beforeEnter: requireAuth
+      component: () => import('../views/NutzungsbedingungenView.vue')
     },
     {
       path: '/datenschutzvereinbarungen',
       name: 'datenschutzvereinbarungen',
-      component: () => import('../views/DatenschutzvereinbarungView.vue'),
-      beforeEnter: requireAuth
+      component: () => import('../views/DatenschutzvereinbarungView.vue')
     }
   ]
 })
