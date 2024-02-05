@@ -1,11 +1,11 @@
 <template>
-  <HeaderLayout />
+  <HeaderLayoutComponent />
   <p>Registrierung erfolgreich!</p>
-  <FooterLayout />
+  <FooterLayoutComponent />
 </template>
 
 
 <script setup>
-import HeaderLayout from '@/components/Layout/HeaderLayout.vue'
-import FooterLayout from '@/components/Layout/FooterLayout.vue'
+import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue';
+import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue';
 </script>
