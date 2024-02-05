@@ -3,10 +3,10 @@
     <img
       src="@/assets/pictures-layout/hamburger-nav.png"
       alt="Menu"
-      @click="toggleMenu"
+      @click="isMenuOpen = !isMenuOpen"
       class="menu-icon"
     />
-    <nav class="menu" :class="{ open: isMenuOpen }">
+    <nav class="menu" v-if="isMenuOpen">
       <router-link to="/settings"
         >Settings
         <img
@@ -14,25 +14,24 @@
           alt="Home Navigation"
           src="@/assets/pictures-layout/settings.png" /></router-link
       ><br />
-      <router-link to="/logout">Logout<img class="icon2" alt="Home Navigation" src="@/assets/pictures-layout/logout.png"
-      /></router-link>
+      <a @click="logout()">
+        Logout<img class="icon2" alt="Home Navigation" src="@/assets/pictures-layout/logout.png" />
+      </a>
     </nav>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isMenuOpen: false
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen
-    }
-  },
-  }
+<script setup>
+import { useAuthStore } from '@/stores/auth'
+import { ref } from 'vue'
+
+const store = useAuthStore()
+
+let isMenuOpen = ref(false)
+
+function logout() {
+  store.logout()
+}
 </script>
 
 <style scoped>
@@ -43,17 +42,12 @@ export default {
 }
 .menu {
   position: relative;
-  display: none;
   padding: 10px;
-}
-
-.menu.open {
   display: block;
   background-color: black;
   width: 100%;
   border-radius: 8px;
 }
-
 .menu-icon {
   cursor: pointer;
   width: 30px;
