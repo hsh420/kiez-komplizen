@@ -14,7 +14,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 358px;
   height: 44px;
+  top: 400px;
+  left: 36px;
   margin: 10px 0 20px 0;
   border: none;
   background: var(--cc-orange);
