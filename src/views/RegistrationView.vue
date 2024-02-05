@@ -11,6 +11,7 @@
     <label for="password">Passwort</label>
     <ButtonGlobal :label="'Registration'"/>
   </form>
+
 </template>
 
 <script setup>

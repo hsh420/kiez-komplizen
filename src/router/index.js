@@ -36,7 +36,7 @@ const router = createRouter({
     {
       path: '/registration',
       name: 'registration',
-      component: () => import('../views/Registration.vue')
+      component: () => import('../views/RegistrationView.vue')
     },
     {
       path: '/registration-success',
@@ -69,7 +69,7 @@ const router = createRouter({
     {
       path: '/messages',
       name: 'messages',
-      component: () => import('../views/Messages.vue'),
+      component: () => import('../views/MessagesView.vue'),
       beforeEnter: requireAuth
     }
   ]

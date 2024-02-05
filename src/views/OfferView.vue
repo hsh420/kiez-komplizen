@@ -8,6 +8,7 @@ export default {}
 </script>
 
 <template>
+  <HamburgerNav />
   <main>
     <form action="" @submit.prevent="handleSubmit">
       <h1 class="h1">Anbieten</h1>
@@ -139,6 +140,7 @@ Beschreibe Dein Angebot... </textarea
       </section>
     </form>
   </main>
+  <FooterNav />
 </template>
 
 <script setup>
