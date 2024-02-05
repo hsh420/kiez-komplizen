@@ -10,7 +10,7 @@
       />
     </section>
   </div>
-  
+
   <FooterNavComponent />
 </template>
 <script>

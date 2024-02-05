@@ -11,8 +11,8 @@ export default {}
   <HamburgerNavComponent />
   <main>
     <form action="" @submit.prevent="handleSubmit">
-      <h1 class="h1">Anbieten</h1>
-      <h2 class="h2">Was hast Du anzubieten?</h2>
+      <h1>Anbieten</h1>
+      <h2>Was hast Du anzubieten?</h2>
 
       <div class="both-radios">
         <div class="radio1">
@@ -216,30 +216,11 @@ const handleSubmit = () => {
 </script>
 
 <style>
-main {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding-top: 2rem;
-  color: grey;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-}
 
 input[type='checkbox'] {
   margin-right: 5px;
 }
 
-.h1 {
-  color: #f39305;
-  font-size: 2rem;
-  font-family: 'Abadi MT Condensed Extra Bold';
-  text-transform: uppercase;
-}
-
-.h2 {
-  font-family: 'Abadi MT Condensed Light';
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
 
 .hr {
   border: none;
@@ -265,69 +246,6 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   width: 90%;
-}
-
-.floating-title {
-  position: relative;
-  padding: 8px 0 0px 0;
-}
-
-.floating-title textarea {
-  margin-top: 15px;
-  border-radius: 10px;
-  width: 90%;
-  padding-left: 18px;
-  padding-top: 35px;
-  border-radius: 10px;
-  border: 2px solid #fff6e9;
-  background-color: #fff6e9;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  font-size: 14px;
-}
-
-.floating-title input {
-  width: 90%;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  margin-top: 8px;
-  border-radius: 10px;
-  border: 2px solid #fff6e9;
-  background-color: #fff6e9;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  font-size: 14px;
-}
-
-.floating-title input:focus,
-.floating-title textarea:focus {
-  outline: none;
-  border-color: #f39305;
-}
-
-.floating-title label {
-  position: absolute;
-  top: 10%;
-  left: 10px;
-  padding: 10px;
-  pointer-events: none;
-  transition: all 0.2s;
-  transform-origin: left top;
-  transform: scale(1);
-  color: #1e293b;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-}
-
-.floating-title input:placeholder-shown + label,
-.floating-title textarea:placeholder-shown + label {
-  transform: translate(0, 10px) scale(1);
-}
-
-.floating-title input:not(:placeholder-shown) + label,
-.floating-title textarea:not(:placeholder-shown) + label,
-.floating-title input:focus + label,
-.floating-title textarea:focus + label {
-  transform: translate(0, 5px) scale(0.75);
-  color: #1e293b;
 }
 
 .button-container {
@@ -357,7 +275,6 @@ input[type='checkbox'] {
   border-radius: 10px;
   border: 2px solid #fff6e9;
   background-color: #fff6e9;
-  font-family: 'SourceSansPro-Regular', sans-serif;
   font-size: 14px;
 }
 </style>
