@@ -204,7 +204,7 @@ export default {}
 <script setup>
 import { ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
-import ButtonGlobal from '@/components/ButtonGlobal.vue'
+import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 
 const store = useDatabaseStore()
 const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit
