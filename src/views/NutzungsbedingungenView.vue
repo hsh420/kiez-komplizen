@@ -86,14 +86,13 @@ section {
 }
 
 h1 {
-  font-size: 20px;
+  /* font-size: 20px; */
   text-align: center;
-  font-weight: bold;
 }
 
 h2,
 h3 {
-  font-size: 15px;
-  font-weight: bold;
+  /* font-size: 15px; */
+  /* font-weight: bold; */
 }
 </style>

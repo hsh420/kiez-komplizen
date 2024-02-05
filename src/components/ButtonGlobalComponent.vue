@@ -21,7 +21,7 @@ export default {
   border-radius: 50px;
   padding: 14px 80px 14px 80px;
   position: relative;
-  font-family: 'SourceSansPro-Semibold', sans-serif;
+  /* font-family: 'SourceSansPro-Semibold', sans-serif; */
   font-size: 14px;
   font-weight: 600;
 }

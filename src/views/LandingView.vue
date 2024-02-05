@@ -70,6 +70,7 @@ export default {
 
 <style scoped>
 @import url('@/assets/main.css');
+@import url('@/assets/base.css');
 
 .fullscreen {
   position: fixed;
@@ -114,13 +115,11 @@ p {
 
 .first-p,
 .second-p {
-  font-family: 'Abadi MT Condensed Extra Bold', sans-serif;
   font-size: 16px;
 }
 
 .third-p,
 .last-p {
-  font-family: 'SourceSansPro-Regular', sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -150,6 +149,7 @@ p {
 
 .bold {
   font-weight: bolder;
+  color: white;
 }
 
 .button {
@@ -160,7 +160,6 @@ p {
   border-radius: 50px;
   padding: 14px 80px 14px 80px;
   position: relative;
-  font-family: 'SourceSansPro-Semibold', sans-serif;
   font-size: 15px;
 }
 

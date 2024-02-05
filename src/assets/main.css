@@ -1,38 +1,37 @@
 @import './base.css';
-:root {
-  --cc-orange: #f39305;
-  --cc-egg: #fff6e9;
-  --cc-text-lightmode: black;
-  --cc-text-darkmode: white;
-  --cc-secondary-text-lightmode: #1e293b;
-  --cc-textfields: #e2e8f0;
-  --cc-placeholders: #d9d9d9;
+
+*,
+*::before,
+*::after {
+  font-family: 'SourceSans3-Regular';
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+  color: var(--cc-secondary-text-lightmode);
 }
 
-@font-face {
-  font-family: 'Abadi MT Condensed Extra Bold';
-  src: url('@/assets/fonts/Abadi MT Condensed Extra Bold');
-  font-family: 'Abadi MT Condensed Light';
-  src: url('@/assets/fonts/Abadi MT Condensed Light');
-  font-family: 'SourceSansPro-Regular';
-  src: url('@/assets/fonts/SourceSansPro-Regular.otf');
-  font-family: 'SourceSansPro-Bold';
-  src: url('@/assets/fonts/SourceSansPro-Bold.otf');
-  font-family: 'SourceSansPro-Light';
-  src: url('@/assets/fonts/SourceSansPro-Light.otf');
-  font-family: 'SourceSansPro-Semibold';
-  src: url('@/assets/fonts/SourceSansPro-Semibold.otf');
-  font-family: 'SourceSansPro-It';
-  src: url('@/assets/fonts/SourceSansPro-It.otf');
-}
-
-/* html,
+html,
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  font-size: 14px;
+}
+
+
+h1 {
+  font-family: 'Abadi Condensed Extra Bold';
+  font-size: 2rem;
+  color: var(--cc-orange);
+  text-transform: uppercase;
+}
+
+h2,
+h3 {
+  font-family: 'abadi-mt-condensed-light-regular';
+  font-size: 1.5rem;
+  color: var(--cc-text-lightmode);
 }
 
 button,
@@ -43,4 +42,65 @@ button * {
 
 a {
   color: var(--cc-orange);
-} */
+}
+
+.floating-title {
+  position: relative;
+  padding: 8px 0 0px 0;
+}
+
+.floating-title textarea {
+  margin-top: 15px;
+  border-radius: 10px;
+  width: 90%;
+  padding-left: 18px;
+  padding-top: 35px;
+  border-radius: 10px;
+  border: 2px solid #fff6e9;
+  background-color: #fff6e9;
+  font-size: 14px;
+}
+
+.floating-title input {
+  width: 90%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 2px solid #fff6e9;
+  background-color: #fff6e9;
+  font-size: 14px;
+}
+
+
+.floating-title input:focus,
+.floating-title textarea:focus {
+  outline: none;
+  border-color: #f39305;
+}
+
+.floating-title label {
+  position: absolute;
+  top: 10%;
+  left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  transition: all 0.2s;
+  transform-origin: left top;
+  transform: scale(1);
+  color: #1e293b;
+}
+
+.floating-title input:placeholder-shown + label,
+.floating-title textarea:placeholder-shown + label {
+  transform: translate(0, 10px) scale(1);
+}
+
+.floating-title input:not(:placeholder-shown) + label,
+.floating-title textarea:not(:placeholder-shown) + label,
+.floating-title input:focus + label,
+.floating-title textarea:focus + label {
+  transform: translate(0, 5px) scale(0.75);
+  color: #1e293b;
+}

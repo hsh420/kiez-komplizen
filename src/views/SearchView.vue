@@ -2,7 +2,6 @@
 done. Created Backup SearchView file that needs deleten before deploy.*/
 
 <template>
-  <header>
     <h1>Suchen</h1>
     <h2>Was willst du finden?</h2>
     <!-- <p>
@@ -12,7 +11,6 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
       <label for="hobby"> Gemeinsamkeit </label>
     </p> -->
     <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
-  </header>
 
   <div class="content-container">
     <main>
@@ -37,8 +35,6 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
       </ul>
     </main>
   </div>
-  <HeaderLayoutComponent />
-  <FooterLayoutComponent />
 </template>
 
 <script setup>
@@ -47,9 +43,6 @@ import { useDatabaseStore } from '@/stores/database'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
-import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue'
-import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
-
 const store = useDatabaseStore()
 let searchTerm = ref('') // Reference to store the search term
 
@@ -69,22 +62,14 @@ onMounted(() => store.getOffers())
 
 <style scoped>
 @import url('@/assets/main.css');
-
+@import url('@/assets/base.css');
 h1 {
-  font-size: 20px;
   text-align: center;
-  /* font-weight: bold; */
-  margin-top: 9rem;
-}
-
-h2,
-h3 {
-  font-size: 14px;
 }
 
 .content-container {
   margin-top: 8rem;
-  margin-bottom: 1, 5rem;
+  margin-bottom: 1.5rem;
 }
 
 ul {
@@ -105,6 +90,8 @@ li {
   margin: 0 auto;
   bottom: 6rem;
   background-color: rgba(26, 26, 26, 0.25);
+  /* color: var(--cc-text-darkmode); */
+  
 }
 
 .card__img {
@@ -142,19 +129,19 @@ li {
 }
 
 .card__headline {
-  font-family: 'Bebas Neue';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  color: white;
 }
 
 .card__location {
-  font-family: 'KoHo';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  color: white;
 }
 
 .card__details {

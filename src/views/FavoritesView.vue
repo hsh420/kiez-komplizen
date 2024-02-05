@@ -31,8 +31,6 @@
       </ul>
     </main>
   </div>
-  <HeaderLayoutComponent />
-  <FooterLayoutComponent />
 </template>
 
 <script setup>
@@ -41,8 +39,6 @@ import { computed } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
-import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue'
-import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
 
 const store = useDatabaseStore()
 const favorites = computed(() => store.dataFromApi.filter((offer) => offer.favorite))
@@ -54,7 +50,7 @@ const updateFavorite = (favorite) => store.updateFavorites(favorite.id)
 
 <style scoped>
 @import url('@/assets/main.css');
-
+@import url('@/assets/base.css');
 h1 {
   font-size: 20px;
   text-align: center;
@@ -127,7 +123,6 @@ li {
 }
 
 .card__headline {
-  font-family: 'Bebas Neue';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -135,7 +130,6 @@ li {
 }
 
 .card__location {
-  font-family: 'KoHo';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

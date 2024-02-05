@@ -19,12 +19,13 @@ onMounted(() => {
 .header {
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   width: 100%;
 }
 .main {
-  margin-top: 135px;
+  margin-top: 150px;
   width: 100%;
+  padding: 20px;
 }
 .footer {
   position: fixed;

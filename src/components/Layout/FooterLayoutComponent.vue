@@ -10,7 +10,6 @@
       />
     </section>
   </div>
-
   <FooterNavComponent v-if="isRightPage" />
 </template>
 <script>
