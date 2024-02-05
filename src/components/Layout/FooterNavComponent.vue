@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .container {
   height: 50px;
-  width: 433px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;

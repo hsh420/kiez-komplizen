@@ -1,35 +1,29 @@
-/*disabled authentication of this page for dev purposes in the index.js. Needs turning back on when
-done. Created Backup SearchView file that needs deleten before deploy.*/
-
 <template>
   <header>
-    <h1>Suchen</h1>
-    <h2>Was willst du finden?</h2>
-    <!-- <p>
-      <input type="radio" name="item" value="item" />
-      <label for="item"> Gegenstand </label>
-      <input type="radio" name="hobby" value="hobby" />
-      <label for="hobby"> Gemeinsamkeit </label>
-    </p> -->
-    <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+    <h1>Deine Favoriten</h1>
   </header>
 
   <div class="content-container">
     <main>
       <ul>
-        <li v-for="offer in filteredOffers" :key="offer.id">
+        <li v-for="favorite in favorites" :key="favorite.id">
           <div class="card">
-            <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-            <div class="card__fav" @click="updateFavorite(offer)">
+            <img class="card__img" :src="favorite.picture" alt="Bild des Artikels" />
+            <div class="card__fav" @click="updateFavorite(favorite)">
               <FavoritesIcon
                 class="card__fav--icon"
-                :class="{ 'is-favorite': offer.favorite, 'is-no-favorite': !offer.favorite }"
+                :class="{
+                  'is-favorite': favorite.favorite,
+                  'is-no-favorite': !favorite.favorite
+                }"
               />
             </div>
 
             <div class="card__details">
-              <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-              <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
+              <h3 class="card__headline">{{ favorite.title.toUpperCase() }}</h3>
+              <p class="card__location">
+                <LocationIcon /> {{ favorite.zipcode + ' ' + favorite.town }}
+              </p>
               <ArrowRightIcon class="card__arrow" />
             </div>
           </div>
@@ -42,8 +36,8 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
+import { computed } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
@@ -51,20 +45,11 @@ import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue
 import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
 
 const store = useDatabaseStore()
-let searchTerm = ref('') // Reference to store the search term
+const favorites = computed(() => store.dataFromApi.filter((offer) => offer.favorite))
+const updateFavorite = (favorite) => store.updateFavorites(favorite.id)
 
-const filteredOffers = computed(() => {
-  if (!searchTerm.value) {
-    return store.dataFromApi
-  }
-  return store.dataFromApi.filter((offer) =>
-    offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
-  )
-})
-
-const updateFavorite = (offer) => store.updateFavorites(offer.id)
-
-onMounted(() => store.getOffers())
+//look at comment in database -> createFavorites
+// onMounted(() => store.getOffers())
 </script>
 
 <style scoped>
@@ -74,7 +59,7 @@ h1 {
   font-size: 20px;
   text-align: center;
   /* font-weight: bold; */
-  margin-top: 9rem;
+  margin-top: 11rem;
 }
 
 h2,

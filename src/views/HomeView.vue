@@ -6,9 +6,9 @@ const store = useAuthStore()
 <template>
   <main>
     <button v-on:click="store.logout()">Logout</button>
-    <RouterLink to="/settings">Einstellungen</RouterLink>
+    <!-- <RouterLink to="/settings">Einstellungen</RouterLink>
     <RouterLink to="/search">Suchen</RouterLink>
     <RouterLink to="/offer">Anbieten</RouterLink>
-    <RouterLink to="/messages">Nachrichten</RouterLink>
+    <RouterLink to="/messages">Nachrichten</RouterLink> -->
   </main>
 </template>

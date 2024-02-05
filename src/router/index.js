@@ -26,6 +26,12 @@ const router = createRouter({
       //beforeEnter: requireAuth
     },
     {
+      path: '/home',
+      name: 'home',
+      component: HomeView
+      //beforeEnter: requireAuth
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -70,6 +76,30 @@ const router = createRouter({
       path: '/messages',
       name: 'messages',
       component: () => import('../views/MessagesView.vue'),
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: () => import('../views/MessagesView.vue'),
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/favorites',
+      name: 'favorites',
+      component: () => import('../views/FavoritesView.vue'),
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/nutzerbedingungen',
+      name: 'nutzerbedingungen',
+      component: () => import('../views/NutzungsbedingungenView.vue'),
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/datenschutzvereinbarungen',
+      name: 'datenschutzvereinbarungen',
+      component: () => import('../views/DatenschutzvereinbarungView.vue'),
       beforeEnter: requireAuth
     }
   ]

@@ -1,11 +1,21 @@
 <template>
   <div class="container">
-    <img src="@/assets/pictures-layout/hamburger-nav.png" alt="Menu" @click="toggleMenu" class="menu-icon"/>
+    <img
+      src="@/assets/pictures-layout/hamburger-nav.png"
+      alt="Menu"
+      @click="toggleMenu"
+      class="menu-icon"
+    />
     <nav class="menu" :class="{ open: isMenuOpen }">
       <router-link to="/settings"
         >Settings
-        <img class="icon1" alt="Home Navigation" src="@/assets/pictures-layout/settings.png" /></router-link><br />
-      <router-link to="/logout">Logout <img class="icon2" alt="Home Navigation" src="@/assets/pictures-layout/logout.png"/></router-link>
+        <img
+          class="icon1"
+          alt="Home Navigation"
+          src="@/assets/pictures-layout/settings.png" /></router-link
+      ><br />
+      <router-link to="/logout">Logout<img class="icon2" alt="Home Navigation" src="@/assets/pictures-layout/logout.png"
+      /></router-link>
     </nav>
   </div>
 </template>
@@ -21,19 +31,18 @@ export default {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
     }
+  },
   }
-}
 </script>
 
 <style scoped>
 .container {
-position: absolute;
-top: 25px;
-left: 25px;
-
+  position: fixed;
+  top: 25px;
+  left: 25px;
 }
 .menu {
-position:relative;
+  position: relative;
   display: none;
   padding: 10px;
 }
@@ -41,7 +50,7 @@ position:relative;
 .menu.open {
   display: block;
   background-color: black;
-  width: 100px;
+  width: 100%;
   border-radius: 8px;
 }
 

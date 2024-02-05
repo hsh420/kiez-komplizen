@@ -8,7 +8,7 @@ export default {}
 </script>
 
 <template>
-  <HamburgerNav />
+  <HamburgerNavComponent />
   <main>
     <form action="" @submit.prevent="handleSubmit">
       <h1 class="h1">Anbieten</h1>
@@ -198,12 +198,14 @@ export default {}
       </section>
     </form>
   </main>
-  <FooterNav />
+  <FooterNavComponent />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
+import FooterNavComponent from '@/components/Layout/FooterNavComponent.vue'
+import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 
 const store = useDatabaseStore()
