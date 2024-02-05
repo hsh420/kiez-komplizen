@@ -12,9 +12,10 @@
         <img
           class="icon1"
           alt="Home Navigation"
-          src="@/assets/pictures-layout/settings.png" /></router-link
+          src="@/assets/pictures-layout/settings.png"
+        /></router-link
       ><br />
-      <router-link to="/about">About</router-link><br/>
+      <router-link to="/about">About</router-link><br />
       <a @click="logout"
         >Logout <img class="icon2" alt="Home Navigation" src="@/assets/pictures-layout/logout.png"
       /></a>
@@ -24,7 +25,7 @@
 
 <script setup>
 import { useAuthStore } from '@/stores/auth'
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const store = useAuthStore()
@@ -47,6 +48,20 @@ router.beforeEach((to, from, next) => {
   closeMenu()
   next()
 })
+
+onMounted(() => {
+  document.addEventListener('click', closeMenuOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', closeMenuOutside)
+})
+
+function closeMenuOutside(event) {
+  if (!event.target.closest('.container')) {
+    closeMenu()
+  }
+}
 </script>
 
 <style scoped>
@@ -62,7 +77,6 @@ router.beforeEach((to, from, next) => {
   background-color: black;
   width: 100%;
   border-radius: 8px;
-
 }
 .menu-icon {
   cursor: pointer;
