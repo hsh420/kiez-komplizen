@@ -7,24 +7,31 @@ needs deletion if not used.*/
 export default {}
 </script>
 
-<style></style>
-
 <template>
   <HamburgerNavComponent />
   <main>
     <form action="" @submit.prevent="handleSubmit">
-      <h1>Anbieten</h1>
-      <h2>Was hast Du anzubieten?</h2>
-      <p>
-        <input type="radio" name="item" value="item" v-model="selectedOption" />
-        <label for="item"> Gegenstand </label>
-        <input type="radio" name="hobby" value="hobby" v-model="selectedOption" />
-        <label for="hobby"> Gemeinsamkeit </label>
-      </p>
+      <h1 class="h1">Anbieten</h1>
+      <h2 class="h2">Was hast Du anzubieten?</h2>
+
+      <div class="both-radios">
+        <div class="radio1">
+          <input type="radio" value="item" id="item-tab" name="item" v-model="selectedOption" />
+          <label class="radio-label1" for="item"> Gegenstand </label>
+        </div>
+        <div class="radio2">
+          <input type="radio" name="hobby" value="hobby" v-model="selectedOption" />
+          <label class="radio-label2" for="hobby"> Gemeinsamkeit </label>
+        </div>
+      </div>
+
+      <br />
+      <hr class="hr" />
       <br />
 
       <section class="offer-card-item" v-if="selectedOption === 'item'">
         <h3>Gegenstand anbieten:</h3>
+
         <select name="item-list" id="item-list-id" v-model="store.category">
           <option value="" selected disabled>Kategorie wählen</option>
           <option value="item-kids">Baby, Kind</option>
@@ -41,27 +48,79 @@ export default {}
           <option value="item-tool">Werkzeug, Baumaterialien</option>
           <option value="item-other">Sonstiges</option>
         </select>
-        <br />
-        <br />
-        <label for="picture">Bild-URL: </label>
-        <input type="text" name="picture" v-model="store.picture" />
-        <br />
-        <label for="title">Titel: </label>
-        <input type="text" name="title" v-model="store.title" />
-        <br />
-        <label for="description">Beschreibung: </label>
-        <input type="textarea" name="description" v-model="store.description" />
-        <br />
-        <label for="deposit">Kaution: </label>
-        <input type="textarea" name="deposit" v-model="store.deposit" />
-        <br />
-        <label for="zipcode">PLZ: </label>
-        <input type="text" name="zipcode" v-model="store.zipcode" />
-        <label for="town">Ort: </label>
-        <input type="text" name="town" v-model="store.town" />
-        <br />
-        <br />
-        <button type="submit">Gegenstand Anbieten</button>
+
+        <div class="floating-title">
+          <input type="text" name="picture" placeholder=" " required v-model="store.picture" />
+          <label for="picture">Bild-URL</label>
+        </div>
+
+        <div class="floating-title">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder=" "
+            required
+            v-model="store.title"
+          />
+          <label for="title">Titel</label>
+        </div>
+
+        <div class="floating-title">
+          <textarea
+            class="textarea"
+            type="textarea"
+            name="description"
+            placeholder=" "
+            required
+            v-model="store.description"
+            cols="40"
+            rows="8"
+          ></textarea>
+          <label for="description">Beschreibung</label>
+        </div>
+
+        <div class="floating-title">
+          <input
+            type="number"
+            step="10"
+            name="deposit"
+            placeholder=" "
+            required
+            v-model="store.deposit"
+          />
+          <label for="deposit">Kaution in EUR</label>
+        </div>
+
+        <div id="adress-fields">
+          <div class="floating-title">
+            <input
+              type="text"
+              id="zipcode"
+              name="zipcode"
+              pattern="\d{5}"
+              placeholder=" "
+              required
+              v-model="store.zipcode"
+            />
+            <label for="zipcode">PLZ</label>
+          </div>
+
+          <div class="floating-title">
+            <input
+              type="text"
+              name="town"
+              id="town"
+              placeholder=" "
+              required
+              v-model="store.town"
+            />
+            <label for="town">Ort</label>
+          </div>
+        </div>
+        <div class="button-container">
+          <ButtonGlobal type="submit" :label="'Gegenstand Anbieten'" />
+        </div>
       </section>
 
       <section class="offer-card-hobby" v-else-if="selectedOption === 'hobby'">
@@ -84,24 +143,58 @@ export default {}
           <option value="hobby-animals">Tiere</option>
           <option value="hobby-other">Sonstiges</option>
         </select>
-        <br />
-        <br />
-        <label for="title">Titel: </label>
-        <input type="text" name="title" v-model="store.title" />
-        <br />
-        <label for="description">Beschreibung: </label>
-        <input type="textarea" name="description" v-model="store.description" />
-        <br />
-        <label for="zipcode">PLZ: </label>
-        <input type="text" name="zipcode" v-model="store.zipcode" />
-        <label for="town">Ort: </label>
-        <input type="text" name="town" v-model="store.town" />
+
+        <div class="floating-title">
+          <input type="text" name="title" placeholder=" " required v-model="store.title" />
+          <label for="title">Titel </label>
+        </div>
+
+        <div class="floating-title">
+          <textarea
+            type="textarea"
+            name="description"
+            placeholder=" "
+            required
+            v-model="store.description"
+            cols="50"
+            rows="10"
+          ></textarea>
+          <label for="description">Beschreibung</label>
+        </div>
+
+        <div id="adress-fields">
+          <div class="floating-title">
+            <input
+              type="text"
+              id="zipcode"
+              name="zipcode"
+              pattern="\d{5}"
+              placeholder=" "
+              required
+              v-model="store.zipcode"
+            />
+            <label for="zipcode">PLZ</label>
+          </div>
+
+          <div class="floating-title">
+            <input
+              type="text"
+              name="town"
+              id="town2"
+              placeholder=" "
+              required
+              v-model="store.town"
+            />
+            <label for="town">Ort</label>
+          </div>
+        </div>
         <br />
         <input type="checkbox" name="remote" value="remote" v-model="store.remote" />
         <label for="remote"> Remote möglich </label>
-        <br />
-        <br />
-        <button type="submit">Gemeinsamkeit Anbieten</button>
+
+        <div class="button-container">
+          <ButtonGlobal type="submit" :label="'Gemeinsamkeit Anbieten'" />
+        </div>
       </section>
     </form>
   </main>
@@ -113,6 +206,7 @@ import { ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
 import FooterNavComponent from '@/components/Layout/FooterNavComponent.vue'
 import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
+import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 
 const store = useDatabaseStore()
 const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit
@@ -120,3 +214,150 @@ const handleSubmit = () => {
   store.createOffer()
 }
 </script>
+
+<style>
+main {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-top: 2rem;
+  color: grey;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+}
+
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+.h1 {
+  color: #f39305;
+  font-size: 2rem;
+  font-family: 'Abadi MT Condensed Extra Bold';
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-family: 'Abadi MT Condensed Light';
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  background-color: #fff6e9;
+}
+
+.both-radios {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.radio-label1 {
+  margin: 5px;
+}
+
+.radio-label2 {
+  margin: 5px;
+}
+
+#adress-fields {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.floating-title {
+  position: relative;
+  padding: 8px 0 0px 0;
+}
+
+.floating-title textarea {
+  margin-top: 15px;
+  border-radius: 10px;
+  width: 90%;
+  padding-left: 18px;
+  padding-top: 35px;
+  border-radius: 10px;
+  border: 2px solid #fff6e9;
+  background-color: #fff6e9;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 14px;
+}
+
+.floating-title input {
+  width: 90%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 2px solid #fff6e9;
+  background-color: #fff6e9;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 14px;
+}
+
+.floating-title input:focus,
+.floating-title textarea:focus {
+  outline: none;
+  border-color: #f39305;
+}
+
+.floating-title label {
+  position: absolute;
+  top: 10%;
+  left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  transition: all 0.2s;
+  transform-origin: left top;
+  transform: scale(1);
+  color: #1e293b;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+}
+
+.floating-title input:placeholder-shown + label,
+.floating-title textarea:placeholder-shown + label {
+  transform: translate(0, 10px) scale(1);
+}
+
+.floating-title input:not(:placeholder-shown) + label,
+.floating-title textarea:not(:placeholder-shown) + label,
+.floating-title input:focus + label,
+.floating-title textarea:focus + label {
+  transform: translate(0, 5px) scale(0.75);
+  color: #1e293b;
+}
+
+.button-container {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+}
+
+#zipcode,
+#zipcode2 {
+  width: 17vw;
+}
+
+#town,
+#town2 {
+  width: 55vw;
+}
+
+#item-list-id,
+#hobby-list-id {
+  width: 40%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 2px solid #fff6e9;
+  background-color: #fff6e9;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 14px;
+}
+</style>
