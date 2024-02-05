@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import ButtonGlobal from '@/components/ButtonGlobal.vue'
+import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const store = useAuthStore()
