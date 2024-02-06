@@ -49,8 +49,10 @@ export const useDatabaseStore = defineStore({
               favorite: doc.data().favorite
             }
             offerData.push(offer)
+            console.log('fetched offers:', offerData)
           })
           this.dataFromApi = offerData
+          console.log('Upddated dataFromAPI:', this.dataFromAPI)
         })
         .catch((error) => {
           console.error('Error fetching user offers:', error)
