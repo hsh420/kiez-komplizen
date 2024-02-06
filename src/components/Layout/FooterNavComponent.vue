@@ -13,7 +13,7 @@
       ><img class="item" alt="Messenger" src="@/assets/pictures-layout/message-icon.png"
     /></RouterLink>
     <RouterLink to="/favorites"
-      ><img class="item" alt="Favorit Navigation" src="@/assets/pictures-layout/fav-icon.png"
+      ><img class="item" alt="Favorit Navigation" src="@/assets/pictures-layout/favorites-icon.png"
     /></RouterLink>
   </nav>
 </template>
@@ -38,7 +38,6 @@ export default {
   position: fixed;
   bottom: 60px;
   left: 0;
-  
 }
 
 .item {
