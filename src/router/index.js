@@ -81,7 +81,7 @@ const router = createRouter({
     {
       path: '/logout',
       name: 'logout',
-      component: () => import('../views/MessagesView.vue'),
+      component: () => import('../views/LogoutView.vue'),
       beforeEnter: requireAuth
     },
     {
