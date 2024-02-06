@@ -35,7 +35,7 @@
 
 <script setup>
 import { useDatabaseStore } from '@/stores/database'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
@@ -45,7 +45,7 @@ const favorites = computed(() => store.dataFromApi.filter((offer) => offer.favor
 const updateFavorite = (favorite) => store.updateFavorites(favorite.id)
 
 //look at comment in database -> createFavorites
-// onMounted(() => store.getOffers())
+onMounted(() => console.log(store.dataFromApi[0].id))
 </script>
 
 <style scoped>
@@ -102,7 +102,7 @@ li {
 }
 
 .is-favorite {
-  color:var(--cc-orange);
+  color: var(--cc-orange);
 }
 
 .is-no-favorite {

@@ -2,15 +2,15 @@
 done. Created Backup SearchView file that needs deleten before deploy.*/
 
 <template>
-    <h1>Suchen</h1>
-    <h2>Was willst du finden?</h2>
-    <!-- <p>
+  <h1>Suchen</h1>
+  <h2>Was willst du finden?</h2>
+  <!-- <p>
       <input type="radio" name="item" value="item" />
       <label for="item"> Gegenstand </label>
       <input type="radio" name="hobby" value="hobby" />
       <label for="hobby"> Gemeinsamkeit </label>
     </p> -->
-    <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+  <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
 
   <div class="content-container">
     <main>
@@ -28,7 +28,9 @@ done. Created Backup SearchView file that needs deleten before deploy.*/
             <div class="card__details">
               <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
               <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
-              <ArrowRightIcon class="card__arrow" />
+              <router-link :to="{ path: 'offer-details/' + offer.id, params: offer.id }"
+                ><ArrowRightIcon class="card__arrow"
+              /></router-link>
             </div>
           </div>
         </li>
@@ -91,7 +93,6 @@ li {
   bottom: 6rem;
   background-color: rgba(26, 26, 26, 0.25);
   /* color: var(--cc-text-darkmode); */
-  
 }
 
 .card__img {
@@ -116,7 +117,7 @@ li {
 }
 
 .is-favorite {
-  color:var(--cc-orange);
+  color: var(--cc-orange);
 }
 
 .is-no-favorite {
