@@ -24,14 +24,25 @@
 
 @font-face {
   font-family: 'SourceSans3-Regular';
-  src: url('@/assets/fonts/SourceSans3-Regular.otf');
-  font-family: 'SourceSans3-Semibold';
-  src: url('@/assets/fonts/SourceSans3-Semibold.otf');
-  font-family: 'Abadi Condensed Extra Bold';
-  src: url('@/assets/fonts/Abadi Condensed Extra Bold.ttf');
-  font-family: 'abadi-mt-condensed-light-regular';
-  src: url('@/assets/fonts/abadi-mt-condensed-light-regular.ttf');
-  font-family: 'AbadiMTStd-CondBold';
-  src: url('@/assets/fonts/AbadiMTStd-CondBold.otf');
+  src: url('@/assets/fonts/SourceSans3-Regular.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'SourceSans3-Semibold';
+  src: url('@/assets/fonts/SourceSans3-Semibold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Abadi Condensed Extra Bold';
+  src: url('@/assets/fonts/Abadi Condensed Extra Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'abadi-mt-condensed-light-regular';
+  src: url('@/assets/fonts/abadi-mt-condensed-light-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AbadiMTStd-CondBold';
+  src: url('@/assets/fonts/AbadiMTStd-CondBold.otf') format('opentype');
+}
