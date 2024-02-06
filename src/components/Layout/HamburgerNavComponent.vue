@@ -7,18 +7,25 @@
       class="menu-icon"
     />
     <nav class="menu" v-if="isMenuOpen">
-      <router-link @click="closeMenu" to="/settings"
-        >Settings
+      <router-link @click="closeMenu" to="/settings">
         <img
           class="icon1"
           alt="Home Navigation"
           src="@/assets/pictures-layout/settings.png"
-        /></router-link
-      ><br />
-      <router-link to="/about">About</router-link><br />
-      <a @click="logout"
-        >Logout <img class="icon2" alt="Home Navigation" src="@/assets/pictures-layout/logout.png"
-      /></a>
+        />Settings
+      </router-link>
+      <br />
+      <router-link to="/about">
+        <img
+          class="icon2"
+          alt="Home Navigation"
+          src="@/assets/pictures-layout/about-icon-white.png"
+        />About
+      </router-link>
+      <br />
+      <a @click="logout">
+        <img class="icon3" alt="Home Navigation" src="@/assets/pictures-layout/logout.png" />Logout
+      </a>
     </nav>
   </div>
 </template>
@@ -65,6 +72,9 @@ function closeMenuOutside(event) {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
 .container {
   position: fixed;
   top: 25px;
@@ -72,7 +82,7 @@ function closeMenuOutside(event) {
 }
 .menu {
   position: relative;
-  padding: 10px;
+  padding: 18px;
   display: block;
   background-color: black;
   width: 100%;
@@ -84,11 +94,34 @@ function closeMenuOutside(event) {
   height: 30px;
 }
 
-.icon1 {
-  height: 15px;
+.icon1,
+.icon2,
+.icon3 {
+  margin-right: 5px;
+  height: 20px;
 }
 
-.icon2 {
-  height: 18px;
+.menu a,
+.router-link {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.menu a:hover,
+.router-link:hover {
+  background-color: rgba(243, 147, 5, 0.8);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a,
+.menu .router-link {
+  padding: 8px;
+  margin: -8px;
+  border-radius: 4px;
 }
 </style>
