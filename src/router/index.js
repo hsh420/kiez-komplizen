@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import CardSingleViewVue from '../views/CardSingleView.vue'
 import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/auth'
 import LandingViewVue from '@/views/LandingView.vue'
+
 const requireAuth = (to, from, next) => {
   let store = useAuthStore()
   if (!store.$state.isLoggedIn) {
@@ -99,6 +101,12 @@ const router = createRouter({
       path: '/datenschutzvereinbarungen',
       name: 'datenschutzvereinbarungen',
       component: () => import('../views/DatenschutzvereinbarungView.vue')
+    },
+    {
+      path: '/offer/:offerId',
+      name: 'CardSingleView',
+      component: () => import('../views/CardSingleView.vue'),
+      props: true
     }
   ]
 })

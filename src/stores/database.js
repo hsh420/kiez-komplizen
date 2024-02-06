@@ -83,16 +83,22 @@ export const useDatabaseStore = defineStore({
         .collection('offers')
         .doc(id)
         .get()
-        .then(() => {
-          console.log('Success')
+        .then((doc) => {
+          if (doc.exists) {
+            return { id: doc.id, ...doc.data() } // Return the offer data
+          } else {
+            console.log('No such document!')
+            throw new Error('No such document!') // Throw an error if the document doesn't exist
+          }
         })
         .catch((error) => {
-          console.log(error)
-          alert(error.message)
+          console.error(error)
+          throw error // Rethrow or handle the error appropriately
         })
-    },
+    }
+  },
 
-    /* 
+  /* 
     
     Does not work need UPDATE (and DELETE) permisson for Firebase 
     -> switch two funtions below
@@ -100,37 +106,36 @@ export const useDatabaseStore = defineStore({
     
     */
 
-    // createFavorites(id) {
-    // db.collection('offers')
-    //   .doc(id)
-    //   .update({
-    //     createdByUser: this.createdByUser,
-    //     dateCreated: this.dateCreated,
-    //     category: this.category,
-    //     picture: this.picture,
-    //     title: this.title,
-    //     description: this.description,
-    //     deposit: this.deposit,
-    //     zipcode: this.zipcode,
-    //     town: this.town,
-    //     remote: this.remote,
-    //     favorite: this.favorite
-    //   })
-    //   .then(() => {
-    //     console.log('Success')
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //     alert(error.message)
-    //   })
-    // },
-    updateFavorites(id) {
-      this.dataFromApi.forEach((offer) => {
-        if (offer.id === id) {
-          offer.favorite = !offer.favorite
-          console.log('favorite: ' + offer.favorite)
-        }
-      })
-    }
+  // createFavorites(id) {
+  // db.collection('offers')
+  //   .doc(id)
+  //   .update({
+  //     createdByUser: this.createdByUser,
+  //     dateCreated: this.dateCreated,
+  //     category: this.category,
+  //     picture: this.picture,
+  //     title: this.title,
+  //     description: this.description,
+  //     deposit: this.deposit,
+  //     zipcode: this.zipcode,
+  //     town: this.town,
+  //     remote: this.remote,
+  //     favorite: this.favorite
+  //   })
+  //   .then(() => {
+  //     console.log('Success')
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //     alert(error.message)
+  //   })
+  // },
+  updateFavorites(id) {
+    this.dataFromApi.forEach((offer) => {
+      if (offer.id === id) {
+        offer.favorite = !offer.favorite
+        console.log('favorite: ' + offer.favorite)
+      }
+    })
   }
 })

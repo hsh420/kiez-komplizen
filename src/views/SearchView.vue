@@ -2,21 +2,21 @@
 done. Created Backup SearchView file that needs deleten before deploy.*/
 
 <template>
-    <h1>Suchen</h1>
-    <h2>Was willst du finden?</h2>
-    <!-- <p>
+  <h1>Suchen</h1>
+  <h2>Was willst du finden?</h2>
+  <!-- <p>
       <input type="radio" name="item" value="item" />
       <label for="item"> Gegenstand </label>
       <input type="radio" name="hobby" value="hobby" />
       <label for="hobby"> Gemeinsamkeit </label>
     </p> -->
-    <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+  <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
 
   <div class="content-container">
     <main>
       <ul>
         <li v-for="offer in filteredOffers" :key="offer.id">
-          <div class="card">
+          <div class="card" @click="navigateToOffer(offer.id)">
             <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
             <div class="card__fav" @click="updateFavorite(offer)">
               <FavoritesIcon
@@ -43,6 +43,11 @@ import { useDatabaseStore } from '@/stores/database'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const navigateToOffer = (id) => {
+  router.push({ name: 'CardSingleView', params: { offerId: id } })
+}
 const store = useDatabaseStore()
 let searchTerm = ref('') // Reference to store the search term
 
@@ -91,7 +96,6 @@ li {
   bottom: 6rem;
   background-color: rgba(26, 26, 26, 0.25);
   /* color: var(--cc-text-darkmode); */
-  
 }
 
 .card__img {
@@ -116,7 +120,7 @@ li {
 }
 
 .is-favorite {
-  color:var(--cc-orange);
+  color: var(--cc-orange);
 }
 
 .is-no-favorite {
