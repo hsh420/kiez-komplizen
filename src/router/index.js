@@ -21,14 +21,13 @@ const router = createRouter({
     },
     {
       path: '/',
-      name: 'home',
-      component: HomeView
-      //beforeEnter: requireAuth
+      name: 'start',
+      component: () => import('../views/HomeView.vue')
     },
     {
       path: '/home',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
       //beforeEnter: requireAuth
     },
     {
@@ -70,6 +69,12 @@ const router = createRouter({
       path: '/offer',
       name: 'offer',
       component: () => import('../views/OfferView.vue')
+      //beforeEnter: requireAuth
+    },
+    {
+      path: '/offer-details/:id',
+      name: 'offer-details',
+      component: () => import('../views/DetailsView.vue')
       //beforeEnter: requireAuth
     },
     {
