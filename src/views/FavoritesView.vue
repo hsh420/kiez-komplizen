@@ -52,15 +52,7 @@ const updateFavorite = (favorite) => store.updateFavorites(favorite.id)
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
 h1 {
-  font-size: 20px;
   text-align: center;
-  /* font-weight: bold; */
-  margin-top: 11rem;
-}
-
-h2,
-h3 {
-  font-size: 14px;
 }
 
 .content-container {
@@ -110,7 +102,7 @@ li {
 }
 
 .is-favorite {
-  color: red;
+  color:var(--cc-orange);
 }
 
 .is-no-favorite {

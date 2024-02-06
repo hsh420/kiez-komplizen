@@ -116,7 +116,7 @@ li {
 }
 
 .is-favorite {
-  color: red;
+  color:var(--cc-orange);
 }
 
 .is-no-favorite {
