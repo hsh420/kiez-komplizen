@@ -156,6 +156,7 @@ p {
   padding: 14px 80px 14px 80px;
   position: relative;
   font-size: 15px;
+
 }
 
 button:hover {
