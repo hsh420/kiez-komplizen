@@ -215,12 +215,10 @@ const handleSubmit = () => {
 }
 </script>
 
-<style>
-
+<style scoped>
 input[type='checkbox'] {
   margin-right: 5px;
 }
-
 
 .hr {
   border: none;
