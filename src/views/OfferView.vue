@@ -17,10 +17,10 @@ export default {}
       <div class="both-radios">
         <div class="radio1">
           <input type="radio" value="item" id="item-tab" name="item" v-model="selectedOption" />
-          <label class="radio-label1" for="item"> Gegenstand </label>
+          <label class="radio-label1" for="item-tab"> Gegenstand </label>
         </div>
         <div class="radio2">
-          <input type="radio" name="hobby" value="hobby" v-model="selectedOption" />
+          <input type="radio" name="hobby" value="hobby" id="hobby" v-model="selectedOption" />
           <label class="radio-label2" for="hobby"> Gemeinsamkeit </label>
         </div>
       </div>
@@ -50,7 +50,14 @@ export default {}
         </select>
 
         <div class="floating-title">
-          <input type="text" name="picture" placeholder=" " required v-model="store.picture" />
+          <input
+            type="text"
+            name="picture"
+            id="picture"
+            placeholder=" "
+            required
+            v-model="store.picture"
+          />
           <label for="picture">Bild-URL</label>
         </div>
 
@@ -58,12 +65,12 @@ export default {}
           <input
             type="text"
             name="title"
-            id="title"
+            id="title-label1"
             placeholder=" "
             required
             v-model="store.title"
           />
-          <label for="title">Titel</label>
+          <label for="title-label1">Titel</label>
         </div>
 
         <div class="floating-title">
@@ -71,13 +78,14 @@ export default {}
             class="textarea"
             type="textarea"
             name="description"
+            id="description-label1"
             placeholder=" "
             required
             v-model="store.description"
             cols="40"
             rows="8"
           ></textarea>
-          <label for="description">Beschreibung</label>
+          <label for="description-label1">Beschreibung</label>
         </div>
 
         <div class="floating-title">
@@ -85,37 +93,38 @@ export default {}
             type="number"
             step="10"
             name="deposit"
+            id="deposit-label1"
             placeholder=" "
             required
             v-model="store.deposit"
           />
-          <label for="deposit">Kaution in EUR</label>
+          <label for="deposit-label1">Kaution in EUR</label>
         </div>
 
         <div id="adress-fields">
           <div class="floating-title">
             <input
               type="text"
-              id="zipcode"
+              id="zipcode-label1"
               name="zipcode"
               pattern="\d{5}"
               placeholder=" "
               required
               v-model="store.zipcode"
             />
-            <label for="zipcode">PLZ</label>
+            <label for="zipcode-label1">PLZ</label>
           </div>
 
           <div class="floating-title">
             <input
               type="text"
               name="town"
-              id="town"
+              id="town-label1"
               placeholder=" "
               required
               v-model="store.town"
             />
-            <label for="town">Ort</label>
+            <label for="town-label1">Ort</label>
           </div>
         </div>
         <div class="button-container">
@@ -145,52 +154,66 @@ export default {}
         </select>
 
         <div class="floating-title">
-          <input type="text" name="title" placeholder=" " required v-model="store.title" />
-          <label for="title">Titel </label>
+          <input
+            type="text"
+            name="title"
+            id="title-label2"
+            placeholder=" "
+            required
+            v-model="store.title"
+          />
+          <label for="title-label2">Titel </label>
         </div>
 
         <div class="floating-title">
           <textarea
             type="textarea"
             name="description"
+            id="description-label2"
             placeholder=" "
             required
             v-model="store.description"
             cols="50"
             rows="10"
           ></textarea>
-          <label for="description">Beschreibung</label>
+          <label for="description-label2">Beschreibung</label>
         </div>
 
         <div id="adress-fields">
           <div class="floating-title">
             <input
               type="text"
-              id="zipcode"
+              id="zipcode-label2"
               name="zipcode"
               pattern="\d{5}"
               placeholder=" "
               required
               v-model="store.zipcode"
             />
-            <label for="zipcode">PLZ</label>
+            <label for="zipcode-label2">PLZ</label>
           </div>
 
           <div class="floating-title">
             <input
               type="text"
               name="town"
-              id="town2"
+              id="town-label2"
               placeholder=" "
               required
               v-model="store.town"
             />
-            <label for="town">Ort</label>
+            <label for="townel2-lab">Ort</label>
           </div>
         </div>
         <br />
-        <input type="checkbox" name="remote" value="remote" v-model="store.remote" />
-        <label for="remote"> Remote möglich </label>
+        <input
+          type="checkbox"
+          name="remote"
+          id="remote-label2"
+          value="remote"
+          v-model="store.remote"
+        />
+        <label for="remote-label2"> Remote möglich </label>
 
         <div class="button-container">
           <ButtonGlobal type="submit" :label="'Gemeinsamkeit Anbieten'" />
@@ -252,13 +275,13 @@ input[type='checkbox'] {
   justify-content: center;
 }
 
-#zipcode,
-#zipcode2 {
+#zipcode-label1,
+#zipcode-label2 {
   width: 17vw;
 }
 
-#town,
-#town2 {
+#town-label1,
+#town-label2 {
   width: 55vw;
 }
 
