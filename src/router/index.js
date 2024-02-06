@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/auth'
 import LandingViewVue from '@/views/LandingView.vue'
 const requireAuth = (to, from, next) => {
@@ -22,13 +21,13 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
       //beforeEnter: requireAuth
     },
     {
       path: '/home',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
       //beforeEnter: requireAuth
     },
     {

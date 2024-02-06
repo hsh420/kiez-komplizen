@@ -1,4 +1,5 @@
 <template>
+  <p>{{ authStore.$state.uid }}</p>
   <h1>Dein Kiezkram</h1>
   <h2>Das hast du zu bieten</h2>
   <div class="currentOffers">
@@ -19,12 +20,9 @@ const databaseStore = useDatabaseStore()
 const authStore = useAuthStore()
 
 onMounted(() => {
-  if (authStore.user && authStore.user.uid) {
-    //calling getUserOffers from database.js with current user ID to fetch their offers
-    databaseStore.getUserOffers(authStore.user.uid)
-  } else {
-    console.error('No user logged in')
-  }
+  console.log(localStorage.getItem('uid'))
+  databaseStore.getOffers()
+  authStore.init()
 })
 </script>
 
