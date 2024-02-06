@@ -2,15 +2,15 @@
 done. Created Backup SearchView file that needs deleten before deploy.*/
 
 <template>
-    <h1>Suchen</h1>
-    <h2>Was willst du finden?</h2>
-    <!-- <p>
+  <h1>Suchen</h1>
+  <h2>Was willst du finden?</h2>
+  <!-- <p>
       <input type="radio" name="item" value="item" />
       <label for="item"> Gegenstand </label>
       <input type="radio" name="hobby" value="hobby" />
       <label for="hobby"> Gemeinsamkeit </label>
     </p> -->
-    <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+  <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
 
   <div class="content-container">
     <main>
@@ -63,9 +63,6 @@ onMounted(() => store.getOffers())
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
-h1 {
-  text-align: center;
-}
 
 .content-container {
   margin-top: 8rem;
@@ -91,7 +88,6 @@ li {
   bottom: 6rem;
   background-color: rgba(26, 26, 26, 0.25);
   /* color: var(--cc-text-darkmode); */
-  
 }
 
 .card__img {

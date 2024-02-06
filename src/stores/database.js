@@ -25,6 +25,39 @@ export const useDatabaseStore = defineStore({
   },
   getters: {},
   actions: {
+    // New method to fetch offers created by the currently logged-in user
+    getUserOffers(userID) {
+      let offerData = []
+      let offersQuery = db.collection('offers').where('createdByUser', '==', userID)
+
+      offersQuery
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            let offer = {
+              id: doc.id,
+              createdByUser: doc.data().createdByUser,
+              dateCreated: doc.data().dateCreated,
+              category: doc.data().category,
+              picture: doc.data().picture,
+              title: doc.data().title,
+              description: doc.data().description,
+              deposit: doc.data().deposit,
+              zipcode: doc.data().zipcode,
+              town: doc.data().town,
+              remote: doc.data().remote,
+              favorite: doc.data().favorite
+            }
+            offerData.push(offer)
+          })
+          this.dataFromApi = offerData
+        })
+        .catch((error) => {
+          console.error('Error fetching user offers:', error)
+          alert(error.message)
+        })
+    },
+
     createOffer() {
       db.collection('offers')
         .add({
