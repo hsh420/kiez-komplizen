@@ -63,6 +63,9 @@ onMounted(() => store.getOffers())
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
+h1 {
+  text-align: center;
+}
 
 .content-container {
   margin-top: 8rem;
@@ -112,7 +115,7 @@ li {
 }
 
 .is-favorite {
-  color: red;
+  color: var(--cc-orange);
 }
 
 .is-no-favorite {
