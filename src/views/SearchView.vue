@@ -1,16 +1,20 @@
-/*disabled authentication of this page for dev purposes in the index.js. Needs turning back on when
-done. Created Backup SearchView file that needs deleten before deploy.*/
-
 <template>
   <h1>Suchen</h1>
   <h2>Was willst du finden?</h2>
+
   <!-- <p>
       <input type="radio" name="item" value="item" />
       <label for="item"> Gegenstand </label>
       <input type="radio" name="hobby" value="hobby" />
       <label for="hobby"> Gemeinsamkeit </label>
     </p> -->
-  <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
+  <input type="text" name="search" placeholder="Suche nach Gegenstand" v-model="searchTerm" />
+  <input
+    type="text"
+    name="search"
+    placeholder="Suche nach Postleitzahl"
+    v-model="searchTermZipCode"
+  />
 
   <div class="content-container">
     <main>
@@ -47,14 +51,18 @@ import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
 const store = useDatabaseStore()
 let searchTerm = ref('') // Reference to store the search term
+let searchTermZipCode = ref('')
 
 const filteredOffers = computed(() => {
-  if (!searchTerm.value) {
+  if (!searchTerm.value && !searchTermZipCode.value) {
     return store.dataFromApi
+  } else if (searchTerm.value) {
+    return store.dataFromApi.filter((offer) =>
+      offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
+    )
+  } else {
+    return store.dataFromApi.filter((offer) => offer.zipcode.startsWith(searchTermZipCode.value))
   }
-  return store.dataFromApi.filter((offer) =>
-    offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
-  )
 })
 
 const updateFavorite = (offer) => store.updateFavorites(offer.id)

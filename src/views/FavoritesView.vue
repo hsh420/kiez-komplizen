@@ -58,7 +58,7 @@ h1 {
 
 .content-container {
   margin-top: 8rem;
-  margin-bottom: 1, 5rem;
+  margin-bottom: 1.5rem;
 }
 
 ul {
@@ -120,6 +120,7 @@ li {
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  color: white;
 }
 
 .card__location {

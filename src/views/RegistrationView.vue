@@ -67,10 +67,10 @@ const validatePassword = () => {
 
 <style scoped>
 @import url('@/assets/main.css');
-
+@import url('@/assets/base.css'); 
 h1 {
   text-align: center;
-  margin-top: 180px;
+  margin-top: 30px;
 }
 p {
   font-size: 14px;
