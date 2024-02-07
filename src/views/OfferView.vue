@@ -70,7 +70,7 @@ export default {}
               required
               v-model="store.title"
             />
-            <label for="title-label1">Titel</label>
+            <label for="title-label1">Titel<span style="color: #f39305">*</span></label>
           </div>
 
           <div class="floating-title">
@@ -85,7 +85,10 @@ export default {}
               cols="40"
               rows="8"
             ></textarea>
-            <label for="description-label1">Beschreibung</label>
+            <label for="description-label1"
+              >Beschreibung<span style="color: #f39305">*</span
+              ><span style="font-size: 12px"> (gib auch eine Kontaktmöglichkeit an)</span></label
+            >
           </div>
 
           <div class="floating-title">
@@ -95,7 +98,6 @@ export default {}
               name="deposit-label1"
               id="deposit-label1"
               placeholder=" "
-              required
               v-model="store.deposit"
             />
             <label for="deposit-label1">Kaution in EUR</label>
@@ -112,7 +114,7 @@ export default {}
                 required
                 v-model="store.zipcode"
               />
-              <label for="zipcode-label1">PLZ</label>
+              <label for="zipcode-label1">PLZ<span style="color: #f39305">*</span></label>
             </div>
 
             <div class="floating-title">
@@ -124,7 +126,7 @@ export default {}
                 required
                 v-model="store.town"
               />
-              <label for="town-label1">Ort</label>
+              <label for="town-label1">Ort<span style="color: #f39305">*</span></label>
             </div>
           </div>
           <div class="button-container">
@@ -173,7 +175,7 @@ export default {}
               required
               v-model="store.title"
             />
-            <label for="title-label2">Titel </label>
+            <label for="title-label2">Titel<span style="color: #f39305">*</span> </label>
           </div>
 
           <div class="floating-title">
@@ -187,7 +189,10 @@ export default {}
               cols="50"
               rows="10"
             ></textarea>
-            <label for="description-label2">Beschreibung</label>
+            <label for="description-label2"
+              >Beschreibung<span style="color: #f39305">*</span
+              ><span style="font-size: 12px"> (gib auch eine Kontaktmöglichkeit an)</span></label
+            >
           </div>
 
           <div id="adress-fields">
@@ -201,7 +206,7 @@ export default {}
                 required
                 v-model="store.zipcode"
               />
-              <label for="zipcode-label2">PLZ</label>
+              <label for="zipcode-label2">PLZ<span style="color: #f39305">*</span></label>
             </div>
 
             <div class="floating-title">
@@ -213,7 +218,7 @@ export default {}
                 required
                 v-model="store.town"
               />
-              <label for="townel2-lab">Ort</label>
+              <label for="townel2-lab">Ort<span style="color: #f39305">*</span></label>
             </div>
           </div>
           <br />
@@ -242,18 +247,31 @@ import { useDatabaseStore } from '@/stores/database'
 import FooterNavComponent from '@/components/Layout/FooterNavComponent.vue'
 import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
+import defaultImage from '@/assets/kk-placeholder-pic.png'
 
 const store = useDatabaseStore()
-const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit
+const selectedOption = ref('')
 const itemCategory = ref('')
 const hobbyCategory = ref('')
 const handleSubmit = () => {
+  if (!store.picture || store.picture.trim() === '') {
+    store.picture = defaultImage
+  }
   if (selectedOption.value === 'item') {
     store.category = itemCategory.value
   } else if (selectedOption.value === 'hobby') {
     store.category = hobbyCategory.value
   }
   store.createOffer()
+  selectedOption.value = ''
+  itemCategory.value = ''
+  hobbyCategory.value = ''
+  store.picture = ''
+  store.description = ''
+  store.deposit = ''
+  store.zipcode = ''
+  store.town = ''
+  store.remote = false
 }
 </script>
 
