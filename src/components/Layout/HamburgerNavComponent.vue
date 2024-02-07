@@ -51,8 +51,9 @@ function closeMenu() {
   isMenuOpen.value = false
 }
 
-function logout() {
-  store.logout()
+const logout = () => {
+  store.logout();
+  router.push({name: 'logout'});
 }
 
 router.beforeEach((to, from, next) => {
