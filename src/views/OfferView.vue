@@ -39,7 +39,7 @@ export default {}
             <option value="Büro">Büro</option>
             <option value="Garten">Garten</option>
             <option value="Haus,Haushalt">Haus,Haushalt</option>
-            <option value="KFZ, Fahhrad">KFZ, Fahhrad</option>
+            <option value="KFZ, Fahrrad">KFZ, Fahrrad</option>
             <option value="Medizinische Hilfsmittel">Medizinische Hilfsmittel</option>
             <option value="Möbel">Möbel</option>
             <option value="Party, Veranstaltung">Party, Veranstaltung</option>
@@ -264,7 +264,6 @@ const handleSubmit = async () => {
   }
   await store.createOffer()
 
-  store.createOffer()
   selectedOption.value = ''
   itemCategory.value = ''
   hobbyCategory.value = ''
