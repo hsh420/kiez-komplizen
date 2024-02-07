@@ -33,7 +33,7 @@ export default {}
         <section class="offer-card-item" v-if="selectedOption === 'item'">
           <h3>Gegenstand anbieten:</h3>
 
-          <select name="item-list" id="item-list-id" v-model="store.category">
+          <select name="item-list" id="item-list-id" v-model="itemCategory">
             <option value="" selected disabled>Kategorie wählen</option>
             <option value="item-kids">Baby, Kind</option>
             <option value="item-office">Büro</option>
@@ -134,7 +134,7 @@ export default {}
 
         <section class="offer-card-hobby" v-else-if="selectedOption === 'hobby'">
           <h3>Gemeinsamkeit anbieten:</h3>
-          <select name="hobby-list" id="hobby-list-id">
+          <select name="hobby-list" id="hobby-list-id" v-model="hobbyCategory">
             <option value="" selected disabled>Kategorie wählen</option>
             <option value="hobby-fishing">Angeln, Aquaristik</option>
             <option value="hobby-crafting">Basteln</option>
@@ -245,7 +245,14 @@ import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 
 const store = useDatabaseStore()
 const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit
+const itemCategory = ref('')
+const hobbyCategory = ref('')
 const handleSubmit = () => {
+  if (selectedOption.value === 'item') {
+    store.category = itemCategory.value
+  } else if (selectedOption.value === 'hobby') {
+    store.category = hobbyCategory.value
+  }
   store.createOffer()
 }
 </script>
