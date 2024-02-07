@@ -71,8 +71,10 @@ export const useAuthStore = defineStore({
       auth
         .signInWithEmailAndPassword(this.email, this.password)
         .then((data) => {
-          this.uid = data.user.uid
-          localStorage.setItem('uid', this.uid)
+          this.user = {
+            uid: data.user.uid,
+            displayName: data.user.displayName
+          }
           router.push('/')
         })
         .catch((error) => {
@@ -87,8 +89,10 @@ export const useAuthStore = defineStore({
           if (result.additionalUserInfo.isNewUser === true) {
             createUser(result.user.uid, result.user.displayName, result.user.email)
           }
-          this.uid = result.user.uid
-          localStorage.setItem('uid', this.uid)
+          this.user = {
+            uid: result.user.uid,
+            displayName: result.user.displayName
+          }
           router.push('/')
         })
         .catch((error) => {
@@ -101,5 +105,6 @@ export const useAuthStore = defineStore({
       this.user = {}
       router.replace({ name: 'login' })
     }
-  }
+  },
+  persist: true
 })

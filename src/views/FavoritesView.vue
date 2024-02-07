@@ -35,7 +35,7 @@
 
 <script setup>
 import { useDatabaseStore } from '@/stores/database'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
@@ -45,27 +45,19 @@ const favorites = computed(() => store.dataFromApi.filter((offer) => offer.favor
 const updateFavorite = (favorite) => store.updateFavorites(favorite.id)
 
 //look at comment in database -> createFavorites
-// onMounted(() => store.getOffers())
+onMounted(() => console.log(store.dataFromApi[0].id))
 </script>
 
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
 h1 {
-  font-size: 20px;
   text-align: center;
-  /* font-weight: bold; */
-  margin-top: 11rem;
-}
-
-h2,
-h3 {
-  font-size: 14px;
 }
 
 .content-container {
   margin-top: 8rem;
-  margin-bottom: 1, 5rem;
+  margin-bottom: 1.5rem;
 }
 
 ul {
@@ -110,7 +102,7 @@ li {
 }
 
 .is-favorite {
-  color: red;
+  color: var(--cc-orange);
 }
 
 .is-no-favorite {
@@ -127,6 +119,7 @@ li {
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  color: white;
 }
 
 .card__location {

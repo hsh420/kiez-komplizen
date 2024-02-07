@@ -7,7 +7,7 @@
       class="menu-icon"
     />
     <nav class="menu" v-if="isMenuOpen">
-      <router-link @click="closeMenu" to="/settings">
+      <router-link @click="closeMenu" :to="{name: 'settings'}">
         <img
           class="icon1"
           alt="Home Navigation"
@@ -15,7 +15,7 @@
         />Settings
       </router-link>
       <br />
-      <router-link to="/about">
+      <router-link :to="{ name: 'about'}">
         <img
           class="icon2"
           alt="Home Navigation"
@@ -23,9 +23,13 @@
         />About
       </router-link>
       <br />
-      <a @click="logout">
-        <img class="icon3" alt="Home Navigation" src="@/assets/pictures-layout/logout.png" />Logout
-      </a>
+      <router-link :to="{name:'logout'}" @click="logout">
+        <img
+          class="icon3"
+          alt="Logout Navigation"
+          src="@/assets/pictures-layout/logout.png"
+        />Logout</router-link
+      >
     </nav>
   </div>
 </template>
@@ -47,8 +51,9 @@ function closeMenu() {
   isMenuOpen.value = false
 }
 
-function logout() {
-  store.logout()
+const logout = () => {
+  store.logout();
+  router.push({name: 'logout'});
 }
 
 router.beforeEach((to, from, next) => {

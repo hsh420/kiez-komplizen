@@ -20,7 +20,8 @@ export const useDatabaseStore = defineStore({
       town: '',
       remote: false,
       dataFromApi: [],
-      favorite: false
+      favorite: false,
+      offer: []
     }
   },
   getters: {},
@@ -114,12 +115,12 @@ export const useDatabaseStore = defineStore({
     },
 
     getOffer(id) {
-      return db
-        .collection('offers')
+      db.collection('offers')
         .doc(id)
         .get()
-        .then(() => {
+        .then((data) => {
           console.log('Success')
+          this.offer.push(data.data())
         })
         .catch((error) => {
           console.log(error)
@@ -135,5 +136,6 @@ export const useDatabaseStore = defineStore({
         }
       })
     }
-  }
+  },
+  persist: true
 })

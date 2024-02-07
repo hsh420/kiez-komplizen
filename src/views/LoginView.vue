@@ -31,7 +31,6 @@
 </template>
 
 <script setup>
-import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 import { useAuthStore } from '@/stores/auth'
 
@@ -51,7 +50,7 @@ p {
 
 h1 {
   text-align: center;
-  margin-top: 180px;
+  margin-top: 30px;
 }
 
 .login-button {

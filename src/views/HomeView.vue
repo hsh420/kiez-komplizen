@@ -1,7 +1,7 @@
 <template>
   <p>{{ authStore.$state.uid }}</p>
-  <h1>Dein Kiezkrams</h1>
-  <h2>Das hast Du zu bieten</h2>
+  <h1>Hallo, {{ displayName }}!</h1>
+  <h2>Das ist Dein Kiezkrams:</h2>
   <hr />
   <br />
 
@@ -31,17 +31,17 @@
 </template>
 
 <script setup>
+import { toRaw } from 'vue'
 import { onMounted } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
 import { useAuthStore } from '@/stores/auth'
 
 const databaseStore = useDatabaseStore()
 const authStore = useAuthStore()
+const displayName = toRaw(authStore.user.displayName)
 
 onMounted(() => {
-  console.log(localStorage.getItem('uid'))
   databaseStore.getOffers()
-  authStore.init()
 })
 </script>
 

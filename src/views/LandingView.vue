@@ -34,19 +34,21 @@
         <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax.png" />
       </div>
       <div class="backdrop-shadow">
-        <section class="all-p-and-button-container">
-          <p class="first-p uppercase p-left">
-            Du brauchst etwas Bestimmtes aber willst es nicht gleich kaufen?
-          </p>
-          <p class="second-p uppercase p-right">
-            Du hast ein bestimmtes Hobby und suchst Leute die mitmachen?
-          </p>
+        <section class="all-p-container">
           <p class="third-p p-center">
-            Werde ein <span class="corp-orange bold">Kiez-Komplieze:</span>
-            <span class="bold"> Leihe und verleihe Gegenstände</span> oder
-            <span class="bold">finde jemanden</span>für <span class="bold">gemeinsame Hobbys.</span>
+            Werde ein <span class="corp-orange">Kiez-Komplieze:</span>
+            <span class="bold"> Leihe und verleihe Gegenstände</span> oder<br />
+            <span class="bold">finde jemanden</span>für <span class="bold">gemeinsame Hobbys.</span
+            ><br />
             Kostenlos und gleich nebenan.
           </p>
+        </section>
+        <section class="link-about">
+          <RouterLink to="/about"
+            ><p class="corp-orange">Du willst mehr über uns erfahren?</p></RouterLink
+          >
+        </section>
+        <section class="login-button-with-text">
           <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
           <p class="last-p">
             Noch nicht dabei? <RouterLink to="/registration">Registrieren.</RouterLink>
@@ -84,11 +86,10 @@ export default {
 
 p {
   color: var(--cc-text-darkmode);
-  margin-top: 0;
 }
 
 .logo-img {
-  top: 30%;
+  top: 35%;
   z-index: 300;
   width: 328px;
   height: 140px;
@@ -101,38 +102,36 @@ p {
   justify-content: center;
 }
 
-.all-p-and-button-container {
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+.all-p-container {
+  position: relative;
+  margin-top: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.first-p,
-.second-p {
-  font-size: 16px;
+.link-about {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
+
+.login-button-with-text {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .third-p,
 .last-p {
-  font-size: 14px;
   font-weight: 400;
-}
-
-.p-left {
-  width: 90%;
-  align-self: flex-start;
-}
-
-.p-right {
-  width: 90%;
-  align-self: flex-end;
-  text-align: right;
 }
 
 .p-center {
@@ -141,14 +140,10 @@ p {
 
 .corp-orange {
   color: var(--cc-orange);
-}
-
-.uppercase {
-  text-transform: uppercase;
+  font-weight: bolder;
 }
 
 .bold {
-  font-weight: bolder;
   color: white;
 }
 
@@ -161,10 +156,11 @@ p {
   padding: 14px 80px 14px 80px;
   position: relative;
   font-size: 15px;
+
 }
 
 button:hover {
-  background-color: orange;
+  background-color: var(--cc-orange);
 }
 
 .backdrop-shadow,
@@ -184,10 +180,7 @@ button:hover {
 }
 
 .bg-img {
-  position: absolute;
-  top: -80px;
-  left: 0;
-  object-fit: cover;
-  width: 100%;
+  position: fixed;
+
 }
 </style>

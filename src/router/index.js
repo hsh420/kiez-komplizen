@@ -20,9 +20,8 @@ const router = createRouter({
     },
     {
       path: '/',
-      name: 'home',
+      name: 'start',
       component: () => import('../views/HomeView.vue')
-      //beforeEnter: requireAuth
     },
     {
       path: '/home',
@@ -72,6 +71,12 @@ const router = createRouter({
       //beforeEnter: requireAuth
     },
     {
+      path: '/offer-details/:id',
+      name: 'offer-details',
+      component: () => import('../views/DetailsView.vue')
+      //beforeEnter: requireAuth
+    },
+    {
       path: '/messages',
       name: 'messages',
       component: () => import('../views/MessagesView.vue'),
@@ -80,7 +85,7 @@ const router = createRouter({
     {
       path: '/logout',
       name: 'logout',
-      component: () => import('../views/MessagesView.vue'),
+      component: () => import('../views/LogoutView.vue'),
       beforeEnter: requireAuth
     },
     {
