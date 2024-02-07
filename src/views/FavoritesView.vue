@@ -51,6 +51,7 @@ onMounted(() => console.log(store.dataFromApi[0].id))
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
+
 h1 {
   text-align: center;
 }
