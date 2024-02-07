@@ -133,5 +133,6 @@ export const useDatabaseStore = defineStore({
         }
       })
     }
-  }
+  },
+  persist: true
 })

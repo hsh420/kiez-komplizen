@@ -72,7 +72,8 @@ export const useAuthStore = defineStore({
         .signInWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           this.user = {
-            uid: data.user.uid
+            uid: data.user.uid,
+            displayName: data.user.displayName
           }
           router.push('/')
         })
@@ -89,7 +90,8 @@ export const useAuthStore = defineStore({
             createUser(result.user.uid, result.user.displayName, result.user.email)
           }
           this.user = {
-            uid: result.user.uid
+            uid: result.user.uid,
+            displayName: result.user.displayName
           }
           router.push('/')
         })
@@ -103,5 +105,6 @@ export const useAuthStore = defineStore({
       this.user = {}
       router.replace({ name: 'login' })
     }
-  }
+  },
+  persist: true
 })
