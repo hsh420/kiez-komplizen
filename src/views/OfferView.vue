@@ -64,7 +64,7 @@ export default {}
           <br />
           <hr class="hr" />
           <br />
-        
+        </section>
 
         <section class="offer-card-item" v-if="selectedOption === 'item'">
           <h3>Gegenstand anbieten:</h3>
