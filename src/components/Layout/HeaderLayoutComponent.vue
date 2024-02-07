@@ -1,37 +1,40 @@
 <template>
-  
-  <header class="header-container">
-   
-    <section>
-      <RouterLink :to="{ name: 'home' }">
-        <img
-          class="header-logo"
-          alt="LogoKiezKomplizen"
-          src="@/assets/pictures-layout/kiezkomplizen.png"
-      /></RouterLink>
-      <div class="header-decor-group">
-        <span class="header-accent-line"></span>
-        <img
-          class="header-triangle"
-          alt="SchwarzesDreieck"
-          src="@/assets/pictures-layout/top_triangle_black.png"
-        />
-      </div>
-    </section>
-  </header>
- <HamburgerNavComponent/>
-
+  <div class="content">
+    <header class="header-container">
+      <section>
+        <RouterLink :to="{ name: 'home' }">
+          <img
+            class="header-logo"
+            alt="LogoKiezKomplizen"
+            src="@/assets/pictures-layout/kiezkomplizen.png"
+        /></RouterLink>
+        <div class="header-decor-group">
+          <span class="header-accent-line"></span>
+          <img
+            class="header-triangle"
+            alt="SchwarzesDreieck"
+            src="@/assets/pictures-layout/top_triangle_black.png"
+          />
+        </div>
+      </section>
+    </header>
+    <HamburgerNavComponent />
+  </div>
 </template>
 <script>
-import HamburgerNavComponent from './HamburgerNavComponent.vue';
+import HamburgerNavComponent from './HamburgerNavComponent.vue'
 
 export default {
-    name: 'HeaderLayoutComponent',
-    components: { HamburgerNavComponent }
+  name: 'HeaderLayoutComponent',
+  components: { HamburgerNavComponent }
 }
 </script>
 
 <style scoped>
+.content {
+  margin-top:135px;
+}
+
 .header-container {
   height: 135px;
   width: 100vw;
