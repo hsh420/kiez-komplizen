@@ -35,19 +35,19 @@ export default {}
 
           <select name="item-list" id="item-list-id" v-model="itemCategory">
             <option value="" selected disabled>Kategorie wählen</option>
-            <option value="item-kids">Baby, Kind</option>
-            <option value="item-office">Büro</option>
-            <option value="item-garden">Garten</option>
-            <option value="item-homestuff">Haus,Haushalt</option>
-            <option value="item-transportation">KFZ, Fahhrad</option>
-            <option value="item-medical">Medizinische Hilfsmittel</option>
-            <option value="item-furniture">Möbel</option>
-            <option value="item-party">Party, Veranstaltung</option>
-            <option value="item-game">Spiele</option>
-            <option value="item-sport">Sport, Freizeit</option>
-            <option value="item-vacation">Urlaub, Reise</option>
-            <option value="item-tool">Werkzeug, Baumaterialien</option>
-            <option value="item-other">Sonstiges</option>
+            <option value="Baby, Kind">Baby, Kind</option>
+            <option value="Büro">Büro</option>
+            <option value="Garten">Garten</option>
+            <option value="Haus,Haushalt">Haus,Haushalt</option>
+            <option value="KFZ, Fahhrad">KFZ, Fahhrad</option>
+            <option value="Medizinische Hilfsmittel">Medizinische Hilfsmittel</option>
+            <option value="Möbel">Möbel</option>
+            <option value="Party, Veranstaltung">Party, Veranstaltung</option>
+            <option value="Spiele">Spiele</option>
+            <option value="Sport, Freizeit">Sport, Freizeit</option>
+            <option value="Urlaub, Reise">Urlaub, Reise</option>
+            <option value="Werkzeug, Baumaterialien">Werkzeug, Baumaterialien</option>
+            <option value="Sonstiges">Sonstiges</option>
           </select>
 
           <div class="floating-title">
@@ -138,21 +138,21 @@ export default {}
           <h3>Gemeinsamkeit anbieten:</h3>
           <select name="hobby-list" id="hobby-list-id" v-model="hobbyCategory">
             <option value="" selected disabled>Kategorie wählen</option>
-            <option value="hobby-fishing">Angeln, Aquaristik</option>
-            <option value="hobby-crafting">Basteln</option>
-            <option value="hobby-fotography">Fotografie</option>
-            <option value="hobby-gardening">Gartenarbeit</option>
-            <option value="hobby-cooking">Kochen, Backen</option>
-            <option value="hobby-art">Kunst, Malerei</option>
-            <option value="hobby-music">Musik</option>
-            <option value="hobby-sewing">Nähen</option>
-            <option value="hobby-offline-gaming">Offline Gaming</option>
-            <option value="hobby-online-gaming">Online Gaming</option>
-            <option value="hobby-outdoor">Outdoor Aktivitäten</option>
-            <option value="hobby-collecting">Sammeln</option>
-            <option value="hobby-sporty">Sport und Fitness</option>
-            <option value="hobby-animals">Tiere</option>
-            <option value="hobby-other">Sonstiges</option>
+            <option value="Angeln, Aquaristik">Angeln, Aquaristik</option>
+            <option value="Basteln">Basteln</option>
+            <option value="Fotografie">Fotografie</option>
+            <option value="Gartenarbeit">Gartenarbeit</option>
+            <option value="Kochen, Backen">Kochen, Backen</option>
+            <option value="Kunst, Malerei">Kunst, Malerei</option>
+            <option value="Musik">Musik</option>
+            <option value="Nähen">Nähen</option>
+            <option value="Offline Gaming">Offline Gaming</option>
+            <option value="Online Gaming">Online Gaming</option>
+            <option value="Outdoor Aktivitäten">Outdoor Aktivitäten</option>
+            <option value="Sammeln">Sammeln</option>
+            <option value="Sport und Fitness">Sport und Fitness</option>
+            <option value="Tiere">Tiere</option>
+            <option value="Sonstiges">Sonstiges</option>
           </select>
 
           <div class="floating-title">
@@ -236,6 +236,8 @@ export default {}
           </div>
         </section>
       </form>
+      <br />
+      <div v-if="isSubmitted" class="success-message">Super! Dein Kram ist online.</div>
     </main>
     <FooterNavComponent />
   </div>
@@ -247,31 +249,37 @@ import { useDatabaseStore } from '@/stores/database'
 import FooterNavComponent from '@/components/Layout/FooterNavComponent.vue'
 import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue'
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
-import defaultImage from '@/assets/kk-placeholder-pic.png'
 
 const store = useDatabaseStore()
 const selectedOption = ref('')
 const itemCategory = ref('')
 const hobbyCategory = ref('')
-const handleSubmit = () => {
-  if (!store.picture || store.picture.trim() === '') {
-    store.picture = defaultImage
-  }
+const isSubmitted = ref(false)
+
+const handleSubmit = async () => {
   if (selectedOption.value === 'item') {
     store.category = itemCategory.value
   } else if (selectedOption.value === 'hobby') {
     store.category = hobbyCategory.value
   }
+  await store.createOffer()
+
   store.createOffer()
   selectedOption.value = ''
   itemCategory.value = ''
   hobbyCategory.value = ''
+  store.title = ''
   store.picture = ''
   store.description = ''
   store.deposit = ''
   store.zipcode = ''
   store.town = ''
   store.remote = false
+  isSubmitted.value = true
+
+  setTimeout(() => {
+    isSubmitted.value = false
+  }, 5000)
 }
 </script>
 
@@ -304,6 +312,12 @@ input[type='checkbox'] {
 
 .radio-label2 {
   margin: 5px;
+}
+
+.success-message {
+  font-family: 'abadi-mt-condensed-light-regular';
+  font-size: 1.5rem;
+  color: #f39305;
 }
 
 #adress-fields {
