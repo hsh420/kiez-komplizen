@@ -50,7 +50,7 @@ p {
 
 h1 {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 .login-button {

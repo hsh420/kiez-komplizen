@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 50px;
+  height: 40px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -38,6 +38,7 @@ export default {
   position: fixed;
   bottom: 60px;
   left: 0;
+  margin-bottom: auto;
 }
 
 .item {
