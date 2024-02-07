@@ -16,6 +16,7 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "volar-service-vetur": "^0.0.17",
     "vue": "^3.3.11",
+    "vue-moment": "^4.1.0",
     "vue-router": "^4.2.5",
     "vuefire": "^3.1.22"
   },
