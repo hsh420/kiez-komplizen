@@ -37,7 +37,7 @@ export const useAuthStore = defineStore({
       displayname: '',
       email: '',
       password: '',
-      uid: '',
+      user: {},
       isLoggedIn: false
     }
   },
