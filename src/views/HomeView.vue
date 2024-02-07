@@ -1,31 +1,40 @@
 <template>
   <p>{{ authStore.$state.uid }}</p>
   <h1>Hallo, {{ displayName }}!</h1>
-  <h2>Das ist Dein Kiezkrams:</h2>
+  <h2>Hier findest du deinen Kiezkrams</h2>
   <hr />
   <br />
 
   <div class="content-container">
     <main>
-      <ul>
-        <li v-for="offer in databaseStore.dataFromApi" :key="offer.id">
-          <div class="card">
-            <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-            <div class="card__buttons" @click="editOffer(offer)">
-              <button class="card__x--button">
-                <span style="font-size: 1.5rem; color: white">&times;</span> Löschen
-              </button>
-              <button class="card__edit--button">Bearbeiten</button>
-            </div>
+      <div v-if="databaseStore.dataFromApi.length > 0">
+        <ul>
+          <li v-for="offer in databaseStore.dataFromApi" :key="offer.id">
+            <div class="card">
+              <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
+              <div class="card__buttons" @click="editOffer(offer)">
+                <button class="card__x--button">
+                  <span style="font-size: 1.5rem; color: white">&times;</span> Löschen
+                </button>
+                <button class="card__edit--button">Bearbeiten</button>
+              </div>
 
-            <div class="card__details">
-              <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-              <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
-              <ArrowRightIcon class="card__arrow" />
+              <div class="card__details">
+                <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
+                <p class="card__location">
+                  <LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}
+                </p>
+                <ArrowRightIcon class="card__arrow" />
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div v-else>
+        <img src="@/assets/kk.gif" alt="Kiezkomplizen Logo" class="placeholder-gif" />
+        <p>Du hast noch nichts angeboten.</p>
+      </div>
     </main>
   </div>
 </template>
@@ -62,6 +71,10 @@ ul {
 li {
   list-style: none;
   margin: 25px auto;
+}
+
+.placeholder-gif {
+  width: 90%;
 }
 .card {
   position: relative;
