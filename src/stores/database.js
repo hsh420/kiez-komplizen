@@ -26,6 +26,40 @@ export const useDatabaseStore = defineStore({
   },
   getters: {},
   actions: {
+    getUserOffers(userID) {
+      let offerData = []
+      let offersQuery = db.collection('offers').where('createdByUser', '==', userID)
+
+      offersQuery
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            let offer = {
+              id: doc.id,
+              createdByUser: doc.data().createdByUser,
+              dateCreated: doc.data().dateCreated,
+              category: doc.data().category,
+              picture: doc.data().picture,
+              title: doc.data().title,
+              description: doc.data().description,
+              deposit: doc.data().deposit,
+              zipcode: doc.data().zipcode,
+              town: doc.data().town,
+              remote: doc.data().remote,
+              favorite: doc.data().favorite
+            }
+            offerData.push(offer)
+            console.log('fetched offers:', offerData)
+          })
+          this.dataFromApi = offerData
+          console.log('Upddated dataFromAPI:', this.dataFromAPI)
+        })
+        .catch((error) => {
+          console.error('Error fetching user offers:', error)
+          alert(error.message)
+        })
+    },
+
     createOffer() {
       db.collection('offers')
         .add({
@@ -78,7 +112,8 @@ export const useDatabaseStore = defineStore({
           console.log(error)
           alert(error.message)
         })
-    }, //get single offer for detail view
+    },
+
     getOffer(id) {
       db.collection('offers')
         .doc(id)
@@ -93,38 +128,6 @@ export const useDatabaseStore = defineStore({
         })
     },
 
-    /* 
-    
-    Does not work need UPDATE (and DELETE) permisson for Firebase 
-    -> switch two funtions below
-    -> activate onMounted(() => store.getOffers()) in FavoritesView
-    
-    */
-
-    // createFavorites(id) {
-    // db.collection('offers')
-    //   .doc(id)
-    //   .update({
-    //     createdByUser: this.createdByUser,
-    //     dateCreated: this.dateCreated,
-    //     category: this.category,
-    //     picture: this.picture,
-    //     title: this.title,
-    //     description: this.description,
-    //     deposit: this.deposit,
-    //     zipcode: this.zipcode,
-    //     town: this.town,
-    //     remote: this.remote,
-    //     favorite: this.favorite
-    //   })
-    //   .then(() => {
-    //     console.log('Success')
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //     alert(error.message)
-    //   })
-    // },
     updateFavorites(id) {
       this.dataFromApi.forEach((offer) => {
         if (offer.id === id) {

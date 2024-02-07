@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/auth'
 import LandingViewVue from '@/views/LandingView.vue'
 const requireAuth = (to, from, next) => {
