@@ -15,49 +15,56 @@ export default {}
         <h1>Anbieten</h1>
         <h2>Was hast Du anzubieten?</h2>
 
-      <div class="both-radios">
-        <div class="radio1">
-          <input type="radio" value="item" id="item-tab" name="item" v-model="selectedOption" />
-          <label class="radio-label1" for="item-tab"> Gegenstand </label>
-        </div>
-        <div class="radio2">
-          <input type="radio" name="hobby" value="hobby" id="hobby" v-model="selectedOption" />
-          <label class="radio-label2" for="hobby"> Gemeinsamkeit </label>
-        </div>
-      </div>
-
-      <br />
-      <hr class="hr" />
-      <br />
-
-      <section class="offer-card-item" v-if="selectedOption === 'item'">
-        <h3>Gegenstand anbieten:</h3>
-
-        <select name="item-list" id="item-list-id" v-model="store.category">
-          <option value="" selected disabled>Kategorie wählen</option>
-          <option value="item-kids">Baby, Kind</option>
-          <option value="item-office">Büro</option>
-          <option value="item-garden">Garten</option>
-          <option value="item-homestuff">Haus,Haushalt</option>
-          <option value="item-transportation">KFZ, Fahhrad</option>
-          <option value="item-medical">Medizinische Hilfsmittel</option>
-          <option value="item-furniture">Möbel</option>
-          <option value="item-party">Party, Veranstaltung</option>
-          <option value="item-game">Spiele</option>
-          <option value="item-sport">Sport, Freizeit</option>
-          <option value="item-vacation">Urlaub, Reise</option>
-          <option value="item-tool">Werkzeug, Baumaterialien</option>
-          <option value="item-other">Sonstiges</option>
-        </select>
-
-        <div class="floating-title">
-          <input type="text" name="picture" id="picture" placeholder=" " v-model="store.picture" />
-          <label for="picture">Bild-URL</label>
+        <div class="both-radios">
+          <div class="radio1">
+            <input type="radio" value="item" id="item-tab" name="item" v-model="selectedOption" />
+            <label class="radio-label1" for="item-tab"> Gegenstand </label>
+          </div>
+          <div class="radio2">
+            <input type="radio" name="hobby" value="hobby" id="hobby" v-model="selectedOption" />
+            <label class="radio-label2" for="hobby"> Gemeinsamkeit </label>
+          </div>
         </div>
 
         <br />
         <hr class="hr" />
         <br />
+
+        <section class="offer-card-item" v-if="selectedOption === 'item'">
+          <h3>Gegenstand anbieten:</h3>
+
+          <select name="item-list" id="item-list-id" v-model="store.category">
+            <option value="" selected disabled>Kategorie wählen</option>
+            <option value="item-kids">Baby, Kind</option>
+            <option value="item-office">Büro</option>
+            <option value="item-garden">Garten</option>
+            <option value="item-homestuff">Haus,Haushalt</option>
+            <option value="item-transportation">KFZ, Fahhrad</option>
+            <option value="item-medical">Medizinische Hilfsmittel</option>
+            <option value="item-furniture">Möbel</option>
+            <option value="item-party">Party, Veranstaltung</option>
+            <option value="item-game">Spiele</option>
+            <option value="item-sport">Sport, Freizeit</option>
+            <option value="item-vacation">Urlaub, Reise</option>
+            <option value="item-tool">Werkzeug, Baumaterialien</option>
+            <option value="item-other">Sonstiges</option>
+          </select>
+
+          <div class="floating-title">
+            <input
+              type="text"
+              name="picture"
+              id="picture"
+              placeholder=" "
+              v-model="store.picture"
+            />
+            <label for="picture">Bild-URL</label>
+          </div>
+
+          <br />
+          <hr class="hr" />
+          <br />
+        </section>
 
         <section class="offer-card-item" v-if="selectedOption === 'item'">
           <h3>Gegenstand anbieten:</h3>
