@@ -1,18 +1,28 @@
+
 <script setup>
 import { useAuthStore } from './stores/auth'
-import { onMounted } from 'vue'
+import { onMounted} from 'vue'
+import { useRouter } from 'vue-router'
 import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue'
 import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
 const store = useAuthStore()
 onMounted(() => {
   store.init()
 })
+const router = useRouter()
+
+const showHeader = () => router.currentRoute.value.name !== 'landing' && router.currentRoute.value.name !== 'logout'
+const showFooter = () => router.currentRoute.value.name !== 'landing' && router.currentRoute.value.name !== 'logout'
+
+onMounted(() => {
+  router.currentRoute.value
+})
 </script>
 
 <template>
-  <HeaderLayoutComponent class="header" />
+  <HeaderLayoutComponent class="header" v-if="showHeader()"/>
   <main class="main"><RouterView /></main>
-  <FooterLayoutComponent class="footer" />
+  <FooterLayoutComponent class="footer" v-if="showFooter()"/>
 </template>
 
 <style scoped>
