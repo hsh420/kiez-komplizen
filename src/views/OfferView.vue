@@ -53,55 +53,18 @@ export default {}
           <div class="floating-title">
             <input
               type="text"
-              name="picture"
-              id="picture"
+              name="picture1"
+              id="picture1"
               placeholder=" "
               v-model="store.picture"
             />
-            <label for="picture">Bild-URL</label>
-          </div>
-
-          <br />
-          <hr class="hr" />
-          <br />
-        </section>
-
-        <section class="offer-card-item" v-if="selectedOption === 'item'">
-          <h3>Gegenstand anbieten:</h3>
-
-          <select name="item-list" id="item-list-id" v-model="store.category">
-            <option value="" selected disabled>Kategorie wählen</option>
-            <option value="item-kids">Baby, Kind</option>
-            <option value="item-office">Büro</option>
-            <option value="item-garden">Garten</option>
-            <option value="item-homestuff">Haus,Haushalt</option>
-            <option value="item-transportation">KFZ, Fahhrad</option>
-            <option value="item-medical">Medizinische Hilfsmittel</option>
-            <option value="item-furniture">Möbel</option>
-            <option value="item-party">Party, Veranstaltung</option>
-            <option value="item-game">Spiele</option>
-            <option value="item-sport">Sport, Freizeit</option>
-            <option value="item-vacation">Urlaub, Reise</option>
-            <option value="item-tool">Werkzeug, Baumaterialien</option>
-            <option value="item-other">Sonstiges</option>
-          </select>
-
-          <div class="floating-title">
-            <input
-              type="text"
-              name="picture"
-              id="picture"
-              placeholder=" "
-              required
-              v-model="store.picture"
-            />
-            <label for="picture">Bild-URL</label>
+            <label for="picture1">Bild-URL</label>
           </div>
 
           <div class="floating-title">
             <input
               type="text"
-              name="title"
+              name="title-label1"
               id="title-label1"
               placeholder=" "
               required
@@ -114,7 +77,7 @@ export default {}
             <textarea
               class="textarea"
               type="textarea"
-              name="description"
+              name="description-label1"
               id="description-label1"
               placeholder=" "
               required
@@ -129,7 +92,7 @@ export default {}
             <input
               type="number"
               step="10"
-              name="deposit"
+              name="deposit-label1"
               id="deposit-label1"
               placeholder=" "
               required
@@ -143,7 +106,7 @@ export default {}
               <input
                 type="text"
                 id="zipcode-label1"
-                name="zipcode"
+                name="zipcode-label1"
                 pattern="\d{5}"
                 placeholder=" "
                 required
@@ -155,7 +118,7 @@ export default {}
             <div class="floating-title">
               <input
                 type="text"
-                name="town"
+                name="town-label1"
                 id="town-label1"
                 placeholder=" "
                 required
@@ -193,7 +156,18 @@ export default {}
           <div class="floating-title">
             <input
               type="text"
-              name="title"
+              name="picture2"
+              id="picture2"
+              placeholder=" "
+              v-model="store.picture"
+            />
+            <label for="picture2">Bild-URL</label>
+          </div>
+
+          <div class="floating-title">
+            <input
+              type="text"
+              name="title-label2"
               id="title-label2"
               placeholder=" "
               required
@@ -205,7 +179,7 @@ export default {}
           <div class="floating-title">
             <textarea
               type="textarea"
-              name="description"
+              name="description-label2"
               id="description-label2"
               placeholder=" "
               required
@@ -221,7 +195,7 @@ export default {}
               <input
                 type="text"
                 id="zipcode-label2"
-                name="zipcode"
+                name="zipcode-label2"
                 pattern="\d{5}"
                 placeholder=" "
                 required
@@ -233,7 +207,7 @@ export default {}
             <div class="floating-title">
               <input
                 type="text"
-                name="town"
+                name="town-label2"
                 id="town-label2"
                 placeholder=" "
                 required
@@ -245,7 +219,7 @@ export default {}
           <br />
           <input
             type="checkbox"
-            name="remote"
+            name="remote-label2"
             id="remote-label2"
             value="remote"
             v-model="store.remote"
@@ -277,18 +251,20 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
-.content {
-  margin-bottom: 100px;
+h2 {
+  margin-bottom: 1rem;
 }
-
 input[type='checkbox'] {
   margin-right: 5px;
+}
+.content {
+  margin-bottom: 100px;
 }
 
 .hr {
   border: none;
   height: 1px;
-  background-color: #fff6e9;
+  background-color: black;
 }
 
 .both-radios {
@@ -307,30 +283,29 @@ input[type='checkbox'] {
 
 #adress-fields {
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .button-container {
   display: flex;
-  width: 90%;
   justify-content: center;
   margin-top: 40px;
 }
 
 #zipcode-label1,
 #zipcode-label2 {
-  width: 17vw;
+  width: 30vw;
 }
 
 #town-label1,
 #town-label2 {
-  width: 55vw;
+  width: 50vw;
 }
 
 #item-list-id,
 #hobby-list-id {
-  width: 40%;
+  width: 50%;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
@@ -340,5 +315,10 @@ input[type='checkbox'] {
   border: 2px solid #fff6e9;
   background-color: #fff6e9;
   font-size: 14px;
+  color: #1e293b;
+}
+
+select:focus {
+  outline: none;
 }
 </style>
