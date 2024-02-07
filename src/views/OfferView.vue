@@ -33,88 +33,51 @@ export default {}
         <section class="offer-card-item" v-if="selectedOption === 'item'">
           <h3>Gegenstand anbieten:</h3>
 
-          <select name="item-list" id="item-list-id" v-model="store.category">
+          <select name="item-list" id="item-list-id" v-model="itemCategory">
             <option value="" selected disabled>Kategorie wählen</option>
-            <option value="item-kids">Baby, Kind</option>
-            <option value="item-office">Büro</option>
-            <option value="item-garden">Garten</option>
-            <option value="item-homestuff">Haus,Haushalt</option>
-            <option value="item-transportation">KFZ, Fahhrad</option>
-            <option value="item-medical">Medizinische Hilfsmittel</option>
-            <option value="item-furniture">Möbel</option>
-            <option value="item-party">Party, Veranstaltung</option>
-            <option value="item-game">Spiele</option>
-            <option value="item-sport">Sport, Freizeit</option>
-            <option value="item-vacation">Urlaub, Reise</option>
-            <option value="item-tool">Werkzeug, Baumaterialien</option>
-            <option value="item-other">Sonstiges</option>
+            <option value="Baby, Kind">Baby, Kind</option>
+            <option value="Büro">Büro</option>
+            <option value="Garten">Garten</option>
+            <option value="Haus,Haushalt">Haus,Haushalt</option>
+            <option value="KFZ, Fahhrad">KFZ, Fahhrad</option>
+            <option value="Medizinische Hilfsmittel">Medizinische Hilfsmittel</option>
+            <option value="Möbel">Möbel</option>
+            <option value="Party, Veranstaltung">Party, Veranstaltung</option>
+            <option value="Spiele">Spiele</option>
+            <option value="Sport, Freizeit">Sport, Freizeit</option>
+            <option value="Urlaub, Reise">Urlaub, Reise</option>
+            <option value="Werkzeug, Baumaterialien">Werkzeug, Baumaterialien</option>
+            <option value="Sonstiges">Sonstiges</option>
           </select>
 
           <div class="floating-title">
             <input
               type="text"
-              name="picture"
-              id="picture"
+              name="picture1"
+              id="picture1"
               placeholder=" "
               v-model="store.picture"
             />
-            <label for="picture">Bild-URL</label>
-          </div>
-
-          <br />
-          <hr class="hr" />
-          <br />
-        </section>
-
-        <section class="offer-card-item" v-if="selectedOption === 'item'">
-          <h3>Gegenstand anbieten:</h3>
-
-          <select name="item-list" id="item-list-id" v-model="store.category">
-            <option value="" selected disabled>Kategorie wählen</option>
-            <option value="item-kids">Baby, Kind</option>
-            <option value="item-office">Büro</option>
-            <option value="item-garden">Garten</option>
-            <option value="item-homestuff">Haus,Haushalt</option>
-            <option value="item-transportation">KFZ, Fahhrad</option>
-            <option value="item-medical">Medizinische Hilfsmittel</option>
-            <option value="item-furniture">Möbel</option>
-            <option value="item-party">Party, Veranstaltung</option>
-            <option value="item-game">Spiele</option>
-            <option value="item-sport">Sport, Freizeit</option>
-            <option value="item-vacation">Urlaub, Reise</option>
-            <option value="item-tool">Werkzeug, Baumaterialien</option>
-            <option value="item-other">Sonstiges</option>
-          </select>
-
-          <div class="floating-title">
-            <input
-              type="text"
-              name="picture"
-              id="picture"
-              placeholder=" "
-              required
-              v-model="store.picture"
-            />
-            <label for="picture">Bild-URL</label>
+            <label for="picture1">Bild-URL</label>
           </div>
 
           <div class="floating-title">
             <input
               type="text"
-              name="title"
+              name="title-label1"
               id="title-label1"
               placeholder=" "
               required
               v-model="store.title"
             />
-            <label for="title-label1">Titel</label>
+            <label for="title-label1">Titel<span style="color: #f39305">*</span></label>
           </div>
 
           <div class="floating-title">
             <textarea
               class="textarea"
               type="textarea"
-              name="description"
+              name="description-label1"
               id="description-label1"
               placeholder=" "
               required
@@ -122,17 +85,19 @@ export default {}
               cols="40"
               rows="8"
             ></textarea>
-            <label for="description-label1">Beschreibung</label>
+            <label for="description-label1"
+              >Beschreibung<span style="color: #f39305">*</span
+              ><span style="font-size: 12px"> (gib auch eine Kontaktmöglichkeit an)</span></label
+            >
           </div>
 
           <div class="floating-title">
             <input
               type="number"
               step="10"
-              name="deposit"
+              name="deposit-label1"
               id="deposit-label1"
               placeholder=" "
-              required
               v-model="store.deposit"
             />
             <label for="deposit-label1">Kaution in EUR</label>
@@ -143,25 +108,25 @@ export default {}
               <input
                 type="text"
                 id="zipcode-label1"
-                name="zipcode"
+                name="zipcode-label1"
                 pattern="\d{5}"
                 placeholder=" "
                 required
                 v-model="store.zipcode"
               />
-              <label for="zipcode-label1">PLZ</label>
+              <label for="zipcode-label1">PLZ<span style="color: #f39305">*</span></label>
             </div>
 
             <div class="floating-title">
               <input
                 type="text"
-                name="town"
+                name="town-label1"
                 id="town-label1"
                 placeholder=" "
                 required
                 v-model="store.town"
               />
-              <label for="town-label1">Ort</label>
+              <label for="town-label1">Ort<span style="color: #f39305">*</span></label>
             </div>
           </div>
           <div class="button-container">
@@ -171,41 +136,52 @@ export default {}
 
         <section class="offer-card-hobby" v-else-if="selectedOption === 'hobby'">
           <h3>Gemeinsamkeit anbieten:</h3>
-          <select name="hobby-list" id="hobby-list-id">
+          <select name="hobby-list" id="hobby-list-id" v-model="hobbyCategory">
             <option value="" selected disabled>Kategorie wählen</option>
-            <option value="hobby-fishing">Angeln, Aquaristik</option>
-            <option value="hobby-crafting">Basteln</option>
-            <option value="hobby-fotography">Fotografie</option>
-            <option value="hobby-gardening">Gartenarbeit</option>
-            <option value="hobby-cooking">Kochen, Backen</option>
-            <option value="hobby-art">Kunst, Malerei</option>
-            <option value="hobby-music">Musik</option>
-            <option value="hobby-sewing">Nähen</option>
-            <option value="hobby-offline-gaming">Offline Gaming</option>
-            <option value="hobby-online-gaming">Online Gaming</option>
-            <option value="hobby-outdoor">Outdoor Aktivitäten</option>
-            <option value="hobby-collecting">Sammeln</option>
-            <option value="hobby-sporty">Sport und Fitness</option>
-            <option value="hobby-animals">Tiere</option>
-            <option value="hobby-other">Sonstiges</option>
+            <option value="Angeln, Aquaristik">Angeln, Aquaristik</option>
+            <option value="Basteln">Basteln</option>
+            <option value="Fotografie">Fotografie</option>
+            <option value="Gartenarbeit">Gartenarbeit</option>
+            <option value="Kochen, Backen">Kochen, Backen</option>
+            <option value="Kunst, Malerei">Kunst, Malerei</option>
+            <option value="Musik">Musik</option>
+            <option value="Nähen">Nähen</option>
+            <option value="Offline Gaming">Offline Gaming</option>
+            <option value="Online Gaming">Online Gaming</option>
+            <option value="Outdoor Aktivitäten">Outdoor Aktivitäten</option>
+            <option value="Sammeln">Sammeln</option>
+            <option value="Sport und Fitness">Sport und Fitness</option>
+            <option value="Tiere">Tiere</option>
+            <option value="Sonstiges">Sonstiges</option>
           </select>
 
           <div class="floating-title">
             <input
               type="text"
-              name="title"
+              name="picture2"
+              id="picture2"
+              placeholder=" "
+              v-model="store.picture"
+            />
+            <label for="picture2">Bild-URL</label>
+          </div>
+
+          <div class="floating-title">
+            <input
+              type="text"
+              name="title-label2"
               id="title-label2"
               placeholder=" "
               required
               v-model="store.title"
             />
-            <label for="title-label2">Titel </label>
+            <label for="title-label2">Titel<span style="color: #f39305">*</span> </label>
           </div>
 
           <div class="floating-title">
             <textarea
               type="textarea"
-              name="description"
+              name="description-label2"
               id="description-label2"
               placeholder=" "
               required
@@ -213,7 +189,10 @@ export default {}
               cols="50"
               rows="10"
             ></textarea>
-            <label for="description-label2">Beschreibung</label>
+            <label for="description-label2"
+              >Beschreibung<span style="color: #f39305">*</span
+              ><span style="font-size: 12px"> (gib auch eine Kontaktmöglichkeit an)</span></label
+            >
           </div>
 
           <div id="adress-fields">
@@ -221,31 +200,31 @@ export default {}
               <input
                 type="text"
                 id="zipcode-label2"
-                name="zipcode"
+                name="zipcode-label2"
                 pattern="\d{5}"
                 placeholder=" "
                 required
                 v-model="store.zipcode"
               />
-              <label for="zipcode-label2">PLZ</label>
+              <label for="zipcode-label2">PLZ<span style="color: #f39305">*</span></label>
             </div>
 
             <div class="floating-title">
               <input
                 type="text"
-                name="town"
+                name="town-label2"
                 id="town-label2"
                 placeholder=" "
                 required
                 v-model="store.town"
               />
-              <label for="townel2-lab">Ort</label>
+              <label for="townel2-lab">Ort<span style="color: #f39305">*</span></label>
             </div>
           </div>
           <br />
           <input
             type="checkbox"
-            name="remote"
+            name="remote-label2"
             id="remote-label2"
             value="remote"
             v-model="store.remote"
@@ -257,6 +236,8 @@ export default {}
           </div>
         </section>
       </form>
+      <br />
+      <div v-if="isSubmitted" class="success-message">Super! Dein Kram ist online.</div>
     </main>
     <FooterNavComponent />
   </div>
@@ -270,25 +251,53 @@ import HamburgerNavComponent from '@/components/Layout/HamburgerNavComponent.vue
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 
 const store = useDatabaseStore()
-const selectedOption = ref('') //initialize the selected radio-option gegenstand or gemeinsamkeit
-const handleSubmit = () => {
+const selectedOption = ref('')
+const itemCategory = ref('')
+const hobbyCategory = ref('')
+const isSubmitted = ref(false)
+
+const handleSubmit = async () => {
+  if (selectedOption.value === 'item') {
+    store.category = itemCategory.value
+  } else if (selectedOption.value === 'hobby') {
+    store.category = hobbyCategory.value
+  }
+  await store.createOffer()
+
   store.createOffer()
+  selectedOption.value = ''
+  itemCategory.value = ''
+  hobbyCategory.value = ''
+  store.title = ''
+  store.picture = ''
+  store.description = ''
+  store.deposit = ''
+  store.zipcode = ''
+  store.town = ''
+  store.remote = false
+  isSubmitted.value = true
+
+  setTimeout(() => {
+    isSubmitted.value = false
+  }, 5000)
 }
 </script>
 
 <style scoped>
-.content {
-  margin-bottom: 100px;
+h2 {
+  margin-bottom: 1rem;
 }
-
 input[type='checkbox'] {
   margin-right: 5px;
+}
+.content {
+  margin-bottom: 100px;
 }
 
 .hr {
   border: none;
   height: 1px;
-  background-color: #fff6e9;
+  background-color: black;
 }
 
 .both-radios {
@@ -305,32 +314,37 @@ input[type='checkbox'] {
   margin: 5px;
 }
 
+.success-message {
+  font-family: 'abadi-mt-condensed-light-regular';
+  font-size: 1.5rem;
+  color: #f39305;
+}
+
 #adress-fields {
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .button-container {
   display: flex;
-  width: 90%;
   justify-content: center;
   margin-top: 40px;
 }
 
 #zipcode-label1,
 #zipcode-label2 {
-  width: 17vw;
+  width: 30vw;
 }
 
 #town-label1,
 #town-label2 {
-  width: 55vw;
+  width: 50vw;
 }
 
 #item-list-id,
 #hobby-list-id {
-  width: 40%;
+  width: 50%;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
@@ -340,5 +354,10 @@ input[type='checkbox'] {
   border: 2px solid #fff6e9;
   background-color: #fff6e9;
   font-size: 14px;
+  color: #1e293b;
+}
+
+select:focus {
+  outline: none;
 }
 </style>
