@@ -1,15 +1,6 @@
-/*disabled authentication of this page for dev purposes in the index.js. Needs turning back on when
-done. Created Backup SearchView file that needs deleten before deploy.*/
-
 <template>
   <h1>Suchen</h1>
   <h2>Was willst du finden?</h2>
-  <!-- <p>
-      <input type="radio" name="item" value="item" />
-      <label for="item"> Gegenstand </label>
-      <input type="radio" name="hobby" value="hobby" />
-      <label for="hobby"> Gemeinsamkeit </label>
-    </p> -->
   <input type="text" name="search" placeholder="Suche..." v-model="searchTerm" />
 
   <div class="content-container">

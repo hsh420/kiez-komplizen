@@ -25,7 +25,6 @@ export const useDatabaseStore = defineStore({
   },
   getters: {},
   actions: {
-    // New method to fetch offers created by the currently logged-in user
     getUserOffers(userID) {
       let offerData = []
       let offersQuery = db.collection('offers').where('createdByUser', '==', userID)
@@ -112,7 +111,8 @@ export const useDatabaseStore = defineStore({
           console.log(error)
           alert(error.message)
         })
-    }, //get single offer for detail view
+    },
+
     getOffer(id) {
       return db
         .collection('offers')
@@ -127,38 +127,6 @@ export const useDatabaseStore = defineStore({
         })
     },
 
-    /* 
-    
-    Does not work need UPDATE (and DELETE) permisson for Firebase 
-    -> switch two funtions below
-    -> activate onMounted(() => store.getOffers()) in FavoritesView
-    
-    */
-
-    // createFavorites(id) {
-    // db.collection('offers')
-    //   .doc(id)
-    //   .update({
-    //     createdByUser: this.createdByUser,
-    //     dateCreated: this.dateCreated,
-    //     category: this.category,
-    //     picture: this.picture,
-    //     title: this.title,
-    //     description: this.description,
-    //     deposit: this.deposit,
-    //     zipcode: this.zipcode,
-    //     town: this.town,
-    //     remote: this.remote,
-    //     favorite: this.favorite
-    //   })
-    //   .then(() => {
-    //     console.log('Success')
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //     alert(error.message)
-    //   })
-    // },
     updateFavorites(id) {
       this.dataFromApi.forEach((offer) => {
         if (offer.id === id) {

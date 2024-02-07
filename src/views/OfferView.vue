@@ -50,14 +50,7 @@ export default {}
         </select>
 
         <div class="floating-title">
-          <input
-            type="text"
-            name="picture"
-            id="picture"
-            placeholder=" "
-            required
-            v-model="store.picture"
-          />
+          <input type="text" name="picture" id="picture" placeholder=" " v-model="store.picture" />
           <label for="picture">Bild-URL</label>
         </div>
 
