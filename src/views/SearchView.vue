@@ -22,15 +22,18 @@
         <li v-for="offer in filteredOffers" :key="offer.id">
           <div class="card">
             <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-            <div class="card__fav" @click="updateFavorite(offer)">
-              <FavoritesIcon
-                class="card__fav--icon"
-                :class="{ 'is-favorite': offer.favorite, 'is-no-favorite': !offer.favorite }"
-              />
+            <div
+              class="card__fav"
+              @click="deleteLike(offer)"
+              v-if="offer.likedBy.includes(auth.user.uid)"
+            >
+              <FavoritesIcon class="card__fav--icon is-favorite" />
             </div>
-
+            <div class="card__fav" @click="addLike(offer)" v-else>
+              <FavoritesIcon class="card__fav--icon is-no-favorite" />
+            </div>
             <div class="card__details">
-              <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
+              <h3 class="card__headline">{{ offer.title }}</h3>
               <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
               <router-link :to="{ path: 'offer-details/' + offer.id, params: offer.id }"
                 ><ArrowRightIcon class="card__arrow"
@@ -46,10 +49,13 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
+import { useAuthStore } from '@/stores/auth'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+
 const store = useDatabaseStore()
+const auth = useAuthStore()
 let searchTerm = ref('') // Reference to store the search term
 let searchTermZipCode = ref('')
 
@@ -65,7 +71,19 @@ const filteredOffers = computed(() => {
   }
 })
 
-const updateFavorite = (offer) => store.updateFavorites(offer.id)
+function addLike(offer) {
+  store.updateOfferLikedBy(offer.id, auth.user.uid)
+  setTimeout(() => {
+    store.getOffers()
+  }, 500)
+}
+
+function deleteLike(offer) {
+  store.deleteOfferLikedBy(offer.id, auth.user.uid)
+  setTimeout(() => {
+    store.getOffers()
+  }, 500)
+}
 
 onMounted(() => store.getOffers())
 </script>

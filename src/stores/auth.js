@@ -21,7 +21,8 @@ const provider = new firebase.auth.GoogleAuthProvider()
 const db = firebase.firestore()
 const createUser = (userId, displayName, email) => {
   db.collection('users')
-    .add({ userId: userId, displayName: displayName, email: email })
+    .doc(userId)
+    .set({ userId: userId, displayName: displayName, email: email })
     .catch((error) => {
       console.log(error)
       alert(error.message)
