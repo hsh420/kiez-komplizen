@@ -1,31 +1,45 @@
 <template>
   <p>{{ authStore.$state.uid }}</p>
   <h1>Hallo, {{ displayName }}!</h1>
-  <h2>Das ist Dein Kiezkrams:</h2>
+  <h2>Hier findest du deinen Kiezkrams</h2>
   <hr />
   <br />
 
   <div class="content-container">
     <main>
-      <ul>
-        <li v-for="offer in databaseStore.dataFromApi" :key="offer.id">
-          <div class="card">
-            <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
-            <div class="card__buttons" @click="editOffer(offer)">
-              <button class="card__x--button">
-                <span style="font-size: 1.5rem; color: white">&times;</span> Löschen
-              </button>
-              <button class="card__edit--button">Bearbeiten</button>
-            </div>
+      <div v-if="databaseStore.dataFromApi.length > 0">
+        <ul>
+          <li v-for="offer in databaseStore.dataFromApi" :key="offer.id">
+            <div class="card">
+              <img
+                class="card__img"
+                :src="offer.picture || placeholderPic"
+                @error="(event) => (event.target.src = placeholderPic)"
+                alt="Bild des Artikels"
+              />
+              <div class="card__buttons" @click="editOffer(offer)">
+                <button class="card__x--button" @click="deleteOffer(offer.id)">
+                  <span style="font-size: 1.5rem; color: white">&times;</span> Löschen
+                </button>
+                <button class="card__edit--button">Bearbeiten</button>
+              </div>
 
-            <div class="card__details">
-              <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
-              <p class="card__location"><LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}</p>
-              <ArrowRightIcon class="card__arrow" />
+              <div class="card__details">
+                <h3 class="card__headline">{{ offer.title.toUpperCase() }}</h3>
+                <p class="card__location">
+                  <LocationIcon /> {{ offer.zipcode + ' ' + offer.town }}
+                </p>
+                <ArrowRightIcon class="card__arrow" />
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div v-else class="no-offers">
+        <img src="@/assets/kk.gif" alt="Kiezkomplizen Logo" class="placeholder-gif" />
+        <p class="no-offers">Du hast noch nichts angeboten. Los geht's...</p>
+      </div>
     </main>
   </div>
 </template>
@@ -35,13 +49,19 @@ import { toRaw } from 'vue'
 import { onMounted } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
 import { useAuthStore } from '@/stores/auth'
+import placeholderPic from '@/assets/kk-placeholder-pic.png'
 
 const databaseStore = useDatabaseStore()
 const authStore = useAuthStore()
 const displayName = toRaw(authStore.user.displayName)
+const deleteOffer = (offerId) => {
+  databaseStore.deleteOffer(offerId)
+}
 
 onMounted(() => {
-  databaseStore.getOffers()
+  {
+    databaseStore.getOffers()
+  }
 })
 </script>
 
@@ -54,6 +74,15 @@ onMounted(() => {
   margin-bottom: 1.5rem;
 }
 
+.no-offers {
+  font-family: 'abadi-mt-condensed-light-regular';
+  font-size: 1.5rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -62,6 +91,10 @@ ul {
 li {
   list-style: none;
   margin: 25px auto;
+}
+
+.placeholder-gif {
+  width: 80%;
 }
 .card {
   position: relative;
