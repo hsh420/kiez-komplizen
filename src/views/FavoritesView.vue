@@ -10,7 +10,12 @@
       <ul>
         <li v-for="(favorite, index) of favorites" :key="favorite.id">
           <div class="card">
-            <img class="card__img" :src="favorite.picture" alt="Bild des Artikels" />
+            <img
+              class="card__img"
+              :src="favorite.picture || placeholderPic"
+              @error="(event) => (event.target.src = placeholderPic)"
+              alt="Bild des Artikels"
+            />
             <div class="card__fav" @click="deleteLike(favorite, index)">
               <FavoritesIcon class="card__fav--icon is-favorite" />
             </div>
@@ -35,6 +40,7 @@ import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
 import { useAuthStore } from '@/stores/auth'
+import placeholderPic from '@/assets/kk-placeholder-pic.png'
 
 const store = useDatabaseStore()
 const auth = useAuthStore()
