@@ -75,6 +75,7 @@ import { useAuthStore } from '@/stores/auth'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+import placeholderPic from '@/assets/kk-placeholder-pic.png'
 
 const store = useDatabaseStore()
 const auth = useAuthStore()
