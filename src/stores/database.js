@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import firebase from 'firebase/compat/app'
 import { useAuthStore } from './auth'
+import { arrayRemove, arrayUnion } from 'firebase/firestore'
 
 const db = firebase.firestore()
 const auth = useAuthStore()
@@ -20,57 +21,13 @@ export const useDatabaseStore = defineStore({
       town: '',
       remote: false,
       dataFromApi: [],
-      favorite: false,
-      offer: []
+      offer: [],
+      favorites: [],
+      favoriteOffers: []
     }
   },
   getters: {},
   actions: {
-    deleteOffer(offerId) {
-      db.collection('offers')
-        .doc(offerId)
-        .delete()
-        .then(() => {
-          console.log('Offer deleted.')
-          this.dataFromApi = this.dataFromApi.filter((offer) => offer.id !== offerId)
-        })
-        .catch((error) => {
-          console.error('Error removing offer:', error)
-        })
-    },
-
-    getUserOffers(userID) {
-      let offerData = []
-      let offersQuery = db.collection('offers').where('createdByUser', '==', userID)
-
-      offersQuery
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            let offer = {
-              id: doc.id,
-              createdByUser: doc.data().createdByUser,
-              dateCreated: doc.data().dateCreated,
-              category: doc.data().category,
-              picture: doc.data().picture,
-              title: doc.data().title,
-              description: doc.data().description,
-              deposit: doc.data().deposit,
-              zipcode: doc.data().zipcode,
-              town: doc.data().town,
-              remote: doc.data().remote,
-              favorite: doc.data().favorite
-            }
-            offerData.push(offer)
-          })
-          this.dataFromApi = offerData
-        })
-        .catch((error) => {
-          console.error('Error fetching user offers:', error)
-          alert(error.message)
-        })
-    },
-
     createOffer() {
       db.collection('offers')
         .add({
@@ -84,7 +41,7 @@ export const useDatabaseStore = defineStore({
           zipcode: this.zipcode,
           town: this.town,
           remote: this.remote,
-          favorite: this.favorite
+          likedBy: []
         })
         .then(() => {
           console.log('Success')
@@ -113,10 +70,11 @@ export const useDatabaseStore = defineStore({
               topic: doc.data().topic,
               town: doc.data().town,
               remote: doc.data().remote,
-              favorite: doc.data().favorite
+              likedBy: doc.data().likedBy
             })
-            this.dataFromApi = offerData
           })
+          this.dataFromApi = offerData
+          console.log(offerData)
           return offerData
         })
         .catch((error) => {
@@ -139,13 +97,49 @@ export const useDatabaseStore = defineStore({
         })
     },
 
-    updateFavorites(id) {
-      this.dataFromApi.forEach((offer) => {
-        if (offer.id === id) {
-          offer.favorite = !offer.favorite
-          console.log('favorite: ' + offer.favorite)
-        }
-      })
+    getFavOffers(id) {
+      db.collection('offers')
+        .doc(id)
+        .get()
+        .then((data) => {
+          console.log('Success')
+          this.favoriteOffers.push(data.data())
+        })
+        .catch((error) => {
+          console.log(error)
+          alert(error.message)
+        })
+    },
+
+    updateFavorites(id, offerId) {
+      db.collection('users')
+        .doc(id)
+        .update({
+          favorites: arrayUnion(offerId)
+        })
+    },
+    deleteOfferLikedBy(offerId, id) {
+      db.collection('offers')
+        .doc(offerId)
+        .update({
+          likedBy: arrayRemove(id)
+        })
+    },
+    updateOfferLikedBy(offerId, id) {
+      db.collection('offers')
+        .doc(offerId)
+        .update({
+          likedBy: arrayUnion(id)
+        })
+    },
+    getUserFavorites(id) {
+      db.collection('users')
+        .doc(id)
+        .get()
+        .then((result) => {
+          console.log(result.data().favorites)
+          this.favorites = result.data().favorites
+        })
     }
   },
   persist: true

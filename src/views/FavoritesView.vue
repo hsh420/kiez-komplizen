@@ -6,19 +6,12 @@
   <div class="content-container">
     <main>
       <ul>
-        <li v-for="favorite in favorites" :key="favorite.id">
+        <li v-for="(favorite, index) of favorites" :key="favorite.id">
           <div class="card">
             <img class="card__img" :src="favorite.picture" alt="Bild des Artikels" />
-            <div class="card__fav" @click="updateFavorite(favorite)">
-              <FavoritesIcon
-                class="card__fav--icon"
-                :class="{
-                  'is-favorite': favorite.favorite,
-                  'is-no-favorite': !favorite.favorite
-                }"
-              />
+            <div class="card__fav" @click="deleteLike(favorite, index)">
+              <FavoritesIcon class="card__fav--icon is-favorite" />
             </div>
-
             <div class="card__details">
               <h3 class="card__headline">{{ favorite.title.toUpperCase() }}</h3>
               <p class="card__location">
@@ -35,17 +28,35 @@
 
 <script setup>
 import { useDatabaseStore } from '@/stores/database'
-import { computed, onMounted } from 'vue'
+import { onBeforeMount, reactive, toRaw } from 'vue'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+import { useAuthStore } from '@/stores/auth'
 
 const store = useDatabaseStore()
-const favorites = computed(() => store.dataFromApi.filter((offer) => offer.favorite))
-const updateFavorite = (favorite) => store.updateFavorites(favorite.id)
+const auth = useAuthStore()
 
-//look at comment in database -> createFavorites
-onMounted(() => console.log(store.dataFromApi[0].id))
+let favorites = reactive([])
+
+function filterData() {
+  store.dataFromApi.forEach((offer) => {
+    toRaw(offer.likedBy).forEach((id) => {
+      if (id === auth.user.uid) {
+        favorites.push(toRaw(offer))
+      }
+    })
+  })
+}
+
+function deleteLike(offer, index) {
+  store.deleteOfferLikedBy(offer.id, auth.user.uid)
+  favorites.splice(index, 1)
+}
+onBeforeMount(() => {
+  store.getOffers()
+  filterData()
+})
 </script>
 
 <style scoped>
