@@ -1,6 +1,8 @@
 <template>
   <header>
     <h1>Deine Favoriten</h1>
+    <h2>Krams den du besonders knorke findest</h2>
+    <hr />
   </header>
 
   <div class="content-container">
@@ -62,10 +64,6 @@ onBeforeMount(() => {
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
-
-h1 {
-  text-align: center;
-}
 
 .content-container {
   margin-top: 8rem;
