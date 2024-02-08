@@ -21,13 +21,14 @@ const router = createRouter({
     {
       path: '/',
       name: 'start',
-      component: () => import('../views/HomeView.vue')
+      component: () => import('../views/HomeView.vue'),
+      beforeEnter: requireAuth
     },
     {
       path: '/home',
       name: 'home',
-      component: () => import('../views/HomeView.vue')
-      //beforeEnter: requireAuth
+      component: () => import('../views/HomeView.vue'),
+      beforeEnter: requireAuth
     },
     {
       path: '/about',
@@ -61,20 +62,20 @@ const router = createRouter({
     {
       path: '/search',
       name: 'search',
-      component: () => import('../views/SearchView.vue')
-      //beforeEnter: requireAuth
+      component: () => import('../views/SearchView.vue'),
+      beforeEnter: requireAuth
     },
     {
       path: '/offer',
       name: 'offer',
-      component: () => import('../views/OfferView.vue')
-      //beforeEnter: requireAuth
+      component: () => import('../views/OfferView.vue'),
+      beforeEnter: requireAuth
     },
     {
       path: '/offer-details/:id',
       name: 'offer-details',
-      component: () => import('../views/DetailsView.vue')
-      //beforeEnter: requireAuth
+      component: () => import('../views/DetailsView.vue'),
+      beforeEnter: requireAuth
     },
     {
       path: '/messages',
