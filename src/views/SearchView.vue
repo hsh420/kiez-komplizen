@@ -2,26 +2,46 @@
   <h1>Suchen</h1>
   <h2>Was willst du finden?</h2>
 
-  <!-- <p>
-      <input type="radio" name="item" value="item" />
-      <label for="item"> Gegenstand </label>
-      <input type="radio" name="hobby" value="hobby" />
-      <label for="hobby"> Gemeinsamkeit </label>
-    </p> -->
-  <input type="text" name="search" placeholder="Suche nach Gegenstand" v-model="searchTerm" />
-  <input
-    type="text"
-    name="search"
-    placeholder="Suche nach Postleitzahl"
-    v-model="searchTermZipCode"
-  />
+  <div class="both-inputs">
+    <div class="floating-title">
+      <div class="whatever">
+        <input
+          type="text"
+          name="search-word"
+          id="search-word"
+          class="search-words"
+          placeholder=""
+          v-model="searchTerm"
+        />
+        <label for="search-word">Nach Kiezkrams suchen</label>
+      </div>
+    </div>
 
+    <div class="floating-title">
+      <input
+        type="text"
+        name="search-zip"
+        id="search-zip"
+        class="search-zipcode"
+        placeholder=""
+        v-model="searchTermZipCode"
+      />
+      <label for="search-zip">Nach PLZ filtern</label>
+    </div>
+  </div>
+
+  <hr />
   <div class="content-container">
     <main>
       <ul>
         <li v-for="offer in filteredOffers" :key="offer.id">
           <div class="card">
-            <img class="card__img" :src="offer.picture" alt="Bild des Artikels" />
+            <img
+              class="card__img"
+              :src="offer.picture || placeholderPic"
+              @error="(event) => (event.target.src = placeholderPic)"
+              alt="Bild des Artikels"
+            />
             <div class="card__fav" @click="updateFavorite(offer)">
               <FavoritesIcon
                 class="card__fav--icon"
@@ -49,6 +69,8 @@ import { useDatabaseStore } from '@/stores/database'
 import LocationIcon from '@/components/icons/IconLocation.vue'
 import FavoritesIcon from '@/components/icons/IconFavorites.vue'
 import ArrowRightIcon from '@/components/icons/IconArrowRight.vue'
+import placeholderPic from '@/assets/kk-placeholder-pic.png'
+
 const store = useDatabaseStore()
 let searchTerm = ref('') // Reference to store the search term
 let searchTermZipCode = ref('')
@@ -73,10 +95,23 @@ onMounted(() => store.getOffers())
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
-h1 {
-  text-align: center;
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: black;
 }
 
+.both-inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0rem 5px 1rem 0;
+}
+
+.whatever {
+  width: 65vw;
+}
 .content-container {
   margin-top: 8rem;
   margin-bottom: 1.5rem;
