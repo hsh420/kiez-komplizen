@@ -1,6 +1,6 @@
 <template>
   <h1>Account erstellen</h1>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit()" ref="regiForm">
     <div class="input-container">
       <label for="inputField1"
         >Vorname<br />
@@ -30,44 +30,37 @@
     <div class="input-container">
       <label for="password"
         >Passwort<br />
-        <input
-          type="password"
-          id="password"
-          placeholder="********"
-          @input="validatePassword"
-          v-model="store.password" />
-        </label>
-      <p class="password-lenght" v-if="password.length < 8" style="color: grey;">mindestens 8 Zeichen</p>
+        <input type="password" id="password" placeholder="********" v-model="store.password" />
+      </label>
+      <p class="password-lenght" v-if="store.password.length < 8" style="color: grey">
+        mindestens 8 Zeichen
+      </p>
     </div>
+    <ButtonGlobal :label="'Registrierung'" type="submit" class="registration-button" />
   </form>
-  <ButtonGlobal :label="'Registrierung'" type="submit" class="registration-button" />
   <p>
     Durch deine Registrierung bestätigst Du unsere <br />
-    <router-link to="/nutzerbedingungen">Nutzungsbedingungen</router-link> und <router-link to="/datenschutzvereinbarungen">Datenschutzvereinbarungen</router-link>.
+    <router-link to="/nutzerbedingungen">Nutzungsbedingungen</router-link> und
+    <router-link to="/datenschutzvereinbarungen">Datenschutzvereinbarungen</router-link>.
   </p>
 </template>
 
 <script setup>
 import ButtonGlobal from '@/components/ButtonGlobalComponent.vue'
 import { useAuthStore } from '@/stores/auth'
-import {ref} from 'vue';
 
 const store = useAuthStore()
-const handleSubmit = () => {
-  store.register()
-}
 
-const password = ref('');
-const validatePassword = () => {
-  if (password.value.length < 8) {
-    console.log('Das Passwort muss mindestens 8 Zeichen lang sein');
-  }
+function handleSubmit() {
+  store.register()
+  store.email = ''
+  store.password = ''
 }
 </script>
 
 <style scoped>
 @import url('@/assets/main.css');
-@import url('@/assets/base.css'); 
+@import url('@/assets/base.css');
 h1 {
   text-align: center;
   margin-top: 30px;
