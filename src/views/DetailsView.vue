@@ -38,7 +38,7 @@
       
     </ul>
 
-    <p v-else class="no-offers">Keine Angebote gefunden</p>
+    <p v-else class="no-offers">Keine Angebote gefunden!</p>
   </div>
 </template>
 
