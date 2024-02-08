@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import firebase from 'firebase/compat/app'
 import { useAuthStore } from './auth'
 import { arrayRemove, arrayUnion } from 'firebase/firestore'
+import { toRaw } from 'vue'
 
 const db = firebase.firestore()
 const auth = useAuthStore()
@@ -89,7 +90,10 @@ export const useDatabaseStore = defineStore({
         .get()
         .then((data) => {
           console.log('Success')
-          this.offer.push(data.data())
+          console.log(toRaw(this.offer).length)
+          if (toRaw(this.offer).length === 0) {
+            this.offer.push(data.data())
+          }
         })
         .catch((error) => {
           console.log(error)
