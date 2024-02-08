@@ -1,6 +1,6 @@
 <template>
   <h1>Account erstellen</h1>
-  <form @submit.prevent="handleSubmit()" ref="regiForm">
+  <form @submit.prevent="handleSubmit()">
     <div class="input-container">
       <label for="inputField1"
         >Vorname<br />
