@@ -7,9 +7,9 @@
 
   <div class="content-container">
     <main>
-      <div v-if="databaseStore.dataFromApi.length > 0">
+      <div v-if="databaseStore.userOffers.length > 0">
         <ul>
-          <li v-for="offer in databaseStore.dataFromApi" :key="offer.id">
+          <li v-for="(offer, index) of databaseStore.userOffers" :key="offer.id">
             <div class="card">
               <img
                 class="card__img"
@@ -17,11 +17,11 @@
                 @error="(event) => (event.target.src = placeholderPic)"
                 alt="Bild des Artikels"
               />
-              <div class="card__buttons" @click="editOffer(offer)">
-                <button class="card__x--button" @click="deleteOffer(offer.id)">
+              <div class="card__buttons">
+                <button class="card__x--button" @click="deleteOffer(offer.id, index)">
                   <span style="font-size: 1.5rem; color: white">&times;</span> Löschen
                 </button>
-                <button class="card__edit--button">Bearbeiten</button>
+                <button class="card__edit--button" @click="editOffer(offer)">Bearbeiten</button>
               </div>
 
               <div class="card__details">
@@ -45,8 +45,8 @@
 </template>
 
 <script setup>
-import { toRaw } from 'vue'
-import { onMounted } from 'vue'
+import { toRaw, onMounted } from 'vue'
+//import { onBeforeMount, reactive } from 'vue'
 import { useDatabaseStore } from '@/stores/database'
 import { useAuthStore } from '@/stores/auth'
 import placeholderPic from '@/assets/kk-placeholder-pic.png'
@@ -54,15 +54,45 @@ import placeholderPic from '@/assets/kk-placeholder-pic.png'
 const databaseStore = useDatabaseStore()
 const authStore = useAuthStore()
 const displayName = toRaw(authStore.user.displayName)
-const deleteOffer = (offerId) => {
+
+function deleteOffer(offerId, index) {
   databaseStore.deleteOffer(offerId)
+  databaseStore.userOffers.splice(index, 1)
 }
 
 onMounted(() => {
-  {
-    databaseStore.getOffers()
+  //databaseStore.getOffers()
+  if (authStore.user && authStore.user.uid) {
+    databaseStore.getUserOffers(authStore.user.uid)
   }
 })
+/*
+const store = useDatabaseStore()
+const auth = useAuthStore()
+let userOffers = reactive([])
+
+function getUserOffers() {
+  store.dataFromApi.forEach((offer) => {
+    toRaw(offer.createdBy).forEach((id) => {
+      if (id === auth.user.uid) {
+        userOffers.push(toRaw(offer))
+      }
+    })
+  })
+}
+
+function addUserOffers(offer) {
+  store.updateOfferCreatedBy(offer.id, auth.user.uid)
+  setTimeout(() => {
+    store.getOffers()
+  }, 500)
+}
+
+onBeforeMount(() => {
+  store.getOffers()
+  getUserOffers()
+})
+*/
 </script>
 
 <style scoped>
