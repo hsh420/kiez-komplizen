@@ -90,12 +90,10 @@ h1 {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  /* margin-top: 30px; */
   background-color: var(--cc-egg);
   border-radius: 10px;
   height: 600px;
   margin-top: 20px;
-  /* margin-bottom: 120px; */
   display: flex;
   justify-content: center; 
   align-items: center; 
@@ -103,8 +101,6 @@ h1 {
 
 .card__x--button {
   display: absolute;
-  /* align-items: center; */
-  /* gap: 0.2rem; */
   top: 0;
   left: 0;
   display: flex;
