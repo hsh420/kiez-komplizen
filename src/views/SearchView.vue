@@ -81,7 +81,7 @@ const store = useDatabaseStore()
 const auth = useAuthStore()
 let searchTerm = ref('') // Reference to store the search term
 let searchTermZipCode = ref('')
-
+/* OLD STUFF 
 const filteredOffers = computed(() => {
   if (!searchTerm.value && !searchTermZipCode.value) {
     return store.dataFromApi
@@ -92,6 +92,24 @@ const filteredOffers = computed(() => {
   } else {
     return store.dataFromApi.filter((offer) => offer.zipcode.startsWith(searchTermZipCode.value))
   }
+})
+*/
+
+const filteredOffers = computed(() => {
+  let offers = store.dataFromApi //assume that all offers should be shown
+  if (searchTerm.value) {
+    //if a search word is entered
+    offers = offers.filter(
+      (
+        offer //we filter the array on that word and smallen the list of offers
+      ) => offer.title.toLowerCase().includes(searchTerm.value.toLowerCase())
+    )
+  }
+  if (searchTermZipCode.value) {
+    //AFTER filtering the first, we check if a zipcode is given
+    offers = offers.filter((offer) => offer.zipcode.startsWith(searchTermZipCode.value)) //if yes, we filter on the smaller array
+  }
+  return offers
 })
 
 function addLike(offer) {
