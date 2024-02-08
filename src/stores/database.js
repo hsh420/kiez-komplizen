@@ -23,11 +23,49 @@ export const useDatabaseStore = defineStore({
       dataFromApi: [],
       offer: [],
       favorites: [],
-      favoriteOffers: []
+      favoriteOffers: [],
+      userOffers: []
     }
   },
   getters: {},
   actions: {
+    getUserOffers(userId) {
+      let userOfferData = []
+      db.collection('offers')
+        .where('createdByUser.uid', '==', userId)
+        .get()
+        .then((data) => {
+          data.forEach((doc) => {
+            userOfferData.push({
+              id: doc.id,
+              createdByUser: doc.data().createdByUser,
+              dateCreated: doc.data().dateCreated,
+              category: doc.data().category,
+              picture: doc.data().picture,
+              title: doc.data().title,
+              description: doc.data().description,
+              deposit: doc.data().deposit,
+              zipcode: doc.data().zipcode,
+              topic: doc.data().topic,
+              town: doc.data().town,
+              remote: doc.data().remote,
+              likedBy: doc.data().likedBy,
+              createdBy: doc.data().createdBy
+            })
+          })
+          this.userOffers = userOfferData
+          console.log(userOfferData)
+        })
+        .catch((error) => {
+          console.error(error)
+          alert(error.message)
+        })
+    },
+
+    deleteOffer(offerId) {
+      db.collection('offers').doc(offerId).delete()
+    },
+
     createOffer() {
       db.collection('offers')
         .add({
@@ -70,7 +108,8 @@ export const useDatabaseStore = defineStore({
               topic: doc.data().topic,
               town: doc.data().town,
               remote: doc.data().remote,
-              likedBy: doc.data().likedBy
+              likedBy: doc.data().likedBy,
+              createdBy: doc.data().createdBy
             })
           })
           this.dataFromApi = offerData
@@ -132,6 +171,14 @@ export const useDatabaseStore = defineStore({
           likedBy: arrayUnion(id)
         })
     },
+    updateOfferCreatedBy(offerId, id) {
+      db.collection('offers')
+        .doc(offerId)
+        .update({
+          createdBy: arrayUnion(id)
+        })
+    },
+
     getUserFavorites(id) {
       db.collection('users')
         .doc(id)
