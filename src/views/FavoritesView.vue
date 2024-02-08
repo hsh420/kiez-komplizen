@@ -62,6 +62,7 @@ onBeforeMount(() => {
 <style scoped>
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
+
 h1 {
   text-align: center;
 }
