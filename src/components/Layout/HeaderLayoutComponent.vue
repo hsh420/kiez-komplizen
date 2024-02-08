@@ -18,21 +18,24 @@
         </div>
       </section>
     </header>
-    <HamburgerNavComponent />
+    <HamburgerNavComponent v-if="showBurgerMenu()" />
   </div>
 </template>
-<script>
+<script setup>
+import { useRouter } from 'vue-router'
 import HamburgerNavComponent from './HamburgerNavComponent.vue'
 
-export default {
-  name: 'HeaderLayoutComponent',
-  components: { HamburgerNavComponent }
-}
+const router = useRouter()
+
+const showBurgerMenu = () =>
+  router.currentRoute.value.name !== 'login' &&
+  router.currentRoute.value.name !== 'registration' &&
+  router.currentRoute.value.name !== 'registration-success'
 </script>
 
 <style scoped>
 .content {
-  margin-top:135px;
+  margin-top: 135px;
 }
 
 .header-container {
