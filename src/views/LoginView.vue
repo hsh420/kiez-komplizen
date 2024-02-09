@@ -20,8 +20,8 @@
             v-model="store.password"
         /></label>
       </div>
+      <ButtonGlobal :label="'Login'" type="submit" class="login-button" />
     </form>
-    <ButtonGlobal :label="'Login'" type="submit" class="login-button" />
     <p>...oder mit Google anmelden</p>
     <button class="google-button" v-on:click="store.loginWithGoogle">
       <img class="icon-google" alt="Google Logo" src="@/assets/pictures-layout/google_icon.png" />
