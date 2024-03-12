@@ -1,61 +1,31 @@
 <template>
-  <!-- <main>
-    <img class="logo-img" alt="Hintergrund-Bild" src="@/assets/logo-final/Kiezkomplizen_logo.png" />
-    <section class="all-p-and-button-container">
-      <p class="first-p uppercase p-left">
-        Du brauchst etwas Bestimmtes <br />aber willst es nicht gleich kaufen?
-      </p>
-      <p class="second-p uppercase p-right">
-        Du hast ein bestimmtes Hobby <br />und suchst Leute die mitmachen?
-      </p>
+  <main>
+    <div class="flex-center">
+      <div class="img-container">
+        <img
+          class="logo-img"
+          alt="Logo Kiez-Komplizen"
+          src="@/assets/logo-final/Kiezkomplizen_logo.png"
+        />
+      </div>
+    </div>
+    <section class="all-p-container">
       <p class="third-p p-center">
-        Werde ein <span class="corp-orange bold">Kiez-Komplieze:</span><br />
-        <span class="bold"> Leihe und verleihe Gegenstände</span> oder <br />
-        <span class="bold">finde jemanden</span>für <span class="bold">gemeinsame Hobbys.</span
+        Werde ein <span class="corp-orange">Kiez-Komplieze:</span><br />
+        <span class="bold"> Leihe und verleihe Gegenstände</span> oder<br />
+        <span class="bold">finde jemanden</span> für <span class="bold">gemeinsame Hobbys.</span
         ><br />
         Kostenlos und gleich nebenan.
       </p>
+      <RouterLink to="/about"
+        ><p class="corp-orange">Du willst mehr über uns erfahren?</p></RouterLink
+      >
       <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
       <p class="last-p">
         Noch nicht dabei? <RouterLink to="/registration">Registrieren.</RouterLink>
       </p>
     </section>
-    <div class="backdrop-shadow"></div>
-    <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax.png" />
-  </main> -->
-  <main>
-    <div class="fullscreen">
-      <div class="flex-center">
-        <img
-          class="logo-img"
-          alt="Hintergrund-Bild"
-          src="@/assets/logo-final/Kiezkomplizen_logo.png"
-        />
-        <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax.png" />
-      </div>
-      <div class="backdrop-shadow">
-        <section class="all-p-container">
-          <p class="third-p p-center">
-            Werde ein <span class="corp-orange">Kiez-Komplieze:</span>
-            <span class="bold"> Leihe und verleihe Gegenstände</span> oder<br />
-            <span class="bold">finde jemanden</span>für <span class="bold">gemeinsame Hobbys.</span
-            ><br />
-            Kostenlos und gleich nebenan.
-          </p>
-        </section>
-        <section class="link-about">
-          <RouterLink to="/about"
-            ><p class="corp-orange">Du willst mehr über uns erfahren?</p></RouterLink
-          >
-        </section>
-        <section class="login-button-with-text">
-          <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
-          <p class="last-p">
-            Noch nicht dabei? <RouterLink to="/registration">Registrieren.</RouterLink>
-          </p>
-        </section>
-      </div>
-    </div>
+    <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax2.png" />
   </main>
 </template>
 
@@ -74,25 +44,21 @@ export default {
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
 
-.fullscreen {
-  position: fixed;
-  background-color: #000;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 200;
+p {
+  color: var(--cc-text-lightmode);
 }
 
-p {
-  color: var(--cc-text-darkmode);
+.img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  z-index: 2;
 }
 
 .logo-img {
-  top: 35%;
-  z-index: 300;
-  width: 328px;
-  height: 140px;
+  top: 20px;
+  width: 250px;
   position: absolute;
   object-fit: cover;
 }
@@ -103,35 +69,44 @@ p {
 }
 
 .all-p-container {
-  position: relative;
+  background: linear-gradient(transparent, #000);
   margin-top: 300px;
+  color: var(--cc-text-lightmode);
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 20px;
 }
 
 .link-about {
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  z-index: 2;
 }
 
 .login-button-with-text {
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
-
 
 .third-p,
 .last-p {
   font-weight: 400;
+}
+
+.last-p {
+  color: #fff;
 }
 
 .p-center {
@@ -144,7 +119,8 @@ p {
 }
 
 .bold {
-  color: white;
+  color: black;
+  font-weight: 600;
 }
 
 .button {
@@ -156,31 +132,16 @@ p {
   padding: 14px 80px 14px 80px;
   position: relative;
   font-size: 15px;
-
 }
 
 button:hover {
   background-color: var(--cc-orange);
 }
 
-.backdrop-shadow,
-.backdrop-shadow * {
-  box-sizing: border-box;
-}
-.backdrop-shadow {
-  width: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 17.70833283662796%,
-    rgba(0, 0, 0, 0.72) 29.16666567325592%
-  );
-  height: 70vh;
-  bottom: 0;
-  position: fixed;
-}
-
 .bg-img {
   position: fixed;
-
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 </style>
