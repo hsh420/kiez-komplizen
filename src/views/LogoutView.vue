@@ -1,26 +1,23 @@
 <template>
   <main>
-    <div class="fullscreen">
-      <div class="flex-center">
+    <div class="flex-center">
+      <div class="img-container">
         <img
           class="logo-img"
-          alt="Hintergrund-Bild"
+          alt="Logo Kiez-Komplizen"
           src="@/assets/logo-final/Kiezkomplizen_logo.png"
         />
-        <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax2.png" />
-      </div>
-      <div class="backdrop-shadow">
-        <section class="all-p-and-button-container1">
-          <p class="first-p uppercase p-left"></p>
-          <h1>Jetzt biste raus!</h1>
-          <p class="second-p uppercase p-right">Schau mal wieder vorbei!</p>
-        </section>
-
-        <section class="link-login">
-          <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
-        </section>
       </div>
     </div>
+    <section class="all-p-container">
+      <h1 class="third-p p-center">
+        Danke tschau! <br />
+        <span class="bold"> Schauste bald mal wieder rein, wa?</span>
+      </h1>
+
+      <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
+    </section>
+    <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax2.png" />
   </main>
 </template>
 
@@ -39,29 +36,23 @@ export default {
 @import url('@/assets/main.css');
 @import url('@/assets/base.css');
 
-.fullscreen {
-  position: fixed;
-  background-color: #000;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 200;
+p {
+  color: var(--cc-text-lightmode);
 }
 
-p {
-  color: var(--cc-text-darkmode);
-  margin-top: 0;
+.img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  z-index: 2;
 }
 
 .logo-img {
-  top: 30%;
-  z-index: 300;
-  width: 328px;
-  height: 140px;
+  top: 20px;
+  width: 250px;
   position: absolute;
   object-fit: cover;
-  margin-top: 50px;
 }
 
 .flex-center {
@@ -69,58 +60,45 @@ p {
   justify-content: center;
 }
 
-.all-p-and-button-container1 {
+.all-p-container {
+  background: linear-gradient(transparent, #000);
+  margin-top: 300px;
+  color: var(--cc-text-lightmode);
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
   bottom: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+  left: 0;
+  right: 0;
+  padding-bottom: 70px;
+}
+
+.link-about {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 320px;
+  z-index: 2;
 }
 
-.all-p-and-button-container2 {
-  position: absolute;
-  bottom: 0;
+.login-button-with-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 150px;
-  margin-left: 30px;
-}
-
-.link-login {
-  margin-top: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 150px;
-}
-
-.first-p,
-.second-p {
-  font-size: 16px;
+  z-index: 2;
 }
 
 .third-p,
 .last-p {
-  font-size: 14px;
   font-weight: 400;
 }
 
-.p-left {
-  width: 90%;
-  align-self: flex-start;
-}
-
-.p-right {
-  width: 90%;
-  align-self: flex-end;
-  text-align: right;
+.last-p {
+  color: #fff;
 }
 
 .p-center {
@@ -132,53 +110,30 @@ p {
   font-weight: bolder;
 }
 
-.uppercase {
-  text-transform: uppercase;
-}
-/* 
 .bold {
-  font-weight: bolder;
-  color: white;
-} */
+  color: black;
+  font-weight: 600;
+}
 
 .button {
+  margin: 30px 0 15px 0;
   border: none;
   background: var(--cc-orange);
   color: var(--cc-text-darkmode);
   border-radius: 50px;
   padding: 14px 80px 14px 80px;
-  margin-top: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  font-size: 15px;
 }
 
 button:hover {
-  background-color: orange;
-}
-
-.backdrop-shadow,
-.backdrop-shadow * {
-  box-sizing: border-box;
-}
-.backdrop-shadow {
-  width: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 17.70833283662796%,
-    rgba(0, 0, 0, 0.72) 29.16666567325592%
-  );
-  height: 70vh;
-  bottom: 0;
-  position: fixed;
+  background-color: var(--cc-orange);
 }
 
 .bg-img {
   position: fixed;
   top: 0;
   left: 0;
-  object-fit: cover;
   width: 100%;
 }
 </style>
