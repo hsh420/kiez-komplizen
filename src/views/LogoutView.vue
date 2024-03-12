@@ -12,25 +12,8 @@
       <div class="backdrop-shadow">
         <section class="all-p-and-button-container1">
           <p class="first-p uppercase p-left"></p>
-          <h1>Du wurdest erfolgreich abgemeldet!</h1>
-          <p class="second-p uppercase p-right">Schade, dass du uns schon verlässt!</p>
-        </section>
-
-        <section class="all-p-and-button-container2">
-          <p class="third-p p-center">
-            Wir hoffen, dich bald wieder auf unserer Plattform<br /><span class="corp-orange bold"
-              >Kiez-Kompliezen</span
-            >
-            begrüßen zu dürfen.<br />
-            <span class="bold">Vielen Dank für die Nutzung unserer Dienste.</span><br />
-            Wenn du dich erneut anmelden möchtest, klicke bitte auf den<br /><span
-              class="corp-orange bold"
-              >Login-Button unten</span
-            >.
-            <span class="bold"
-              ><br />Bei Fragen oder Anliegen stehen wir dir gerne zur Verfügung.</span
-            ><span class="bold"><br />Du kannst du uns jederzeit kontaktieren.</span>
-          </p>
+          <h1>Jetzt biste raus!</h1>
+          <p class="second-p uppercase p-right">Schau mal wieder vorbei!</p>
         </section>
 
         <section class="link-login">
