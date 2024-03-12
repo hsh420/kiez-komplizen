@@ -1,40 +1,3 @@
-<!-- <template>
-  <h1>Du wurdest erfolgreich abgemeldet</h1>
-  <main>
-    <div class="fullscreen">
-      <div class="flex-center">
-        <img
-          class="logo-img"
-          alt="Hintergrund-Bild"
-          src="@/assets/logo-final/Kiezkomplizen_logo.png"
-        />
-        <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax.png" />
-      </div>
-      <div class="backdrop-shadow"></div>
-    </div>
-  </main>
-  <section class="all-p-container">
-    <p class="third-p p-center">
-      Schade das du uns<span class="corp-orange">Kiez-Kompliezen</span> schon verlässt!
-      <span class="bold">
-        Wir hoffen, dich bald wieder auf unserer Plattform begrüßen zu dürfen.</span
-      ><br />
-      <span class="bold">Vielen Dank für die Nutzung unserer Dienste.</span
-      ><span class="bold"
-        >Wenn du dich erneut anmelden möchtest, klicke bitte auf den Login-Button unten.</span
-      ><br />
-      Bei Fragen oder Anliegen stehen wir dir gerne zur Verfügung. Du kannst uns jederzeit
-      kontaktieren.
-    </p>
-  </section>
-
-  <section class="link-login">
-    <RouterLink :to="{ name: 'login' }"
-      ><p class="corp-orange">Du willst dich wieder Anmelden?</p></RouterLink
-    >
-  </section>
-</template> -->
-
 <template>
   <main>
     <div class="fullscreen">
@@ -44,7 +7,7 @@
           alt="Hintergrund-Bild"
           src="@/assets/logo-final/Kiezkomplizen_logo.png"
         />
-        <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax.png" />
+        <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax2.png" />
       </div>
       <div class="backdrop-shadow">
         <section class="all-p-and-button-container1">
@@ -56,11 +19,14 @@
         <section class="all-p-and-button-container2">
           <p class="third-p p-center">
             Wir hoffen, dich bald wieder auf unserer Plattform<br /><span class="corp-orange bold"
-              >Kiez-Kompliezen</span>
+              >Kiez-Kompliezen</span
+            >
             begrüßen zu dürfen.<br />
             <span class="bold">Vielen Dank für die Nutzung unserer Dienste.</span><br />
-            Wenn du dich erneut anmelden möchtest, klicke bitte auf den<br /><span class="corp-orange bold"
-              >Login-Button unten</span>.
+            Wenn du dich erneut anmelden möchtest, klicke bitte auf den<br /><span
+              class="corp-orange bold"
+              >Login-Button unten</span
+            >.
             <span class="bold"
               ><br />Bei Fragen oder Anliegen stehen wir dir gerne zur Verfügung.</span
             ><span class="bold"><br />Du kannst du uns jederzeit kontaktieren.</span>
@@ -203,7 +169,6 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 button:hover {
