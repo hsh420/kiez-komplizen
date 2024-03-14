@@ -1,7 +1,6 @@
-
 <script setup>
 import { useAuthStore } from './stores/auth'
-import { onMounted} from 'vue'
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import HeaderLayoutComponent from '@/components/Layout/HeaderLayoutComponent.vue'
 import FooterLayoutComponent from '@/components/Layout/FooterLayoutComponent.vue'
@@ -11,8 +10,10 @@ onMounted(() => {
 })
 const router = useRouter()
 
-const showHeader = () => router.currentRoute.value.name !== 'landing' && router.currentRoute.value.name !== 'logout'
-const showFooter = () => router.currentRoute.value.name !== 'landing' && router.currentRoute.value.name !== 'logout'
+const showHeader = () =>
+  router.currentRoute.value.name !== 'landing' && router.currentRoute.value.name !== 'logout'
+const showFooter = () =>
+  router.currentRoute.value.name !== 'landing' && router.currentRoute.value.name !== 'logout'
 
 onMounted(() => {
   router.currentRoute.value
@@ -20,9 +21,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <HeaderLayoutComponent class="header" v-if="showHeader()"/>
+  <HeaderLayoutComponent class="header" v-if="showHeader()" />
   <main class="main"><RouterView /></main>
-  <FooterLayoutComponent class="footer" v-if="showFooter()"/>
+  <FooterLayoutComponent class="footer" v-if="showFooter()" />
 </template>
 
 <style scoped>

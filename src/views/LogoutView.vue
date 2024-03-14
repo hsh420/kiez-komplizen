@@ -17,6 +17,7 @@
       <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
     </section>
     <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax2.png" />
+    <img class="bg-img-large" src="@/assets/hg-kiezkomplizen.webp" alt="Hintergrund-Bild" />
   </main>
 </template>
 
@@ -45,6 +46,10 @@ p {
   justify-content: center;
   margin-top: 10px;
   z-index: 2;
+}
+
+.bg-img-large {
+  display: none;
 }
 
 .logo-img {
@@ -122,7 +127,6 @@ p {
   border-radius: 50px;
   padding: 14px 80px 14px 80px;
   position: relative;
-  font-size: 15px;
 }
 
 button:hover {
@@ -141,10 +145,6 @@ button:hover {
 }
 
 @media screen and (min-height: 750px) {
-  p,
-  span {
-    font-size: 1.3rem;
-  }
   .logo-img {
     top: 40px;
   }
@@ -154,6 +154,23 @@ button:hover {
 
   .button {
     margin: 3rem 0 1.5rem 0;
+  }
+}
+@media screen and (min-width: 700px) {
+  .logo-img {
+    width: 600px;
+  }
+  .bg-img {
+    display: none;
+  }
+  .bg-img-large {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 </style>

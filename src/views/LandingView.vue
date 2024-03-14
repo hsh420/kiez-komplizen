@@ -11,7 +11,7 @@
     </div>
     <section class="all-p-container">
       <p class="third-p p-center">
-        Werde ein <span class="corp-orange">Kiez-Komplieze:</span><br />
+        Werde ein <span class="corp-orange">Kiez-Komplize:</span><br />
         Leihe und verleihe Gegenstände oder<br />
         finde jemanden für gemeinsame Hobbys.<br />
         Kostenlos und gleich nebenan.
@@ -21,10 +21,14 @@
       >
       <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
       <p class="last-p">
-        Noch nicht dabei? <RouterLink to="/registration">Registrieren.</RouterLink>
+        Noch nicht dabei?
+        <RouterLink to="/registration"
+          ><span class="corp-orange registration">Registrieren</span></RouterLink
+        >
       </p>
     </section>
     <img class="bg-img" alt="Hintergrund-Bild" src="@/assets/hg_kk_iPhone15promax2.png" />
+    <img class="bg-img-large" src="@/assets/hg-kiezkomplizen.webp" alt="Hintergrund-Bild" />
   </main>
 </template>
 
@@ -59,11 +63,19 @@ p {
   z-index: 2;
 }
 
+.registration {
+  font-size: 0.9rem;
+}
+
 .logo-img {
   top: 20px;
   width: 250px;
   position: absolute;
   object-fit: cover;
+}
+
+.bg-img-large {
+  display: none;
 }
 
 .flex-center {
@@ -129,7 +141,6 @@ p {
   border-radius: 50px;
   padding: 14px 80px 14px 80px;
   position: relative;
-  font-size: 15px;
 }
 
 button:hover {
@@ -150,13 +161,33 @@ button:hover {
   .all-p-container {
     padding-bottom: 100px;
   }
-  p,
-  span {
-    font-size: 1.3rem;
-  }
 
   .button {
     margin: 3rem 0 1.5rem 0;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .logo-img {
+    width: 600px;
+  }
+  .bg-img {
+    display: none;
+  }
+  .bg-img-large {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .all-p-container {
+    padding-bottom: 40px;
+  }
+  .registration {
+    font-size: 1.5rem;
   }
 }
 </style>
