@@ -12,9 +12,8 @@
     <section class="all-p-container">
       <p class="third-p p-center">
         Werde ein <span class="corp-orange">Kiez-Komplieze:</span><br />
-        <span class="bold"> Leihe und verleihe Gegenstände</span> oder<br />
-        <span class="bold">finde jemanden</span> für <span class="bold">gemeinsame Hobbys.</span
-        ><br />
+        Leihe und verleihe Gegenstände oder<br />
+        finde jemanden für gemeinsame Hobbys.<br />
         Kostenlos und gleich nebenan.
       </p>
       <RouterLink to="/about"
@@ -46,6 +45,10 @@ export default {
 
 p {
   color: var(--cc-text-lightmode);
+}
+
+.corp-orange {
+  text-shadow: 1.3px 1px 1px black;
 }
 
 .img-container {
@@ -81,7 +84,7 @@ p {
   bottom: 0;
   left: 0;
   right: 0;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 }
 
 .link-about {
@@ -118,11 +121,6 @@ p {
   font-weight: bolder;
 }
 
-.bold {
-  color: black;
-  font-weight: 600;
-}
-
 .button {
   margin: 10px 0 15px 0;
   border: none;
@@ -143,5 +141,22 @@ button:hover {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+@media screen and (min-height: 750px) {
+  .logo-img {
+    top: 40px;
+  }
+  .all-p-container {
+    padding-bottom: 100px;
+  }
+  p,
+  span {
+    font-size: 1.3rem;
+  }
+
+  .button {
+    margin: 3rem 0 1.5rem 0;
+  }
 }
 </style>

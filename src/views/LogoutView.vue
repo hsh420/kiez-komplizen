@@ -10,10 +10,9 @@
       </div>
     </div>
     <section class="all-p-container">
-      <h1 class="third-p p-center">
-        Danke tschau! <br />
-        <span class="bold"> Schauste bald mal wieder rein, wa?</span>
-      </h1>
+      <h1 class="third-p p-center corp-orange">Danke tschau!</h1>
+
+      <p>Schauste bald mal wieder rein, wa?</p>
 
       <RouterLink :to="{ name: 'login' }"><button class="button">Login</button></RouterLink>
     </section>
@@ -135,5 +134,26 @@ button:hover {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.corp-orange {
+  text-shadow: 1.3px 1px 1px black;
+}
+
+@media screen and (min-height: 750px) {
+  p,
+  span {
+    font-size: 1.3rem;
+  }
+  .logo-img {
+    top: 40px;
+  }
+  .all-p-container {
+    padding-bottom: 100px;
+  }
+
+  .button {
+    margin: 3rem 0 1.5rem 0;
+  }
 }
 </style>
