@@ -103,3 +103,15 @@ a {
   transform: translate(0, 5px) scale(0.75);
   color: #1e293b;
 }
+
+@media screen and (min-height: 600px), screen and (max-width: 430px) {
+  * {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1920px), screen and (min-height: 950px) {
+  * {
+    font-size: 2rem;
+  }
+}
