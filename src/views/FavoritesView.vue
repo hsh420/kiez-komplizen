@@ -89,7 +89,7 @@ li {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  width: 385px;
+  width: 330px;
   height: 326px;
   margin: 0 auto;
   bottom: 6rem;
@@ -97,7 +97,7 @@ li {
 }
 
 .card__img {
-  width: 385px;
+  width: 330px;
   height: 250px;
   object-fit: contain;
   object-position: center;
