@@ -43,6 +43,10 @@ const handleSubmit = () => {
 <style scoped>
 @import url('@/assets/main.css');
 
+h1 {
+  text-align: center;
+}
+
 .login-button {
   margin: 10px auto;
   width: 22rem;

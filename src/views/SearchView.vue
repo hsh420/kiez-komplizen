@@ -25,7 +25,7 @@
         placeholder=""
         v-model="searchTermZipCode"
       />
-      <label for="search-zip">Nach PLZ filtern</label>
+      <label for="search-zip" class="zip-filter">Nach PLZ filtern</label>
     </div>
   </div>
   <hr />
@@ -156,7 +156,7 @@ li {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  width: 385px;
+  width: 330px;
   height: 326px;
   margin: 0 auto;
   bottom: 6rem;
@@ -165,7 +165,7 @@ li {
 }
 
 .card__img {
-  width: 385px;
+  width: 330px;
   height: 250px;
   object-fit: contain;
   object-position: center;
@@ -235,5 +235,11 @@ li {
 
 .whatever {
   width: 65vw;
+}
+
+@media screen and (max-width: 400px) {
+  .zip-filter {
+    font-size: small;
+  }
 }
 </style>
