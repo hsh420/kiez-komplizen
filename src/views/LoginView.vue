@@ -22,7 +22,7 @@
       </div>
       <ButtonGlobal :label="'Login'" type="submit" class="login-button" />
     </form>
-    <p>...oder mit Google anmelden</p>
+    <p class="google-login-text">...oder mit Google anmelden</p>
     <button class="google-button" v-on:click="store.loginWithGoogle">
       <img class="icon-google" alt="Google Logo" src="@/assets/pictures-layout/google_icon.png" />
       &nbsp; Login with Google
@@ -43,23 +43,17 @@ const handleSubmit = () => {
 <style scoped>
 @import url('@/assets/main.css');
 
-p {
-  text-align: center;
-  margin-top: 60px;
-}
-
-h1 {
-  text-align: center;
-  margin-top: 30px;
-}
-
 .login-button {
-  margin: 0 auto;
+  margin: 10px auto;
   width: 22rem;
-  margin-top: 10px;
 }
 .login-button:hover {
   background-color: lightgray;
+}
+
+.google-login-text {
+  margin-top: 35px;
+  text-align: center;
 }
 
 .google-button {
@@ -72,8 +66,7 @@ h1 {
   border: 2px solid lightgray;
   font-size: 14px;
   font-weight: 500;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 10px auto;
 }
 button:hover {
   background-color: lightgray;
@@ -84,11 +77,10 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 10px 0;
 }
 
 .input-container label {
-  margin-bottom: 50px;
   display: block;
   font-size: 16px;
 }
@@ -101,6 +93,5 @@ button:hover {
   padding: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  margin-top: 1rem;
 }
 </style>
