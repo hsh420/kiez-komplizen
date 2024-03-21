@@ -25,6 +25,7 @@ h1 {
   font-size: 2rem;
   color: var(--cc-orange);
   text-transform: uppercase;
+  text-align: center;
 }
 
 h2,
